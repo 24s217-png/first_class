@@ -7,13 +7,15 @@ body {
     position: relative;
     width: 100%;
     overflow: hidden;
-    background: #8e6060;
+    background: #8e160d;
 }
 
 .hero-sec .hero-swiper {
     position: relative;
     width: 100%;
-    height: 600px;
+    aspect-ratio: 1920 / 773;
+    min-height: 420px;
+    max-height: 780px;
 }
 
 .hero-sec .swiper-slide {
@@ -32,45 +34,46 @@ body {
     display: none !important;
 }
 
-/* Figma: 좌우 중앙의 심플한 화살표 */
+/* Figma node 138:58: small chevrons at the far left and right */
 .hero-sec .swiper-button-prev,
 .hero-sec .swiper-button-next {
     top: 50%;
-    width: 50px;
-    height: 50px;
-    margin-top: -25px;
+    width: 28px;
+    height: 40px;
+    margin-top: -20px;
     color: #fff;
     background: transparent;
     border: 0;
-    border-radius: 50%;
-    transition: background-color 0.2s ease, opacity 0.2s ease;
+    border-radius: 0;
+    opacity: 0.95;
+    transition: opacity 0.2s ease;
 }
 
 .hero-sec .swiper-button-prev {
-    left: 24px;
+    left: 0;
 }
 
 .hero-sec .swiper-button-next {
-    right: 24px;
+    right: 0;
 }
 
 .hero-sec .swiper-button-prev::after,
 .hero-sec .swiper-button-next::after {
     font-family: swiper-icons;
-    font-size: 23px;
+    font-size: 15px;
     font-weight: 400;
 }
 
 .hero-sec .swiper-button-prev:hover,
 .hero-sec .swiper-button-next:hover {
-    background: rgb(0 0 0 / 18%);
+    opacity: 0.65;
 }
 
 .hero-sec .swiper-button-prev:focus-visible,
 .hero-sec .swiper-button-next:focus-visible,
 .hero-sec .swiper-pagination-bullet:focus-visible {
     outline: 2px solid #fff;
-    outline-offset: 4px;
+    outline-offset: 3px;
 }
 
 .hero-sec .swiper-button-disabled {
@@ -78,40 +81,39 @@ body {
     pointer-events: none;
 }
 
-/* Figma의 하단 가로 라인 형태에 맞춘 pagination */
+/* Figma's bottom segmented line indicator */
 .hero-sec .swiper-pagination {
     position: absolute;
     z-index: 10;
     right: auto;
-    bottom: 22px;
+    bottom: 12px;
     left: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 6px;
     width: auto;
-    min-height: 28px;
-    padding: 0 12px;
+    min-height: 16px;
+    padding: 0;
     transform: translateX(-50%);
 }
 
 .hero-sec .swiper-pagination-bullet {
     display: block;
-    width: 20px;
-    height: 3px;
+    width: 28px;
+    height: 2px;
     margin: 0 !important;
-    border-radius: 999px;
-    background: rgb(255 255 255 / 55%);
+    border-radius: 0;
+    background: rgb(255 255 255 / 48%);
     opacity: 1;
-    transition: width 0.25s ease, background-color 0.25s ease;
+    transition: background-color 0.2s ease;
 }
 
 .hero-sec .swiper-pagination-bullet-active {
-    width: 25px;
     background: #fff;
 }
 
-/* Figma 시안에는 별도의 scrollbar가 보이지 않아 중복 표시하지 않음 */
+/* The Figma frame uses the segmented pagination instead of a separate scrollbar. */
 .hero-sec .swiper-scrollbar {
     display: none;
 }
@@ -126,6 +128,7 @@ body {
     }
 
     .hero-sec .hero-swiper {
+        aspect-ratio: auto;
         height: 96dvh;
         min-height: 480px;
         max-height: 820px;
@@ -133,20 +136,17 @@ body {
 
     .hero-sec .swiper-button-prev,
     .hero-sec .swiper-button-next {
-        width: 42px;
-        height: 42px;
+        width: 26px;
+        height: 38px;
     }
 
-    .hero-sec .swiper-button-prev {
-        left: 10px;
-    }
-
-    .hero-sec .swiper-button-next {
-        right: 10px;
+    .hero-sec .swiper-button-prev::after,
+    .hero-sec .swiper-button-next::after {
+        font-size: 14px;
     }
 
     .hero-sec .swiper-pagination {
-        bottom: 16px;
+        bottom: 12px;
     }
 }
 
@@ -155,23 +155,12 @@ body {
         min-height: 420px;
     }
 
-    .hero-sec .swiper-button-prev,
-    .hero-sec .swiper-button-next {
-        width: 36px;
-        height: 36px;
-    }
-
-    .hero-sec .swiper-button-prev::after,
-    .hero-sec .swiper-button-next::after {
-        font-size: 18px;
-    }
-
     .hero-sec .swiper-pagination-bullet {
-        width: 15px;
+        width: 22px;
     }
 
-    .hero-sec .swiper-pagination-bullet-active {
-        width: 21px;
+    .hero-sec .swiper-pagination {
+        gap: 5px;
     }
 }
 
