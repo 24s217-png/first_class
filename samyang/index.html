@@ -1,72 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>삼양식품리뉴얼포트폴리오</title>
+    <title>삼양식품 리뉴얼 포트폴리오</title>
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="../font/css/pretendard.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="../npm/swiper/swiper-bundle.min.js"></script>
-    <style>
-        #wrap { background-color: yellow; }
-    </style>
+    <script src="../npm/swiper/swiper-bundle.min.js" defer></script>
 </head>
 <body>
     <div id="wrap">
         <header>제목공간</header>
         <main>
-            <div class="hero-sec">
-                  <!-- Slider main container -->
-                <div class="swiper">
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
-                    <!-- Slides -->
-                    <div class="swiper-slide"> 
-                        <img src="img\1.png" alt="1배너" class="pc">
-                        <img src="img\1_M.png" alt="1M배너" class="mo">
+            <section class="hero-sec" aria-label="삼양식품 주요 배너">
+                <div class="swiper hero-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="img/1.png" alt="삼양식품 메인 배너 1" class="pc">
+                            <img src="img/1_M.png" alt="삼양식품 모바일 메인 배너 1" class="mo">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/2.png" alt="삼양식품 메인 배너 2" class="pc">
+                            <img src="img/2_M.png" alt="삼양식품 모바일 메인 배너 2" class="mo">
+                        </div>
                     </div>
-                    <div class="swiper-slide">
-                        <img src="img\2.png" alt="2배너" class="pc">
-                        <img src="img\2_M.png" alt="2M배너" class="mo">
-                    </div>
-                </div>
-                <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
 
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-
-                <!-- If we need scrollbar -->
-                <div class="swiper-scrollbar"></div>
+                    <button class="swiper-button-prev" type="button" aria-label="이전 배너"></button>
+                    <button class="swiper-button-next" type="button" aria-label="다음 배너"></button>
+                    <div class="swiper-pagination" aria-label="배너 페이지 선택"></div>
                 </div>
-            </div>
+            </section>
         </main>
         <footer>&copy;</footer>
     </div>
+
     <script>
-        const swiper = new Swiper('.hero-sec .swiper', {
-        // Optional parameters
-        direction: 'horizontal',
-        loop: true,
-
-        // If we need pagination
-        pagination: {
-            el: '.swiper-pagination',
-        },
-
-        // Navigation arrows
-        navigation: {
-            nextEl: '.hero-sec .swiper-button-next',
-            prevEl: '.hero-sec .swiper-button-prev',
-        },
-
-        // And if we need scrollbar
-        scrollbar: {
-            el: '.swiper-scrollbar',
-        },
+        document.addEventListener('DOMContentLoaded', () => {
+            new Swiper('.hero-sec .hero-swiper', {
+                direction: 'horizontal',
+                loop: true,
+                speed: 700,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false
+                },
+                pagination: {
+                    el: '.hero-sec .swiper-pagination',
+                    clickable: true
+                },
+                navigation: {
+                    nextEl: '.hero-sec .swiper-button-next',
+                    prevEl: '.hero-sec .swiper-button-prev'
+                },
+                keyboard: {
+                    enabled: true
+                },
+                a11y: {
+                    prevSlideMessage: '이전 배너',
+                    nextSlideMessage: '다음 배너',
+                    paginationBulletMessage: '{{index}}번째 배너로 이동'
+                }
+            });
         });
     </script>
 </body>
