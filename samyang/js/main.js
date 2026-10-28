@@ -48,11 +48,19 @@
         slidesPerView: "auto",
         spaceBetween: 56.38,
         loop: true,
-        speed: 650,
+        loopAdditionalSlides: 10,
+        speed: 9000,
+        allowTouchMove: true,
+        freeMode: {
+          enabled: true,
+          momentum: false,
+          sticky: false
+        },
         autoplay: {
-          delay: 2800,
+          delay: 0,
           disableOnInteraction: false,
-          pauseOnMouseEnter: true
+          pauseOnMouseEnter: false,
+          waitForTransition: false
         },
         breakpoints: {
           0: { spaceBetween: 14 },
