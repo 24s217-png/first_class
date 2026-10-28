@@ -92,7 +92,10 @@ img, video { display: block; max-width: 100%; }
 .esg-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 60px; }
 .esg-card { min-width: 0; }
 .esg-media { height: clamp(220px, 17.97vw, 345px); border-radius: 30px; overflow: hidden; position: relative; background: #111; }
-.esg-media video { width: 100%; height: 100%; object-fit: cover; filter: brightness(.7); }
+.esg-media video, .esg-media img { width: 100%; height: 100%; object-fit: cover; }
+.esg-media video { filter: brightness(.7); }
+.esg-media img { transition: transform .5s ease; }
+.esg-card:hover .esg-media img { transform: scale(1.035); }
 .play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; color: #222; background: #fff; font-size: 16px; padding-left: 3px; }
 .esg-copy { min-height: 100px; padding: 22px 0 0; }
 .esg-copy h3 { font-size: 22px; line-height: 1.4; font-weight: 600; margin-bottom: 7px; }
