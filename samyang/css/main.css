@@ -1,13 +1,28 @@
+:root {
+    /* Figma Variables */
+    --text-primary: #323232;
+    --neutral-0: #ffffff;
+    --action-primary: #ff6400;
+    --surface-default: #ffffff;
+    --orange-600: #ff6400;
+    --neutral-200: #e5e5e5;
+    --background-default: #ffffff;
+    --neutral-900: #323232;
+    --accent-subtle: #ffdbbb;
+    --border-default: #e5e5e5;
+}
+
 body {
-    background-color: #fff;
-    font-family: "pretendard", sans-serif;
+    background-color: var(--background-default);
+    color: var(--text-primary);
+    font-family: "Pretendard", sans-serif;
 }
 
 .hero-sec {
     position: relative;
     width: 100%;
     overflow: hidden;
-    background: #8e160d;
+    background: var(--orange-600);
 }
 
 .hero-sec .hero-swiper {
@@ -41,7 +56,7 @@ body {
     width: 28px;
     height: 40px;
     margin-top: -20px;
-    color: #fff;
+    color: var(--neutral-0);
     background: transparent;
     border: 0;
     border-radius: 0;
@@ -72,7 +87,7 @@ body {
 .hero-sec .swiper-button-prev:focus-visible,
 .hero-sec .swiper-button-next:focus-visible,
 .hero-sec .swiper-pagination-bullet:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid var(--neutral-0);
     outline-offset: 3px;
 }
 
@@ -110,10 +125,10 @@ body {
 }
 
 .hero-sec .swiper-pagination-bullet-active {
-    background: #fff;
+    background: var(--neutral-0);
 }
 
-/* The Figma frame uses the segmented pagination instead of a separate scrollbar. */
+/* Figma frame uses segmented pagination instead of a separate scrollbar. */
 .hero-sec .swiper-scrollbar {
     display: none;
 }
