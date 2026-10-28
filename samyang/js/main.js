@@ -20,10 +20,8 @@
   });
 
   nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", (event) => {
-    if (link.closest(".nav-dropdown")) {
-      event.preventDefault();
-      return;
-    }
+    // Main navigation and submenu links are temporary placeholders for this design mockup.
+    event.preventDefault();
     if (window.innerWidth <= 760) closeMenu();
   }));
 
