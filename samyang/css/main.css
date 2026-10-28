@@ -117,7 +117,7 @@ img, video { display: block; max-width: 100%; }
 .media-card-label { position: absolute; z-index: 2; left: 22px; bottom: 20px; color: #fff; font-size: 14px; font-weight: 700; letter-spacing: .09em; text-shadow: 0 1px 8px #0005; }
 .media-play { position: absolute; z-index: 2; left: 50%; top: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 54px; height: 54px; padding-left: 3px; border-radius: 50%; color: #222; background: #ffffffdf; font-size: 17px; }
 /* Support */
-.support-sec { min-height: 446px; padding: 70px var(--gutter); display: flex; align-items: center; background: #e8c2a9; }
+.support-sec { min-height: 446px; padding: 70px var(--gutter); display: flex; align-items: center; background: linear-gradient(rgba(232, 194, 169, .42), rgba(232, 194, 169, .42)), url("../img/111.png") center / cover no-repeat; }
 .support-inner { width: 100%; max-width: var(--content-width); margin: auto; display: grid; grid-template-columns: minmax(300px, 513px) minmax(0, 1fr); align-items: center; gap: 50px; }
 .support-title { font-size: clamp(30px, 2.5vw, 48px); line-height: 1.2; font-weight: 700; letter-spacing: -.04em; }
 .support-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 470px)); gap: 50px; justify-content: end; }
