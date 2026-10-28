@@ -3,520 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>삼양식품 | CRAVE THE BURN</title>
-
-  <!-- 외부 폰트 및 Swiper 라이브러리 -->
+  <meta name="theme-color" content="#ffffff">
+  <title>삼양식품 | Samyang Foods</title>
   <link rel="stylesheet" href="../css/default.css">
   <link rel="stylesheet" href="../font/css/pretendardvariable.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-  <!-- 내부 통합 스타일시트 (CSS) -->
-  <style>
-    @charset "UTF-8";
-
-    :root {
-      --primary-orange: #ff5500;
-      --bg-peach: #fbf0e4;
-      --bg-dark: #252321;
-      --text-main: #323232;
-      --text-muted: #77716d;
-      --page-gutter: clamp(20px, 4vw, 80px);
-      --content-width: 1400px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "Pretendard Variable", "Pretendard", -apple-system, sans-serif;
-      color: var(--text-main);
-      background-color: #ffffff;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    a { text-decoration: none; color: inherit; }
-    img, video { display: block; width: 100%; height: 100%; object-fit: cover; }
-    .section-pad { padding: 80px var(--page-gutter); }
-
-    /* 공통 타이틀 */
-    .sec-title-simple {
-      font-size: 32px;
-      font-weight: 850;
-      color: #333333;
-      letter-spacing: -0.03em;
-    }
-
-    /* HEADER */
-    .site-header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      height: 80px; background: rgba(255,255,255,0.96);
-      border-bottom: 1px solid rgba(50,50,50,0.08);
-    }
-    .header-inner {
-      max-width: var(--content-width); height: 100%; margin: 0 auto; padding: 0 var(--page-gutter);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .brand-logo { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 20px; }
-    .logo-mark {
-      display: grid; place-items: center; width: 32px; height: 32px;
-      border: 2px solid var(--primary-orange); color: var(--primary-orange);
-      font-weight: 900; font-size: 16px;
-    }
-    .primary-nav { display: flex; gap: 36px; margin-left: auto; }
-    .primary-nav a { font-size: 15px; font-weight: 650; }
-    .primary-nav a:hover { color: var(--primary-orange); }
-    .header-tools { display: flex; align-items: center; gap: 16px; }
-    .utility-link { font-size: 13px; font-weight: 500; }
-    .tool-divider { width: 1px; height: 14px; background: #cfcac6; }
-    .mall-button {
-      background: var(--primary-orange); color: #ffffff;
-      padding: 10px 16px; border-radius: 6px; font-weight: 700; font-size: 14px;
-    }
-
-    /* 1. HERO SECTION */
-    .hero-sec { position: relative; width: 100%; height: 100vh; min-height: 550px; background: #000; }
-    .hero-video-only { width: 100%; height: 100%; object-fit: cover; }
-
-    /* 2. BRAND STORY */
-    .brand-story-sec { background: #ffffff; }
-    .sec-heading-group { margin-bottom: 40px; }
-    .eyebrow { color: var(--primary-orange); font-size: 12px; font-weight: 750; letter-spacing: 0.12em; margin-bottom: 8px; }
-    .sec-title-main { font-size: 42px; font-weight: 850; letter-spacing: -0.04em; }
-    .sec-title-main span { color: var(--primary-orange); }
-    .story-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: var(--content-width); margin: auto; }
-    .story-card-img { aspect-ratio: 1.3 / 1; border-radius: 16px; overflow: hidden; }
-    .story-card-info { margin-top: 16px; }
-    .card-kicker { color: var(--primary-orange); font-size: 11px; font-weight: 750; margin-bottom: 4px; }
-    .story-card-info h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-    .card-desc { color: var(--text-muted); font-size: 13px; line-height: 1.6; }
-
-    /* 3. BEST PRODUCTS */
-    .best-products-sec { background: var(--bg-peach); }
-    .best-products-header { max-width: var(--content-width); margin: 0 auto 32px; }
-
-    .best-products-container {
-      position: relative;
-      max-width: var(--content-width);
-      margin: 0 auto;
-      padding: 0 45px;
-    }
-
-    .best-nav-btn {
-      position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
-      width: 40px; height: 40px; border: none; background: transparent;
-      color: #e64a00; font-size: 42px; font-weight: 300; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .best-btn-prev { left: 0; }
-    .best-btn-next { right: 0; }
-
-    .best-swiper { width: 100%; }
-    .product-box {
-      background: #ffffff;
-      border: 1px solid #e2d7cb;
-      border-radius: 20px;
-      padding: 24px 20px 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 280px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-    }
-    .product-img-wrap {
-      width: 100%;
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .product-img-wrap img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-    .product-info-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 12px;
-    }
-    .product-name {
-      font-size: 14px;
-      font-weight: 600;
-      color: #333333;
-    }
-    .badge-icon {
-      width: 20px; height: 20px; border-radius: 50%;
-      background: #f0f0f0; color: #888; font-size: 10px;
-      display: grid; place-items: center;
-    }
-
-    /* 4. ESG SECTION */
-    .esg-sec { background: #22251d; color: #ffffff; }
-    .esg-sec .eyebrow { color: #ff9b57; }
-    .esg-sec .sec-title-main span { color: #ff9b57; }
-    .esg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: var(--content-width); margin: 36px auto 0; }
-    .esg-card { background: #161813; border-radius: 20px; padding: 20px; }
-    .esg-video-box { aspect-ratio: 1.5 / 1; border-radius: 14px; overflow: hidden; margin-bottom: 16px; background: #000; }
-    .esg-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-    .esg-card .card-desc { color: rgba(255,255,255,0.65); }
-
-    /* 5. MEDIA SECTION */
-    .media-sec { background: var(--bg-peach); }
-    .media-header {
-      display: flex; align-items: center; justify-content: space-between;
-      max-width: var(--content-width); margin: 0 auto 28px;
-    }
-    .media-more-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 14px; font-weight: 600; color: #333;
-    }
-    .media-more-btn .arrow {
-      width: 20px; height: 20px; border-radius: 50%;
-      background: rgba(0,0,0,0.06); font-size: 11px;
-      display: grid; place-items: center;
-    }
-    .media-swiper { max-width: var(--content-width); margin: auto; overflow: visible; }
-    .media-thumb-card {
-      width: 100%;
-      aspect-ratio: 1.6 / 1;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    }
-
-    /* 6. SUPPORT SECTION */
-    .support-sec { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; background: #ffffff; max-width: var(--content-width); margin: auto; }
-    .support-desc { margin-top: 14px; color: var(--text-muted); font-size: 15px; }
-    .support-btn-group { display: flex; flex-direction: column; gap: 16px; justify-content: center; }
-    .btn-pillar {
-      width: 100%; height: 100px; border-radius: 50px; padding: 0 36px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .btn-orange { background: var(--primary-orange); color: #ffffff; }
-    .btn-cream { background: #fbf0e4; color: var(--text-main); }
-    .btn-txt strong { display: block; font-size: 20px; font-weight: 800; }
-    .btn-txt span { font-size: 12px; opacity: 0.8; margin-top: 2px; display: block; }
-    .btn-arrow { font-size: 22px; font-weight: 700; }
-
-    /* FOOTER */
-    .site-footer { background: var(--bg-dark); color: rgba(255,255,255,0.6); padding: 50px var(--page-gutter) 30px; font-size: 13px; }
-    .footer-inner { max-width: var(--content-width); margin: auto; }
-    .footer-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 20px; }
-    .footer-logo { font-size: 18px; font-weight: 800; color: #fff; }
-    .back-top { color: #fff; font-size: 11px; font-weight: 700; }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
-    .copyright { font-size: 11px; opacity: 0.4; }
-
-    @media (max-width: 900px) {
-      .story-grid, .esg-grid { grid-template-columns: 1fr; }
-      .support-sec { grid-template-columns: 1fr; }
-      .primary-nav, .header-tools { display: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <div id="wrap">
-
-    <!-- HEADER -->
-    <header class="site-header" id="site-header">
+    <header class="site-header">
       <div class="header-inner">
         <a class="brand-logo" href="#top" aria-label="삼양식품 홈">
-          <span class="logo-mark">三</span>
-          <span class="logo-type">삼양식품</span>
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-wordmark">Samyang<br><small>Foods</small></span>
         </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="메뉴 열기">
-          <span></span><span></span><span></span>
-        </button>
-        <nav class="primary-nav" id="primary-nav">
+
+        <nav class="primary-nav" aria-label="주 메뉴">
           <a href="#brand-story">삼양식품소개</a>
           <a href="#media">미디어/PR</a>
           <a href="#esg">지속가능경영</a>
           <a href="#brand-story">브랜드</a>
           <a href="#best-products">제품</a>
         </nav>
+
         <div class="header-tools">
           <a class="utility-link" href="#support">채용안내</a>
-          <span class="tool-divider"></span>
-          <a class="utility-link" href="#" lang="en">EN</a>
-          <a class="mall-button" href="https://brand.naver.com/samyang" target="_blank" rel="noreferrer">
-            삼양몰 바로가기 <span aria-hidden="true">↗</span>
-          </a>
+          <span class="tool-divider" aria-hidden="true"></span>
+          <a class="utility-link" href="#top" lang="en">EN</a>
+          <button class="icon-button search-button" type="button" aria-label="검색"><span aria-hidden="true"></span></button>
+          <button class="icon-button user-button" type="button" aria-label="마이페이지"><span aria-hidden="true"></span></button>
+          <a class="mall-button" href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noreferrer">삼양몰 바로가기</a>
         </div>
+        <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </header>
 
     <main id="main">
-
-      <!-- 1. HERO SECTION -->
-      <section class="hero-sec" id="top">
+      <section class="hero-sec" id="top" aria-label="삼양식품 대표 영상">
         <video class="hero-video-only" autoplay muted loop playsinline preload="metadata">
           <source src="video/pc_kv.v2.av1.mp4" type="video/mp4">
         </video>
-      </section>
-
-      <!-- 2. BRAND STORY -->
-      <section class="brand-story-sec section-pad" id="brand-story">
-        <div class="sec-heading-group">
-          <p class="eyebrow">OUR STORY</p>
-          <h2 class="sec-title-main">BRAND <span>STORY</span></h2>
-        </div>
-        <div class="story-grid">
-          <article class="story-card">
-            <div class="story-card-img"><img src="img/1.png" alt="추억, 세상과 나누는 따뜻함"></div>
-            <div class="story-card-info">
-              <p class="card-kicker">GLOBAL SAMYANG</p>
-              <h3>추억, 세상과 나누는 따뜻함</h3>
-              <p class="card-desc">삼양식품이 전세계 사람들에게 전하는 스페셜 매운맛의 미식 경험</p>
-            </div>
-          </article>
-          <article class="story-card">
-            <div class="story-card-img"><img src="img/2.png" alt="오래도록 사랑받는 맛"></div>
-            <div class="story-card-info">
-              <p class="card-kicker">HERITAGE 1963</p>
-              <h3>오래도록 사랑받는 맛</h3>
-              <p class="card-desc">대한민국 최초의 라면, 삼양라면 1963의 역사와 기술력의 차이</p>
-            </div>
-          </article>
-          <article class="story-card">
-            <div class="story-card-img"><img src="img/1_M.png" alt="진한 국물 풍미의 깊은 매운맛"></div>
-            <div class="story-card-info">
-              <p class="card-kicker">NEW SPICY SPECTRUM</p>
-              <h3>진한 국물 풍미의 깊은 매운맛</h3>
-              <p class="card-desc">맵탱 마늘조개라면의 다채롭고 깊은 국물 스펙트럼</p>
-            </div>
-          </article>
+        <div class="hero-controls" aria-hidden="true">
+          <span class="hero-chevron hero-chevron-left">‹</span>
+          <span class="hero-pagination"><i></i><i></i><i></i></span>
+          <span class="hero-chevron hero-chevron-right">›</span>
         </div>
       </section>
 
-      <!-- 3. BEST PRODUCTS -->
-      <section class="best-products-sec section-pad" id="best-products">
-        <div class="best-products-header">
-          <h2 class="sec-title-simple">BEST PRODUCTS</h2>
+      <section class="brand-story-sec" id="brand-story">
+        <div class="section-inner">
+          <h2 class="section-title">BRAND STORY</h2>
+          <div class="story-grid">
+            <article class="story-card">
+              <a href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noreferrer">
+                <div class="story-card-img"><img src="img/1.png" alt="삼양식품 브랜드 스토리 이미지" loading="lazy"></div>
+                <h3>불닭, 세계가 사랑하는 매운맛</h3>
+                <p>특별한 맛으로 새로운 식문화를 만듭니다.</p>
+              </a>
+            </article>
+            <article class="story-card">
+              <a href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noreferrer">
+                <div class="story-card-img"><img src="img/2.png" alt="삼양식품의 브랜드와 제품 이미지" loading="lazy"></div>
+                <h3>오래도록 사랑받는 한 그릇</h3>
+                <p>삼양라면의 이야기와 기술력을 확인하세요.</p>
+              </a>
+            </article>
+            <article class="story-card">
+              <a href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noreferrer">
+                <div class="story-card-img"><img src="img/1_M.png" alt="삼양식품의 매운맛 제품 이미지" loading="lazy"></div>
+                <h3>취향 따라 즐기는 새로운 매운맛</h3>
+                <p>다양한 취향에 맞춘 맛의 가능성을 탐색합니다.</p>
+              </a>
+            </article>
+          </div>
         </div>
+      </section>
 
-        <div class="best-products-container">
-          <button class="best-nav-btn best-btn-prev" type="button" aria-label="이전 제품">‹</button>
+      <section class="best-products-sec" id="best-products">
+        <div class="section-inner">
+          <h2 class="section-title">BEST PRODUCTS</h2>
+          <div class="best-products-container">
+            <button class="best-nav-btn best-btn-prev" type="button" aria-label="이전 제품"><span aria-hidden="true">‹</span></button>
+            <div class="swiper best-swiper" aria-label="베스트 제품">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><a class="product-box" href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noreferrer"><div class="product-info-row"><span class="product-name">까르보 불닭볶음면</span><span class="badge-icon" aria-hidden="true">↗</span></div><div class="product-img-wrap"><img src="img/1.png" alt="까르보 불닭볶음면" loading="lazy"></div></a></div>
+                <div class="swiper-slide"><a class="product-box" href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noreferrer"><div class="product-info-row"><span class="product-name">삼양1963</span><span class="badge-icon" aria-hidden="true">↗</span></div><div class="product-img-wrap"><img src="img/2.png" alt="삼양1963" loading="lazy"></div></a></div>
+                <div class="swiper-slide"><a class="product-box" href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noreferrer"><div class="product-info-row"><span class="product-name">큰컵 삼양1963</span><span class="badge-icon" aria-hidden="true">↗</span></div><div class="product-img-wrap"><img src="img/1_M.png" alt="큰컵 삼양1963" loading="lazy"></div></a></div>
+                <div class="swiper-slide"><a class="product-box" href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noreferrer"><div class="product-info-row"><span class="product-name">큰컵 탱글 갈릭오일</span><span class="badge-icon" aria-hidden="true">↗</span></div><div class="product-img-wrap"><img src="img/2_M.png" alt="큰컵 탱글 갈릭오일" loading="lazy"></div></a></div>
+              </div>
+            </div>
+            <button class="best-nav-btn best-btn-next" type="button" aria-label="다음 제품"><span aria-hidden="true">›</span></button>
+          </div>
+        </div>
+      </section>
 
-          <div class="swiper best-swiper">
+      <section class="esg-sec" id="esg">
+        <div class="section-inner">
+          <h2 class="section-title">ESG</h2>
+          <div class="esg-grid">
+            <article class="esg-card">
+              <div class="esg-media"><video muted playsinline preload="metadata" poster="img/1.png"><source src="video/pc_kv.v2.av1.mp4" type="video/mp4"></video><span class="play-icon" aria-hidden="true">▶</span></div>
+              <div class="esg-copy"><h3>영상으로 보는 삼양</h3><p>삼양그룹 100주년, 역사와 성취를 함께 기념하는 특별한 순간을 공유합니다.</p></div>
+            </article>
+            <article class="esg-card">
+              <div class="esg-media"><video muted playsinline preload="metadata" poster="img/2.png"><source src="video/pc_kv.v2.av1.mp4" type="video/mp4"></video><span class="play-icon" aria-hidden="true">▶</span></div>
+              <div class="esg-copy"><h3>사회공헌편</h3><p>인재육성과 사회적 책임으로 기업의 울타리를 넘어 따뜻한 내일을 만듭니다.</p></div>
+            </article>
+            <article class="esg-card">
+              <div class="esg-media"><video muted playsinline preload="metadata" poster="img/1_M.png"><source src="video/pc_kv.v2.av1.mp4" type="video/mp4"></video><span class="play-icon" aria-hidden="true">▶</span></div>
+              <div class="esg-copy"><h3>의약바이오편</h3><p>인류의 미래를 바꾸는 연구와 혁신으로 건강한 내일을 준비합니다.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="media-sec" id="media">
+        <div class="section-inner">
+          <div class="media-header">
+            <h2 class="section-title">MEDIA</h2>
+            <a class="media-more-btn" href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noreferrer">바로가기 <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+          <div class="swiper media-swiper" aria-label="삼양식품 미디어">
             <div class="swiper-wrapper">
-
-              <div class="swiper-slide">
-                <div class="product-box">
-                  <div class="product-img-wrap">
-                    <img src="img/1.png" alt="까르보 불닭볶음면">
-                  </div>
-                  <div class="product-info-row">
-                    <span class="product-name">까르보 불닭볶음면</span>
-                    <span class="badge-icon">가</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="product-box">
-                  <div class="product-img-wrap">
-                    <img src="img/2.png" alt="삼양1963">
-                  </div>
-                  <div class="product-info-row">
-                    <span class="product-name">삼양1963</span>
-                    <span class="badge-icon">가</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="product-box">
-                  <div class="product-img-wrap">
-                    <img src="img/1_M.png" alt="큰컵 삼양1963">
-                  </div>
-                  <div class="product-info-row">
-                    <span class="product-name">큰컵 삼양1963</span>
-                    <span class="badge-icon">가</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="product-box">
-                  <div class="product-img-wrap">
-                    <img src="img/2_M.png" alt="큰컵 탱글 갈릭오일">
-                  </div>
-                  <div class="product-info-row">
-                    <span class="product-name">큰컵 탱글 갈릭오일</span>
-                    <span class="badge-icon">가</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="product-box">
-                  <div class="product-img-wrap">
-                    <img src="img/1.png" alt="삼양 짱구">
-                  </div>
-                  <div class="product-info-row">
-                    <span class="product-name">삼양 짱구</span>
-                    <span class="badge-icon">가</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <button class="best-nav-btn best-btn-next" type="button" aria-label="다음 제품">›</button>
-        </div>
-      </section>
-
-      <!-- 4. ESG SECTION -->
-      <section class="esg-sec section-pad" id="esg">
-        <div class="sec-heading-group">
-          <p class="eyebrow">BETTER TOMORROW</p>
-          <h2 class="sec-title-main">GROWING <span>TOGETHER</span></h2>
-        </div>
-        <div class="esg-grid">
-          <div class="esg-card">
-            <div class="esg-video-box">
-              <video autoplay muted loop playsinline poster="img/1.png">
-                <source src="video/pc_kv.v2.av1.mp4" type="video/mp4">
-              </video>
-            </div>
-            <p class="card-kicker">ENVIRONMENT</p>
-            <h3>삼양식품 100년 성장</h3>
-            <p class="card-desc">지속가능한 미래를 준비하는 삼양식품의 환경경영 비전</p>
-          </div>
-          <div class="esg-card">
-            <div class="esg-video-box">
-              <video autoplay muted loop playsinline poster="img/2.png">
-                <source src="video/pc_kv.v2.av1.mp4" type="video/mp4">
-              </video>
-            </div>
-            <p class="card-kicker">SOCIAL</p>
-            <h3>사회공헌</h3>
-            <p class="card-desc">지역사회 상생과 아동·청소년 후원 사업 실천</p>
-          </div>
-          <div class="esg-card">
-            <div class="esg-video-box">
-              <video autoplay muted loop playsinline poster="img/1_M.png">
-                <source src="video/pc_kv.v2.av1.mp4" type="video/mp4">
-              </video>
-            </div>
-            <p class="card-kicker">GOVERNANCE</p>
-            <h3>의약바이오</h3>
-            <p class="card-desc">헬스케어 및 차세대 바이오 기술연구 및 투자를 통한 가치 창출</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5. MEDIA SECTION -->
-      <section class="media-sec section-pad" id="media">
-        <div class="media-header">
-          <h2 class="sec-title-simple">MEDIA</h2>
-          <a class="media-more-btn" href="#">바로가기 <span class="arrow">↗</span></a>
-        </div>
-
-        <div class="swiper media-swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="media-thumb-card"><img src="img/1.png" alt="불닭 혼밥 회식"></div>
-            </div>
-            <div class="swiper-slide">
-              <div class="media-thumb-card"><img src="img/2.png" alt="불닭 10,000kcal"></div>
-            </div>
-            <div class="swiper-slide">
-              <div class="media-thumb-card"><img src="img/1_M.png" alt="이진 먹방"></div>
-            </div>
-            <div class="swiper-slide">
-              <div class="media-thumb-card"><img src="img/2_M.png" alt="삼겹살 2kg 불닭 8봉지"></div>
-            </div>
-            <div class="swiper-slide">
-              <div class="media-thumb-card"><img src="img/1.png" alt="미디어 5"></div>
+              <div class="swiper-slide"><a class="media-thumb-card" href="#media"><img src="img/1.png" alt="삼양식품 미디어 콘텐츠 1" loading="lazy"></a></div>
+              <div class="swiper-slide"><a class="media-thumb-card" href="#media"><img src="img/2.png" alt="삼양식품 미디어 콘텐츠 2" loading="lazy"></a></div>
+              <div class="swiper-slide"><a class="media-thumb-card" href="#media"><img src="img/1_M.png" alt="삼양식품 미디어 콘텐츠 3" loading="lazy"></a></div>
+              <div class="swiper-slide"><a class="media-thumb-card" href="#media"><img src="img/2_M.png" alt="삼양식품 미디어 콘텐츠 4" loading="lazy"></a></div>
+              <div class="swiper-slide"><a class="media-thumb-card" href="#media"><img src="img/1.png" alt="삼양식품 미디어 콘텐츠 5" loading="lazy"></a></div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 6. SUPPORT SECTION -->
-      <section class="support-sec section-pad" id="support">
-        <div class="support-heading">
-          <p class="eyebrow">HERE FOR YOU</p>
-          <h2 class="sec-title-main">Support &<br>Corporate<br>Information</h2>
-          <p class="support-desc">필요한 정보와 문의 채널을 빠르게 찾아보세요.</p>
-        </div>
-        <div class="support-btn-group">
-          <a class="btn-pillar btn-orange" href="#">
-            <div class="btn-txt">
-              <strong>문의하기</strong>
-              <span>고객문의 및 상담 센터</span>
-            </div>
-            <span class="btn-arrow">↗</span>
-          </a>
-          <a class="btn-pillar btn-cream" href="#">
-            <div class="btn-txt">
-              <strong>삼양식품 소개</strong>
-              <span>삼양식품의 기업 정보와 비전 보기</span>
-            </div>
-            <span class="btn-arrow">↗</span>
-          </a>
+      <section class="support-sec" id="support">
+        <div class="support-inner">
+          <h2 class="support-title">Support &amp; Corporate<br>Information</h2>
+          <div class="support-actions">
+            <a class="support-pill support-pill-orange" href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noreferrer">
+              <span class="support-symbol support-mail" aria-hidden="true">✉</span>
+              <span class="support-copy"><strong>문의하기</strong><small>궁금하신 점에 대해 언제든지 문의하세요</small></span>
+              <span class="support-arrow" aria-hidden="true">›</span>
+            </a>
+            <a class="support-pill support-pill-cream" href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noreferrer">
+              <span class="support-symbol support-pin" aria-hidden="true">➤</span>
+              <span class="support-copy"><strong>삼양식품 소개</strong><small>삼양식품의 비전과 기업 정보를 확인하세요</small></span>
+              <span class="support-arrow" aria-hidden="true">›</span>
+            </a>
+          </div>
         </div>
       </section>
-
     </main>
 
-    <!-- FOOTER -->
     <footer class="site-footer" id="footer">
       <div class="footer-inner">
         <div class="footer-top">
-          <span class="footer-logo">三 삼양식품</span>
-          <a class="back-top" href="#top">BACK TO TOP ↑</a>
+          <a class="footer-logo" href="#top"><span aria-hidden="true"></span>Samyang</a>
+          <div class="footer-links">
+            <div><h3>기업정보</h3><a href="#brand-story">삼양식품 소개</a><a href="#esg">IR 투자정보</a><a href="#esg">지속가능경영</a></div>
+            <div><h3>브랜드 &amp; 제품</h3><a href="#brand-story">브랜드 전체 보기</a><a href="#best-products">제품 둘러보기</a><a href="#best-products">신제품</a></div>
+            <div><h3>고객지원</h3><a href="#support">FAQ</a><a href="#support">1:1 문의</a><a href="#footer">개인정보처리방침</a></div>
+            <div class="family-sites"><h3>패밀리 사이트</h3><a href="https://www.samyangfoods.com/kor/index.do">패밀리 사이트 선택 <span>⌄</span></a></div>
+          </div>
         </div>
         <div class="footer-bottom">
-          <div>
-            <p>삼양식품 주식회사</p>
-            <p>서울특별시 성북구 오패산로 3길 104 | 대표전화: 02-940-3000</p>
-          </div>
-          <p class="copyright">© SAMYANG FOODS. ALL RIGHTS RESERVED.</p>
+          <p>본 페이지는 삼양식품 홈페이지 리뉴얼 학습을 위한 시안입니다. 일반 이용자의 콘텐츠는 디자인 목업입니다.</p>
+          <p>© SAMYANG FOODS&nbsp; · &nbsp;CONCEPT REDESIGN</p>
+          <a href="#top">TOP ↑</a>
         </div>
       </div>
     </footer>
-
   </div>
-
-  <!-- 스크립트 (JS) 통합 실행 코드 -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // 1. BEST PRODUCTS Swiper (가로 4개 고정 + 외부 화살표 조작)
-      const bestSwiper = new Swiper(".best-swiper", {
-        slidesPerView: 1.2,
-        spaceBetween: 16,
-        loop: true,
-        navigation: {
-          nextEl: ".best-btn-next",
-          prevEl: ".best-btn-prev",
-        },
-        breakpoints: {
-          600: { slidesPerView: 2.2, spaceBetween: 16 },
-          900: { slidesPerView: 3.2, spaceBetween: 20 },
-          1200: { slidesPerView: 4, spaceBetween: 20 },
-        },
-      });
-
-      // 2. MEDIA Swiper (연속 무한 자동 슬라이드)
-      const mediaSwiper = new Swiper(".media-swiper", {
-        slidesPerView: 1.3,
-        spaceBetween: 16,
-        loop: true,
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
-        },
-        breakpoints: {
-          600: { slidesPerView: 2.3, spaceBetween: 16 },
-          1000: { slidesPerView: 3.5, spaceBetween: 20 },
-        },
-      });
-    });
-  </script>
 </body>
 </html>
