@@ -3,89 +3,63 @@
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".primary-nav");
 
-  const updateHeader = () => {
-    header?.classList.toggle("is-scrolled", window.scrollY > 12);
-  };
-  updateHeader();
-  window.addEventListener("scroll", updateHeader, { passive: true });
-
   const closeMenu = () => {
     menuButton?.setAttribute("aria-expanded", "false");
     menuButton?.setAttribute("aria-label", "메뉴 열기");
     nav?.classList.remove("is-open");
-    document.body.classList.remove("menu-open");
   };
 
   menuButton?.addEventListener("click", () => {
-    const expanded = menuButton.getAttribute("aria-expanded") === "true";
-    menuButton.setAttribute("aria-expanded", String(!expanded));
-    menuButton.setAttribute("aria-label", expanded ? "메뉴 열기" : "메뉴 닫기");
-    nav?.classList.toggle("is-open", !expanded);
-    document.body.classList.toggle("menu-open", !expanded);
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!isOpen));
+    menuButton.setAttribute("aria-label", isOpen ? "메뉴 열기" : "메뉴 닫기");
+    nav?.classList.toggle("is-open", !isOpen);
   });
 
   nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 900) closeMenu();
+    if (window.innerWidth > 760) closeMenu();
   });
 
-  const sliderElement = document.querySelector(".b-slider");
-  const previousButton = document.querySelector('.carousel-btn[data-direction="-1"]');
-  const nextButton = document.querySelector('.carousel-btn[data-direction="1"]');
-  const progressBar = document.querySelector(".carousel-progress-bar");
-  const progressTrack = document.querySelector(".carousel-progress");
-
-  if (sliderElement && typeof Swiper !== "undefined") {
-    const bestSlider = new Swiper(sliderElement, {
-      slidesPerView: 2.5,
-      spaceBetween: 8,
-      centeredSlides: true,
-      loop: true,
-      speed: 650,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true
-      },
-      watchOverflow: true,
-      breakpoints: {
-        750: {
-          slidesPerView: 3.5,
-          spaceBetween: 16
+  if (typeof Swiper !== "undefined") {
+    const bestElement = document.querySelector(".best-swiper");
+    if (bestElement) {
+      new Swiper(bestElement, {
+        slidesPerView: "auto",
+        spaceBetween: 55.56,
+        loop: true,
+        speed: 650,
+        watchOverflow: true,
+        navigation: {
+          nextEl: ".best-btn-next",
+          prevEl: ".best-btn-prev"
         },
-        1024: {
-          slidesPerView: 5,
-          spaceBetween: 22
+        breakpoints: {
+          0: { spaceBetween: 16 },
+          761: { spaceBetween: 28 },
+          1501: { spaceBetween: 55.56 }
         }
-      },
-      on: {
-        init(swiper) {
-          updateProgress(swiper);
-        },
-        slideChange(swiper) {
-          updateProgress(swiper);
-        },
-        autoplayTimeLeft(swiper, time, progress) {
-          if (progressBar) progressBar.style.width = `${(1 - progress) * 100}%`;
-        }
-      }
-    });
-
-    function updateProgress(swiper) {
-      if (!progressTrack || !progressBar) return;
-      const total = swiper.slides.length - (swiper.loopedSlides || 0) * 2;
-      const current = swiper.realIndex + 1;
-      const percentage = total > 0 ? (current / total) * 100 : 0;
-      progressBar.style.width = `${percentage}%`;
-      progressTrack.setAttribute("aria-valuenow", String(Math.round(percentage)));
+      });
     }
 
-    previousButton?.addEventListener("click", () => bestSlider.slidePrev());
-    nextButton?.addEventListener("click", () => bestSlider.slideNext());
-  } else {
-    // Fallback: controls remain safe if the Swiper CDN cannot load.
-    previousButton?.setAttribute("disabled", "disabled");
-    nextButton?.setAttribute("disabled", "disabled");
-    if (progressBar) progressBar.style.width = "0";
+    const mediaElement = document.querySelector(".media-swiper");
+    if (mediaElement) {
+      new Swiper(mediaElement, {
+        slidesPerView: "auto",
+        spaceBetween: 56.38,
+        loop: true,
+        speed: 650,
+        autoplay: {
+          delay: 2800,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        },
+        breakpoints: {
+          0: { spaceBetween: 14 },
+          761: { spaceBetween: 24 },
+          1501: { spaceBetween: 56.38 }
+        }
+      });
+    }
   }
 })();
