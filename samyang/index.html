@@ -5,19 +5,221 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>삼양식품 | CRAVE THE BURN</title>
 
+  <!-- 외부 폰트 및 Swiper 라이브러리 -->
   <link rel="stylesheet" href="../css/default.css">
   <link rel="stylesheet" href="../font/css/pretendardvariable.css">
-  <!-- Swiper CSS CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <link rel="stylesheet" href="css/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <!-- 내부 통합 스타일시트 (CSS) -->
+  <style>
+    @charset "UTF-8";
+
+    :root {
+      --primary-orange: #ff5500;
+      --bg-peach: #fbf0e4;
+      --bg-dark: #252321;
+      --text-main: #323232;
+      --text-muted: #77716d;
+      --page-gutter: clamp(20px, 4vw, 80px);
+      --content-width: 1400px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Pretendard Variable", "Pretendard", -apple-system, sans-serif;
+      color: var(--text-main);
+      background-color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img, video { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .section-pad { padding: 80px var(--page-gutter); }
+
+    /* 공통 타이틀 */
+    .sec-title-simple {
+      font-size: 32px;
+      font-weight: 850;
+      color: #333333;
+      letter-spacing: -0.03em;
+    }
+
+    /* HEADER */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: 80px; background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid rgba(50,50,50,0.08);
+    }
+    .header-inner {
+      max-width: var(--content-width); height: 100%; margin: 0 auto; padding: 0 var(--page-gutter);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand-logo { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 20px; }
+    .logo-mark {
+      display: grid; place-items: center; width: 32px; height: 32px;
+      border: 2px solid var(--primary-orange); color: var(--primary-orange);
+      font-weight: 900; font-size: 16px;
+    }
+    .primary-nav { display: flex; gap: 36px; margin-left: auto; }
+    .primary-nav a { font-size: 15px; font-weight: 650; }
+    .primary-nav a:hover { color: var(--primary-orange); }
+    .header-tools { display: flex; align-items: center; gap: 16px; }
+    .utility-link { font-size: 13px; font-weight: 500; }
+    .tool-divider { width: 1px; height: 14px; background: #cfcac6; }
+    .mall-button {
+      background: var(--primary-orange); color: #ffffff;
+      padding: 10px 16px; border-radius: 6px; font-weight: 700; font-size: 14px;
+    }
+
+    /* 1. HERO SECTION */
+    .hero-sec { position: relative; width: 100%; height: 100vh; min-height: 550px; background: #000; }
+    .hero-video-only { width: 100%; height: 100%; object-fit: cover; }
+
+    /* 2. BRAND STORY */
+    .brand-story-sec { background: #ffffff; }
+    .sec-heading-group { margin-bottom: 40px; }
+    .eyebrow { color: var(--primary-orange); font-size: 12px; font-weight: 750; letter-spacing: 0.12em; margin-bottom: 8px; }
+    .sec-title-main { font-size: 42px; font-weight: 850; letter-spacing: -0.04em; }
+    .sec-title-main span { color: var(--primary-orange); }
+    .story-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: var(--content-width); margin: auto; }
+    .story-card-img { aspect-ratio: 1.3 / 1; border-radius: 16px; overflow: hidden; }
+    .story-card-info { margin-top: 16px; }
+    .card-kicker { color: var(--primary-orange); font-size: 11px; font-weight: 750; margin-bottom: 4px; }
+    .story-card-info h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+    .card-desc { color: var(--text-muted); font-size: 13px; line-height: 1.6; }
+
+    /* 3. BEST PRODUCTS */
+    .best-products-sec { background: var(--bg-peach); }
+    .best-products-header { max-width: var(--content-width); margin: 0 auto 32px; }
+
+    .best-products-container {
+      position: relative;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 45px;
+    }
+
+    .best-nav-btn {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+      width: 40px; height: 40px; border: none; background: transparent;
+      color: #e64a00; font-size: 42px; font-weight: 300; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .best-btn-prev { left: 0; }
+    .best-btn-next { right: 0; }
+
+    .best-swiper { width: 100%; }
+    .product-box {
+      background: #ffffff;
+      border: 1px solid #e2d7cb;
+      border-radius: 20px;
+      padding: 24px 20px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 280px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .product-img-wrap {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-img-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .product-info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+    .product-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333333;
+    }
+    .badge-icon {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #f0f0f0; color: #888; font-size: 10px;
+      display: grid; place-items: center;
+    }
+
+    /* 4. ESG SECTION */
+    .esg-sec { background: #22251d; color: #ffffff; }
+    .esg-sec .eyebrow { color: #ff9b57; }
+    .esg-sec .sec-title-main span { color: #ff9b57; }
+    .esg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: var(--content-width); margin: 36px auto 0; }
+    .esg-card { background: #161813; border-radius: 20px; padding: 20px; }
+    .esg-video-box { aspect-ratio: 1.5 / 1; border-radius: 14px; overflow: hidden; margin-bottom: 16px; background: #000; }
+    .esg-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+    .esg-card .card-desc { color: rgba(255,255,255,0.65); }
+
+    /* 5. MEDIA SECTION */
+    .media-sec { background: var(--bg-peach); }
+    .media-header {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: var(--content-width); margin: 0 auto 28px;
+    }
+    .media-more-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 600; color: #333;
+    }
+    .media-more-btn .arrow {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(0,0,0,0.06); font-size: 11px;
+      display: grid; place-items: center;
+    }
+    .media-swiper { max-width: var(--content-width); margin: auto; overflow: visible; }
+    .media-thumb-card {
+      width: 100%;
+      aspect-ratio: 1.6 / 1;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    /* 6. SUPPORT SECTION */
+    .support-sec { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; background: #ffffff; max-width: var(--content-width); margin: auto; }
+    .support-desc { margin-top: 14px; color: var(--text-muted); font-size: 15px; }
+    .support-btn-group { display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+    .btn-pillar {
+      width: 100%; height: 100px; border-radius: 50px; padding: 0 36px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .btn-orange { background: var(--primary-orange); color: #ffffff; }
+    .btn-cream { background: #fbf0e4; color: var(--text-main); }
+    .btn-txt strong { display: block; font-size: 20px; font-weight: 800; }
+    .btn-txt span { font-size: 12px; opacity: 0.8; margin-top: 2px; display: block; }
+    .btn-arrow { font-size: 22px; font-weight: 700; }
+
+    /* FOOTER */
+    .site-footer { background: var(--bg-dark); color: rgba(255,255,255,0.6); padding: 50px var(--page-gutter) 30px; font-size: 13px; }
+    .footer-inner { max-width: var(--content-width); margin: auto; }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 20px; }
+    .footer-logo { font-size: 18px; font-weight: 800; color: #fff; }
+    .back-top { color: #fff; font-size: 11px; font-weight: 700; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+    .copyright { font-size: 11px; opacity: 0.4; }
+
+    @media (max-width: 900px) {
+      .story-grid, .esg-grid { grid-template-columns: 1fr; }
+      .support-sec { grid-template-columns: 1fr; }
+      .primary-nav, .header-tools { display: none; }
+    }
+  </style>
 </head>
 <body>
   <div id="wrap">
 
-    <!-- HEADER (생략 없이 전체 구조 유지) -->
+    <!-- HEADER -->
     <header class="site-header" id="site-header">
       <div class="header-inner">
         <a class="brand-logo" href="#top" aria-label="삼양식품 홈">
@@ -88,20 +290,18 @@
         </div>
       </section>
 
-      <!-- 3. BEST PRODUCTS (피그마 이미지 100% 동일 구현) -->
+      <!-- 3. BEST PRODUCTS -->
       <section class="best-products-sec section-pad" id="best-products">
         <div class="best-products-header">
           <h2 class="sec-title-simple">BEST PRODUCTS</h2>
         </div>
 
         <div class="best-products-container">
-          <!-- Outer Side Navigation Arrows -->
           <button class="best-nav-btn best-btn-prev" type="button" aria-label="이전 제품">‹</button>
 
           <div class="swiper best-swiper">
             <div class="swiper-wrapper">
 
-              <!-- Item 1: 까르보 불닭볶음면 -->
               <div class="swiper-slide">
                 <div class="product-box">
                   <div class="product-img-wrap">
@@ -114,7 +314,6 @@
                 </div>
               </div>
 
-              <!-- Item 2: 삼양1963 -->
               <div class="swiper-slide">
                 <div class="product-box">
                   <div class="product-img-wrap">
@@ -127,7 +326,6 @@
                 </div>
               </div>
 
-              <!-- Item 3: 큰컵 삼양1963 -->
               <div class="swiper-slide">
                 <div class="product-box">
                   <div class="product-img-wrap">
@@ -140,7 +338,6 @@
                 </div>
               </div>
 
-              <!-- Item 4: 큰컵 탱글 갈릭오일 -->
               <div class="swiper-slide">
                 <div class="product-box">
                   <div class="product-img-wrap">
@@ -153,7 +350,6 @@
                 </div>
               </div>
 
-              <!-- Extra Item 5 for Swiper -->
               <div class="swiper-slide">
                 <div class="product-box">
                   <div class="product-img-wrap">
@@ -213,7 +409,7 @@
         </div>
       </section>
 
-      <!-- 5. MEDIA SECTION (피그마 이미지 100% 동일 구현) -->
+      <!-- 5. MEDIA SECTION -->
       <section class="media-sec section-pad" id="media">
         <div class="media-header">
           <h2 class="sec-title-simple">MEDIA</h2>
@@ -241,7 +437,7 @@
         </div>
       </section>
 
-      <!-- 6. SUPPORT & CORPORATE INFORMATION -->
+      <!-- 6. SUPPORT SECTION -->
       <section class="support-sec section-pad" id="support">
         <div class="support-heading">
           <p class="eyebrow">HERE FOR YOU</p>
@@ -286,5 +482,41 @@
     </footer>
 
   </div>
+
+  <!-- 스크립트 (JS) 통합 실행 코드 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. BEST PRODUCTS Swiper (가로 4개 고정 + 외부 화살표 조작)
+      const bestSwiper = new Swiper(".best-swiper", {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        navigation: {
+          nextEl: ".best-btn-next",
+          prevEl: ".best-btn-prev",
+        },
+        breakpoints: {
+          600: { slidesPerView: 2.2, spaceBetween: 16 },
+          900: { slidesPerView: 3.2, spaceBetween: 20 },
+          1200: { slidesPerView: 4, spaceBetween: 20 },
+        },
+      });
+
+      // 2. MEDIA Swiper (연속 무한 자동 슬라이드)
+      const mediaSwiper = new Swiper(".media-swiper", {
+        slidesPerView: 1.3,
+        spaceBetween: 16,
+        loop: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          600: { slidesPerView: 2.3, spaceBetween: 16 },
+          1000: { slidesPerView: 3.5, spaceBetween: 20 },
+        },
+      });
+    });
+  </script>
 </body>
 </html>
