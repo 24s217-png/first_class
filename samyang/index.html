@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>삼양식품 리뉴얼 포트폴리오</title>
+  <title>삼양식품 | CRAVE THE BURN</title>
 
   <link rel="stylesheet" href="../css/default.css">
   <link rel="stylesheet" href="../font/css/pretendardvariable.css">
@@ -23,7 +23,7 @@
       <div class="header-inner">
         <a class="brand-logo" href="#top" aria-label="삼양식품 홈">
           <span class="logo-mark">三</span>
-          <span class="logo-type">Samyang <small>Foods</small></span>
+          <span class="logo-type">삼양식품</span>
         </a>
 
         <button class="menu-toggle" type="button" aria-expanded="false" aria-label="메뉴 열기">
@@ -43,7 +43,7 @@
           <span class="tool-divider"></span>
           <a class="utility-link" href="#" lang="en">EN</a>
           <a class="mall-button" href="https://brand.naver.com/samyang" target="_blank" rel="noreferrer">
-            삼양몰 바로가기 <span>↗</span>
+            삼양몰 바로가기 <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
@@ -51,25 +51,29 @@
 
     <main id="main">
 
-      <!-- 1. HERO SECTION (미디어만 전체 노출) -->
+      <!-- 1. HERO SECTION (미디어만 노출) -->
       <section class="hero-sec" id="top">
         <video class="hero-video-only" autoplay muted loop playsinline preload="metadata">
           <source src="video/pc_kv.v2.av1.mp4" type="video/mp4">
         </video>
       </section>
 
-      <!-- 2. BRAND STORY (3개 카드 노출) -->
+      <!-- 2. BRAND STORY (3개 카드 노출 및 폰트 위계 적용) -->
       <section class="brand-story-sec section-pad" id="brand-story">
-        <h2 class="sec-title-main">BRAND STORY</h2>
-        <div class="story-grid">
+        <div class="sec-heading-group">
+          <p class="eyebrow">OUR STORY</p>
+          <h2 class="sec-title-main">BRAND <span>STORY</span></h2>
+        </div>
 
+        <div class="story-grid">
           <article class="story-card">
             <div class="story-card-img">
               <img src="img/1.png" alt="추억, 세상과 나누는 따뜻함">
             </div>
             <div class="story-card-info">
+              <p class="card-kicker">GLOBAL SAMYANG</p>
               <h3>추억, 세상과 나누는 따뜻함</h3>
-              <p>삼양식품이 전세계 사람들에게 전하는 스페셜 매운맛</p>
+              <p class="card-desc">삼양식품이 전세계 사람들에게 전하는 스페셜 매운맛의 미식 경험</p>
             </div>
           </article>
 
@@ -78,8 +82,9 @@
               <img src="img/2.png" alt="오래도록 사랑받는 맛">
             </div>
             <div class="story-card-info">
+              <p class="card-kicker">HERITAGE 1963</p>
               <h3>오래도록 사랑받는 맛</h3>
-              <p>삼양라면 1963의 역사와 기술력의 차이</p>
+              <p class="card-desc">대한민국 최초의 라면, 삼양라면 1963의 역사와 기술력의 차이</p>
             </div>
           </article>
 
@@ -88,23 +93,28 @@
               <img src="img/1_M.png" alt="진한 국물 풍미의 깊은 매운맛">
             </div>
             <div class="story-card-info">
+              <p class="card-kicker">NEW SPICY SPECTRUM</p>
               <h3>진한 국물 풍미의 깊은 매운맛</h3>
-              <p>맵탱 마늘조개라면의 다채로운 국물 스펙트럼</p>
+              <p class="card-desc">맵탱 마늘조개라면의 다채롭고 깊은 국물 스펙트럼</p>
             </div>
           </article>
-
         </div>
       </section>
 
-      <!-- 3. BEST PRODUCTS (4개 노출 + 좌우 화살표 Swiper) -->
+      <!-- 3. BEST PRODUCTS (4개 노출 + Swiper) -->
       <section class="best-products-sec section-pad" id="best-products">
         <div class="sec-title-row">
-          <h2>BEST PRODUCTS</h2>
+          <div>
+            <p class="eyebrow">TASTE THE DIFFERENCE</p>
+            <h2 class="sec-title-main">BEST PRODUCTS</h2>
+          </div>
+          <div class="carousel-controls">
+            <button class="swiper-btn-prev carousel-btn" type="button" aria-label="이전 제품">‹</button>
+            <button class="swiper-btn-next carousel-btn" type="button" aria-label="다음 제품">›</button>
+          </div>
         </div>
 
         <div class="best-products-wrap">
-          <button class="swiper-nav-btn swiper-btn-prev" type="button" aria-label="이전 제품">‹</button>
-          
           <div class="swiper best-swiper">
             <div class="swiper-wrapper">
 
@@ -113,10 +123,8 @@
                   <div class="product-img-box">
                     <img src="img/1.png" alt="까르보 불닭볶음면">
                   </div>
-                  <div class="product-bottom-row">
-                    <span>까르보 불닭볶음면</span>
-                    <button class="plus-btn" type="button">+</button>
-                  </div>
+                  <div class="product-meta"><span>01 / RAMEN</span><span class="round-arrow">↗</span></div>
+                  <h3>까르보 불닭볶음면</h3>
                 </div>
               </div>
 
@@ -125,10 +133,8 @@
                   <div class="product-img-box">
                     <img src="img/2.png" alt="삼양 1963">
                   </div>
-                  <div class="product-bottom-row">
-                    <span>삼양 1963</span>
-                    <button class="plus-btn" type="button">+</button>
-                  </div>
+                  <div class="product-meta"><span>02 / RAMEN</span><span class="round-arrow">↗</span></div>
+                  <h3>삼양 1963</h3>
                 </div>
               </div>
 
@@ -137,10 +143,8 @@
                   <div class="product-img-box">
                     <img src="img/1_M.png" alt="맵탱 마늘조개라면">
                   </div>
-                  <div class="product-bottom-row">
-                    <span>맵탱 마늘조개라면</span>
-                    <button class="plus-btn" type="button">+</button>
-                  </div>
+                  <div class="product-meta"><span>03 / RAMEN</span><span class="round-arrow">↗</span></div>
+                  <h3>맵탱 마늘조개라면</h3>
                 </div>
               </div>
 
@@ -149,45 +153,47 @@
                   <div class="product-img-box">
                     <img src="img/2_M.png" alt="탱글 불고기 크림">
                   </div>
-                  <div class="product-bottom-row">
-                    <span>탱글 불고기 크림</span>
-                    <button class="plus-btn" type="button">+</button>
-                  </div>
+                  <div class="product-meta"><span>04 / PASTA</span><span class="round-arrow">↗</span></div>
+                  <h3>탱글 불고기 크림</h3>
                 </div>
               </div>
 
               <div class="swiper-slide">
                 <div class="product-card">
                   <div class="product-img-box">
-                    <img src="img/1.png" alt="짱구 스낵">
+                    <img src="img/1.png" alt="삼양 짱구">
                   </div>
-                  <div class="product-bottom-row">
-                    <span>삼양 짱구</span>
-                    <button class="plus-btn" type="button">+</button>
-                  </div>
+                  <div class="product-meta"><span>05 / SNACK</span><span class="round-arrow">↗</span></div>
+                  <h3>삼양 짱구</h3>
                 </div>
               </div>
 
             </div>
           </div>
+        </div>
 
-          <button class="swiper-nav-btn swiper-btn-next" type="button" aria-label="다음 제품">›</button>
+        <div class="carousel-progress">
+          <span class="carousel-progress-bar"></span>
         </div>
       </section>
 
       <!-- 4. ESG SECTION (3개 비디오 카드) -->
       <section class="esg-sec section-pad" id="esg">
-        <h2 class="sec-title-main">ESG</h2>
-        <div class="esg-grid">
+        <div class="sec-heading-group">
+          <p class="eyebrow">BETTER TOMORROW</p>
+          <h2 class="sec-title-main">GROWING <span>TOGETHER</span></h2>
+        </div>
 
+        <div class="esg-grid">
           <div class="esg-card">
             <div class="esg-video-box">
               <video autoplay muted loop playsinline poster="img/1.png">
                 <source src="video/pc_kv.v2.av1.mp4" type="video/mp4">
               </video>
             </div>
+            <p class="card-kicker">ENVIRONMENT</p>
             <h3>삼양식품 100년 성장</h3>
-            <p>지속가능한 미래를 준비하는 삼양식품의 환경경영</p>
+            <p class="card-desc">지속가능한 미래를 준비하는 삼양식품의 환경경영 비전</p>
           </div>
 
           <div class="esg-card">
@@ -196,8 +202,9 @@
                 <source src="video/pc_kv.v2.av1.mp4" type="video/mp4">
               </video>
             </div>
+            <p class="card-kicker">SOCIAL</p>
             <h3>사회공헌</h3>
-            <p>지역사회 상생과 아동·청소년 후원 사업 실천</p>
+            <p class="card-desc">지역사회 상생과 아동·청소년 후원 사업 실천</p>
           </div>
 
           <div class="esg-card">
@@ -206,78 +213,104 @@
                 <source src="video/pc_kv.v2.av1.mp4" type="video/mp4">
               </video>
             </div>
+            <p class="card-kicker">GOVERNANCE</p>
             <h3>의약바이오</h3>
-            <p>헬스케어 및 차세대 바이오 기술연구 및 투자</p>
+            <p class="card-desc">헬스케어 및 차세대 바이오 기술연구 및 투자를 통한 가치 창출</p>
           </div>
-
         </div>
       </section>
 
       <!-- 5. MEDIA SECTION (자동 Swiper 무한 슬라이드) -->
       <section class="media-sec section-pad" id="media">
         <div class="sec-title-row">
-          <h2>MEDIA</h2>
-          <a class="more-link" href="#">바로가기 ↗</a>
+          <div>
+            <p class="eyebrow">LATEST UPDATES</p>
+            <h2 class="sec-title-main">MEDIA</h2>
+          </div>
+          <a class="more-text-link" href="#">전체 미디어 보기 <span>↗</span></a>
         </div>
 
         <div class="swiper media-swiper">
           <div class="swiper-wrapper">
-
             <div class="swiper-slide">
               <div class="media-card">
-                <img src="img/1.png" alt="미디어 영상 1">
+                <div class="media-img-box">
+                  <img src="img/1.png" alt="미디어 1">
+                  <span class="media-tag">BRAND</span>
+                </div>
+                <div class="media-info">
+                  <p class="card-kicker">BRAND STORY</p>
+                  <h3>삼양식품이 전하는 새로운 맛의 이야기</h3>
+                </div>
               </div>
             </div>
 
             <div class="swiper-slide">
               <div class="media-card">
-                <img src="img/2.png" alt="미디어 영상 2">
+                <div class="media-img-box">
+                  <img src="img/2.png" alt="미디어 2">
+                  <span class="media-tag">NEWS</span>
+                </div>
+                <div class="media-info">
+                  <p class="card-kicker">NEWS & PR</p>
+                  <h3>삼양식품의 글로벌 신제품 출시 소식</h3>
+                </div>
               </div>
             </div>
 
             <div class="swiper-slide">
               <div class="media-card">
-                <img src="img/1_M.png" alt="미디어 영상 3">
+                <div class="media-img-box">
+                  <img src="img/1_M.png" alt="미디어 3">
+                  <span class="media-tag">GLOBAL</span>
+                </div>
+                <div class="media-info">
+                  <p class="card-kicker">GLOBAL SAMYANG</p>
+                  <h3>세계로 넓혀가는 K-FOOD의 중심</h3>
+                </div>
               </div>
             </div>
 
             <div class="swiper-slide">
               <div class="media-card">
-                <img src="img/2_M.png" alt="미디어 영상 4">
+                <div class="media-img-box">
+                  <img src="img/2_M.png" alt="미디어 4">
+                  <span class="media-tag">RECIPE</span>
+                </div>
+                <div class="media-info">
+                  <p class="card-kicker">COOKING</p>
+                  <h3>불닭소스를 활용한 퓨전 레시피 공개</h3>
+                </div>
               </div>
             </div>
-
-            <div class="swiper-slide">
-              <div class="media-card">
-                <img src="img/1.png" alt="미디어 영상 5">
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
 
-      <!-- 6. SUPPORT & CORPORATE INFORMATION (피그마 원본 스타일 알약 버튼) -->
+      <!-- 6. SUPPORT & CORPORATE INFORMATION -->
       <section class="support-sec section-pad" id="support">
-        <h2>Support & Corporate<br>Information</h2>
-        <div class="support-btn-group">
+        <div class="support-heading">
+          <p class="eyebrow">HERE FOR YOU</p>
+          <h2 class="sec-title-main">Support &<br>Corporate<br>Information</h2>
+          <p class="support-desc">필요한 정보와 문의 채널을 빠르게 찾아보세요.</p>
+        </div>
 
+        <div class="support-btn-group">
           <a class="btn-pillar btn-orange" href="#">
             <div class="btn-txt">
-              <strong>✉ 문의하기</strong>
-              <span>고객문의 및 상담 채널</span>
+              <strong>문의하기</strong>
+              <span>고객문의 및 상담 센터 1588-0000</span>
             </div>
-            <span class="btn-arrow">›</span>
+            <span class="btn-arrow">↗</span>
           </a>
 
           <a class="btn-pillar btn-cream" href="#">
             <div class="btn-txt">
               <strong>삼양식품 소개</strong>
-              <span>삼양식품에 대해 알아보세요</span>
+              <span>삼양식품의 기업 정보와 비전 보기</span>
             </div>
-            <span class="btn-arrow">›</span>
+            <span class="btn-arrow">↗</span>
           </a>
-
         </div>
       </section>
 
@@ -287,16 +320,15 @@
     <footer class="site-footer" id="footer">
       <div class="footer-inner">
         <div class="footer-top">
-          <span class="footer-logo">Samyang</span>
-          <ul class="footer-nav">
-            <li><a href="#">경영정보</a></li>
-            <li><a href="#">제품&서비스</a></li>
-            <li><a href="#">고객지원</a></li>
-          </ul>
+          <span class="footer-logo">三 삼양식품</span>
+          <a class="back-top" href="#top">BACK TO TOP ↑</a>
         </div>
         <div class="footer-bottom">
-          <p>삼양식품(주) 서울특별시 성북구 오패산로 3길 104 | 대표전화: 02-940-3000</p>
-          <a class="top-btn" href="#top">TOP ↑</a>
+          <div>
+            <p>삼양식품 주식회사</p>
+            <p>서울특별시 성북구 오패산로 3길 104 | 대표전화: 02-940-3000</p>
+          </div>
+          <p class="copyright">© SAMYANG FOODS. ALL RIGHTS RESERVED.</p>
         </div>
       </div>
     </footer>
