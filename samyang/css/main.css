@@ -307,3 +307,20 @@ img, video { display: block; max-width: 100%; }
   .header-search-panel label { display: none; }
   .header-search-panel button { padding: 11px 12px; }
 }
+
+
+/* Uploaded Samyang logo image */
+.brand-logo { flex: 0 0 190px; width: 190px; }
+.header-logo-image { display: block; width: 176px; max-height: 54px; height: auto; object-fit: contain; object-position: left center; }
+.logo-mark, .logo-wordmark { display: none; }
+.footer-logo { display: inline-flex; align-items: flex-start; }
+.footer-logo-image { display: block; width: 150px; max-height: 48px; height: auto; object-fit: contain; object-position: left center; }
+@media (max-width: 1500px) {
+  .brand-logo { flex-basis: 150px; width: 150px; }
+  .header-logo-image { width: 145px; max-height: 46px; }
+}
+@media (max-width: 760px) {
+  .brand-logo { flex-basis: 132px; width: 132px; }
+  .header-logo-image { width: 128px; max-height: 42px; }
+  .footer-logo-image { width: 132px; }
+}
