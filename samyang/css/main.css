@@ -271,7 +271,7 @@ img, video { display: block; max-width: 100%; }
 
 
 /* Updated GNB */
-.primary-nav { gap: clamp(18px, 2.2vw, 42px); }
+.primary-nav { gap: clamp(28px, 3vw, 58px); }
 .nav-item { position: relative; height: 100%; display: flex; align-items: center; }
 .nav-item > a { display: flex; align-items: center; min-height: 90px; }
 .nav-dropdown { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 190px; padding: 12px 0; background: #fff; border-top: 2px solid var(--orange); box-shadow: 0 14px 28px #00000014; border-radius: 0 0 8px 8px; }
