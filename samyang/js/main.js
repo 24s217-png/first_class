@@ -54,11 +54,7 @@
           spaceBetween: 16
         },
         1024: {
-          slidesPerView: 4,
-          spaceBetween: 22
-        },
-        1440: {
-          slidesPerView: 4.5,
+          slidesPerView: 5,
           spaceBetween: 22
         }
       },
