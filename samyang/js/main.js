@@ -29,46 +29,67 @@
     if (window.innerWidth > 900) closeMenu();
   });
 
-  const track = document.querySelector(".product-track");
-  const cards = Array.from(document.querySelectorAll(".product-card"));
-  const progress = document.querySelector(".carousel-progress-bar");
-  const controls = document.querySelectorAll(".carousel-btn");
-  let activeIndex = 0;
+  const sliderElement = document.querySelector(".b-slider");
+  const previousButton = document.querySelector('.carousel-btn[data-direction="-1"]');
+  const nextButton = document.querySelector('.carousel-btn[data-direction="1"]');
+  const progressBar = document.querySelector(".carousel-progress-bar");
+  const progressTrack = document.querySelector(".carousel-progress");
 
-  const visibleCards = () => {
-    if (window.innerWidth <= 600) return 1;
-    if (window.innerWidth <= 1200) return 3;
-    return 4;
-  };
+  if (sliderElement && typeof Swiper !== "undefined") {
+    const bestSlider = new Swiper(sliderElement, {
+      slidesPerView: 2.5,
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      speed: 650,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true
+      },
+      watchOverflow: true,
+      breakpoints: {
+        750: {
+          slidesPerView: 3.5,
+          spaceBetween: 16
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 22
+        },
+        1440: {
+          slidesPerView: 4.5,
+          spaceBetween: 22
+        }
+      },
+      on: {
+        init(swiper) {
+          updateProgress(swiper);
+        },
+        slideChange(swiper) {
+          updateProgress(swiper);
+        },
+        autoplayTimeLeft(swiper, time, progress) {
+          if (progressBar) progressBar.style.width = `${(1 - progress) * 100}%`;
+        }
+      }
+    });
 
-  const renderCarousel = () => {
-    if (!track || cards.length === 0) return;
-    const visible = visibleCards();
-    const maxIndex = Math.max(0, cards.length - visible);
-    activeIndex = Math.min(activeIndex, maxIndex);
-    const firstCard = cards[0];
-    const gap = parseFloat(getComputedStyle(track).gap) || 0;
-    const offset = activeIndex * (firstCard.getBoundingClientRect().width + gap);
-    track.style.transform = `translateX(-${offset}px)`;
-    if (progress) {
-      const progressWidth = ((activeIndex + visible) / cards.length) * 100;
-      progress.style.width = `${Math.min(100, progressWidth)}%`;
+    function updateProgress(swiper) {
+      if (!progressTrack || !progressBar) return;
+      const total = swiper.slides.length - (swiper.loopedSlides || 0) * 2;
+      const current = swiper.realIndex + 1;
+      const percentage = total > 0 ? (current / total) * 100 : 0;
+      progressBar.style.width = `${percentage}%`;
+      progressTrack.setAttribute("aria-valuenow", String(Math.round(percentage)));
     }
-    controls.forEach((button) => {
-      const direction = Number(button.dataset.direction);
-      button.disabled = direction < 0 ? activeIndex === 0 : activeIndex === maxIndex;
-      button.setAttribute("aria-disabled", String(button.disabled));
-    });
-  };
 
-  controls.forEach((button) => {
-    button.addEventListener("click", () => {
-      const maxIndex = Math.max(0, cards.length - visibleCards());
-      activeIndex = Math.max(0, Math.min(maxIndex, activeIndex + Number(button.dataset.direction)));
-      renderCarousel();
-    });
-  });
-
-  window.addEventListener("resize", renderCarousel);
-  renderCarousel();
+    previousButton?.addEventListener("click", () => bestSlider.slidePrev());
+    nextButton?.addEventListener("click", () => bestSlider.slideNext());
+  } else {
+    // Fallback: controls remain safe if the Swiper CDN cannot load.
+    previousButton?.setAttribute("disabled", "disabled");
+    nextButton?.setAttribute("disabled", "disabled");
+    if (progressBar) progressBar.style.width = "0";
+  }
 })();
