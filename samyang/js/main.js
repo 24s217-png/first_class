@@ -52,8 +52,20 @@
         slidesPerView: "auto",
         spaceBetween: 55.56,
         loop: true,
-        speed: 650,
-        watchOverflow: true,
+        loopAdditionalSlides: 8,
+        speed: 9000,
+        allowTouchMove: true,
+        freeMode: {
+          enabled: true,
+          momentum: false,
+          sticky: false
+        },
+        autoplay: {
+          delay: 0,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: false,
+          waitForTransition: false
+        },
         navigation: {
           nextEl: ".best-btn-next",
           prevEl: ".best-btn-prev"
