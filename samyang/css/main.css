@@ -21,161 +21,40 @@ body {
 .hero-sec {
     position: relative;
     width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
     overflow: hidden;
-    background: var(--orange-600);
+    background: var(--neutral-900);
 }
 
-.hero-sec .hero-swiper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1920 / 773;
-    min-height: 420px;
-    max-height: 780px;
-}
-
-.hero-sec .swiper-slide {
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-sec .swiper-slide img {
+.hero-video {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
-.mo {
-    display: none !important;
-}
-
-/* Figma node 138:58: small chevrons at the far left and right */
-.hero-sec .swiper-button-prev,
-.hero-sec .swiper-button-next {
-    top: 50%;
-    width: 28px;
-    height: 40px;
-    margin-top: -20px;
-    color: var(--neutral-0);
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-    opacity: 0.95;
-    transition: opacity 0.2s ease;
-}
-
-.hero-sec .swiper-button-prev {
+/* Hero 영상 위에 겹치는 고정 헤더 */
+header {
+    position: fixed;
+    top: 0;
     left: 0;
+    z-index: 1000;
+    width: 100%;
 }
 
-.hero-sec .swiper-button-next {
-    right: 0;
-}
-
-.hero-sec .swiper-button-prev::after,
-.hero-sec .swiper-button-next::after {
-    font-family: swiper-icons;
-    font-size: 15px;
-    font-weight: 400;
-}
-
-.hero-sec .swiper-button-prev:hover,
-.hero-sec .swiper-button-next:hover {
-    opacity: 0.65;
-}
-
-.hero-sec .swiper-button-prev:focus-visible,
-.hero-sec .swiper-button-next:focus-visible,
-.hero-sec .swiper-pagination-bullet:focus-visible {
-    outline: 2px solid var(--neutral-0);
-    outline-offset: 3px;
-}
-
-.hero-sec .swiper-button-disabled {
-    opacity: 0.45;
-    pointer-events: none;
-}
-
-/* Figma's bottom segmented line indicator */
-.hero-sec .swiper-pagination {
-    position: absolute;
-    z-index: 10;
-    right: auto;
-    bottom: 12px;
-    left: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: auto;
-    min-height: 16px;
-    padding: 0;
-    transform: translateX(-50%);
-}
-
-.hero-sec .swiper-pagination-bullet {
-    display: block;
-    width: 28px;
-    height: 2px;
-    margin: 0 !important;
-    border-radius: 0;
-    background: rgb(255 255 255 / 48%);
-    opacity: 1;
-    transition: background-color 0.2s ease;
-}
-
-.hero-sec .swiper-pagination-bullet-active {
-    background: var(--neutral-0);
-}
-
-/* Figma frame uses segmented pagination instead of a separate scrollbar. */
-.hero-sec .swiper-scrollbar {
-    display: none;
-}
-
-@media (max-width: 1024px) {
-    .pc {
-        display: none !important;
-    }
-
-    .mo {
-        display: block !important;
-    }
-
-    .hero-sec .hero-swiper {
-        aspect-ratio: auto;
-        height: 96dvh;
-        min-height: 480px;
-        max-height: 820px;
-    }
-
-    .hero-sec .swiper-button-prev,
-    .hero-sec .swiper-button-next {
-        width: 26px;
-        height: 38px;
-    }
-
-    .hero-sec .swiper-button-prev::after,
-    .hero-sec .swiper-button-next::after {
-        font-size: 14px;
-    }
-
-    .hero-sec .swiper-pagination {
-        bottom: 12px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-sec .hero-swiper {
-        min-height: 420px;
-    }
-
-    .hero-sec .swiper-pagination-bullet {
-        width: 22px;
-    }
-
-    .hero-sec .swiper-pagination {
-        gap: 5px;
+/* 모바일 주소창 높이 변화에 대응 */
+@media (max-width: 768px) {
+    .hero-sec {
+        height: 100vh;
+        height: 100dvh;
+        min-height: 100vh;
+        min-height: 100dvh;
     }
 }
 
