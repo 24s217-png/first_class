@@ -19,7 +19,11 @@
     nav?.classList.toggle("is-open", !isOpen);
   });
 
-  nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+  nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", (event) => {
+    if (link.closest(".nav-dropdown")) {
+      event.preventDefault();
+      return;
+    }
     if (window.innerWidth <= 760) closeMenu();
   }));
 
