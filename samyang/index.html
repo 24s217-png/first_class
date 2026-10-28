@@ -5,65 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>삼양식품 리뉴얼 포트폴리오</title>
     <link rel="stylesheet" href="../css/default.css">
-    <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="../npm/swiper/swiper-bundle.min.js" defer></script>
 </head>
 <body>
     <div id="wrap">
         <header>제목공간</header>
         <main>
-            <section class="hero-sec" aria-label="삼양식품 주요 배너">
-                <div class="swiper hero-swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="img/1.png" alt="삼양식품 메인 배너 1" class="pc">
-                            <img src="img/1_M.png" alt="삼양식품 모바일 메인 배너 1" class="mo">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="img/2.png" alt="삼양식품 메인 배너 2" class="pc">
-                            <img src="img/2_M.png" alt="삼양식품 모바일 메인 배너 2" class="mo">
-                        </div>
-                    </div>
-
-                    <button class="swiper-button-prev" type="button" aria-label="이전 배너"></button>
-                    <button class="swiper-button-next" type="button" aria-label="다음 배너"></button>
-                    <div class="swiper-pagination" aria-label="배너 페이지 선택"></div>
-                </div>
+            <section class="hero-sec" aria-label="삼양식품 메인 영상">
+                <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-label="삼양식품 메인 영상">
+                    <source src="video/hero.mp4" type="video/mp4">
+                    브라우저에서 영상을 재생할 수 없습니다.
+                </video>
             </section>
         </main>
         <footer>&copy;</footer>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            new Swiper('.hero-sec .hero-swiper', {
-                direction: 'horizontal',
-                loop: true,
-                speed: 700,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false
-                },
-                pagination: {
-                    el: '.hero-sec .swiper-pagination',
-                    clickable: true
-                },
-                navigation: {
-                    nextEl: '.hero-sec .swiper-button-next',
-                    prevEl: '.hero-sec .swiper-button-prev'
-                },
-                keyboard: {
-                    enabled: true
-                },
-                a11y: {
-                    prevSlideMessage: '이전 배너',
-                    nextSlideMessage: '다음 배너',
-                    paginationBulletMessage: '{{index}}번째 배너로 이동'
-                }
-            });
-        });
-    </script>
+
 </body>
 </html>
