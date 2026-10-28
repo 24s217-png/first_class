@@ -49,15 +49,11 @@
         spaceBetween: 56.38,
         loop: true,
         loopAdditionalSlides: 10,
-        speed: 9000,
+        speed: 7000,
         allowTouchMove: true,
-        freeMode: {
-          enabled: true,
-          momentum: false,
-          sticky: false
-        },
         autoplay: {
           delay: 0,
+          reverseDirection: true,
           disableOnInteraction: false,
           pauseOnMouseEnter: false,
           waitForTransition: false
