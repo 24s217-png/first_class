@@ -18,7 +18,7 @@
 <body>
   <div id="wrap">
 
-    <!-- 1. HEADER -->
+    <!-- HEADER -->
     <header class="site-header" id="site-header">
       <div class="header-inner">
         <a class="brand-logo" href="#top" aria-label="삼양식품 홈">
@@ -51,21 +51,14 @@
 
     <main id="main">
 
-      <!-- 2. HERO SECTION ("CRAVE THE BURN") -->
+      <!-- 1. HERO SECTION (미디어만 전체 노출) -->
       <section class="hero-sec" id="top">
-        <div class="hero-bg-fire"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <h1 class="crave-burn-title">CRAVE THE<br><span>BURN</span></h1>
-        </div>
-        <div class="hero-slider-pagination">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
+        <video class="hero-video-only" autoplay muted loop playsinline preload="metadata">
+          <source src="video/pc_kv.v2.av1.mp4" type="video/mp4">
+        </video>
       </section>
 
-      <!-- 3. BRAND STORY (3 Cards) -->
+      <!-- 2. BRAND STORY (3개 카드 노출) -->
       <section class="brand-story-sec section-pad" id="brand-story">
         <h2 class="sec-title-main">BRAND STORY</h2>
         <div class="story-grid">
@@ -76,7 +69,7 @@
             </div>
             <div class="story-card-info">
               <h3>추억, 세상과 나누는 따뜻함</h3>
-              <p>삼양식품이 전세계 사람들에게 고 전하는 스페셜 매운맛</p>
+              <p>삼양식품이 전세계 사람들에게 전하는 스페셜 매운맛</p>
             </div>
           </article>
 
@@ -103,20 +96,18 @@
         </div>
       </section>
 
-      <!-- 4. BEST PRODUCTS (Swiper Slider) -->
+      <!-- 3. BEST PRODUCTS (4개 노출 + 좌우 화살표 Swiper) -->
       <section class="best-products-sec section-pad" id="best-products">
         <div class="sec-title-row">
           <h2>BEST PRODUCTS</h2>
         </div>
 
         <div class="best-products-wrap">
-          <!-- Custom Nav Arrows -->
           <button class="swiper-nav-btn swiper-btn-prev" type="button" aria-label="이전 제품">‹</button>
           
-          <div class="swiper b-slider">
+          <div class="swiper best-swiper">
             <div class="swiper-wrapper">
 
-              <!-- Slide 1: 까르보 불닭볶음면 -->
               <div class="swiper-slide">
                 <div class="product-card">
                   <div class="product-img-box">
@@ -129,7 +120,6 @@
                 </div>
               </div>
 
-              <!-- Slide 2: 삼양1963 -->
               <div class="swiper-slide">
                 <div class="product-card">
                   <div class="product-img-box">
@@ -142,7 +132,6 @@
                 </div>
               </div>
 
-              <!-- Slide 3: 맵탱 마늘조개라면 -->
               <div class="swiper-slide">
                 <div class="product-card">
                   <div class="product-img-box">
@@ -155,7 +144,6 @@
                 </div>
               </div>
 
-              <!-- Slide 4: 탱탱쫄면 / 탱글 -->
               <div class="swiper-slide">
                 <div class="product-card">
                   <div class="product-img-box">
@@ -168,6 +156,18 @@
                 </div>
               </div>
 
+              <div class="swiper-slide">
+                <div class="product-card">
+                  <div class="product-img-box">
+                    <img src="img/1.png" alt="짱구 스낵">
+                  </div>
+                  <div class="product-bottom-row">
+                    <span>삼양 짱구</span>
+                    <button class="plus-btn" type="button">+</button>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -175,80 +175,115 @@
         </div>
       </section>
 
-      <!-- 5. ESG SECTION (Black Round Cards) -->
+      <!-- 4. ESG SECTION (3개 비디오 카드) -->
       <section class="esg-sec section-pad" id="esg">
         <h2 class="sec-title-main">ESG</h2>
         <div class="esg-grid">
 
           <div class="esg-card">
-            <div class="esg-card-thumb">
-              <span class="esg-badge">100 samyang 100th anniversary</span>
-              <button class="play-btn" type="button" aria-label="영상 재생">▶</button>
+            <div class="esg-video-box">
+              <video autoplay muted loop playsinline poster="img/1.png">
+                <source src="video/pc_kv.v2.av1.mp4" type="video/mp4">
+              </video>
             </div>
             <h3>삼양식품 100년 성장</h3>
-            <p>100년 기업으로 나아가는 삼양식품의 새로운 지속가능 경영비전</p>
+            <p>지속가능한 미래를 준비하는 삼양식품의 환경경영</p>
           </div>
 
           <div class="esg-card">
-            <div class="esg-card-thumb">
-              <span class="esg-badge-text">사회공헌<br><small>SOCIAL RESPONSIBILITY</small></span>
-              <button class="play-btn" type="button" aria-label="영상 재생">▶</button>
+            <div class="esg-video-box">
+              <video autoplay muted loop playsinline poster="img/2.png">
+                <source src="video/pc_kv.v2.av1.mp4" type="video/mp4">
+              </video>
             </div>
             <h3>사회공헌</h3>
-            <p>지역사회와의 상생을 실천하며 따뜻한 온정을 전하는 삼양식품</p>
+            <p>지역사회 상생과 아동·청소년 후원 사업 실천</p>
           </div>
 
           <div class="esg-card">
-            <div class="esg-card-thumb">
-              <span class="esg-badge-text">의약바이오<br><small>TOPHARMACEUTICAL</small></span>
-              <button class="play-btn" type="button" aria-label="영상 재생">▶</button>
+            <div class="esg-video-box">
+              <video autoplay muted loop playsinline poster="img/1_M.png">
+                <source src="video/pc_kv.v2.av1.mp4" type="video/mp4">
+              </video>
             </div>
             <h3>의약바이오</h3>
-            <p>바이오 헬스케어의 기술력을 통한 미래 성장동력 구축</p>
+            <p>헬스케어 및 차세대 바이오 기술연구 및 투자</p>
           </div>
 
         </div>
       </section>
 
-      <!-- 6. MEDIA SECTION -->
+      <!-- 5. MEDIA SECTION (자동 Swiper 무한 슬라이드) -->
       <section class="media-sec section-pad" id="media">
         <div class="sec-title-row">
           <h2>MEDIA</h2>
           <a class="more-link" href="#">바로가기 ↗</a>
         </div>
-        <div class="media-grid">
-          <div class="media-card"><img src="img/1.png" alt="불닭 혼밥 회식"></div>
-          <div class="media-card"><img src="img/2.png" alt="불닭 10000kcal"></div>
-          <div class="media-card"><img src="img/1_M.png" alt="미디어 영상 3"></div>
-          <div class="media-card"><img src="img/2_M.png" alt="미디어 영상 4"></div>
+
+        <div class="swiper media-swiper">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="media-card">
+                <img src="img/1.png" alt="미디어 영상 1">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="media-card">
+                <img src="img/2.png" alt="미디어 영상 2">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="media-card">
+                <img src="img/1_M.png" alt="미디어 영상 3">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="media-card">
+                <img src="img/2_M.png" alt="미디어 영상 4">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="media-card">
+                <img src="img/1.png" alt="미디어 영상 5">
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
-      <!-- 7. SUPPORT & CORPORATE INFORMATION -->
+      <!-- 6. SUPPORT & CORPORATE INFORMATION (피그마 원본 스타일 알약 버튼) -->
       <section class="support-sec section-pad" id="support">
         <h2>Support & Corporate<br>Information</h2>
         <div class="support-btn-group">
+
           <a class="btn-pillar btn-orange" href="#">
             <div class="btn-txt">
-              <strong>문의하기</strong>
-              <span>고객문의 및 AS 상담 센터 안내</span>
+              <strong>✉ 문의하기</strong>
+              <span>고객문의 및 상담 채널</span>
             </div>
-            <span class="btn-arrow">↗</span>
+            <span class="btn-arrow">›</span>
           </a>
 
           <a class="btn-pillar btn-cream" href="#">
             <div class="btn-txt">
               <strong>삼양식품 소개</strong>
-              <span>삼양식품의 회사 정보를 확인하세요</span>
+              <span>삼양식품에 대해 알아보세요</span>
             </div>
-            <span class="btn-arrow">↗</span>
+            <span class="btn-arrow">›</span>
           </a>
+
         </div>
       </section>
 
     </main>
 
-    <!-- 8. FOOTER -->
+    <!-- FOOTER -->
     <footer class="site-footer" id="footer">
       <div class="footer-inner">
         <div class="footer-top">
