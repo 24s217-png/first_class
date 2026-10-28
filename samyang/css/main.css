@@ -182,6 +182,7 @@ img, video { display: block; max-width: 100%; }
   .esg-copy h3 { font-size: 18px; }
   .esg-copy p { font-size: 14px; }
   .media-sec { padding: 80px 0; }
+  .media-subtitle { margin-top: 10px; font-size: 15px; }
   .media-swiper .swiper-slide { width: 340px; }
   .media-thumb-card { height: 250px; }
   .support-inner { grid-template-columns: 1fr; gap: 28px; }
@@ -233,7 +234,8 @@ img, video { display: block; max-width: 100%; }
   .esg-copy p { font-size: 13px; }
   .play-icon { width: 40px; height: 40px; font-size: 13px; }
   .media-sec { padding: 56px 0 60px; }
-  .media-header { margin-bottom: 24px; }
+  .media-header { margin-bottom: 24px; align-items: flex-start; }
+  .media-subtitle { max-width: 230px; margin-top: 8px; font-size: 12px; }
   .media-more-btn { gap: 7px; font-size: 16px; }
   .media-more-btn .arrow { width: 24px; height: 24px; font-size: 14px; }
   .media-swiper .swiper-slide { width: 78vw; }
