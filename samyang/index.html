@@ -22,21 +22,25 @@
         </a>
 
         <nav class="primary-nav" aria-label="주 메뉴">
-          <a href="#brand-story">삼양식품소개</a>
-          <a href="#media">미디어/PR</a>
-          <a href="#esg">지속가능경영</a>
-          <a href="#brand-story">브랜드</a>
-          <a href="#best-products">제품</a>
+          <div class="nav-item"><a href="#brand-story">삼양식품소개</a><div class="nav-dropdown"><a href="#brand-story">삼양식품</a><a href="#brand-story">글로벌 네트워크</a><a href="#support">IR투자정보</a><a href="#support">위치정보</a></div></div>
+          <div class="nav-item"><a href="#media">미디어/PR</a><div class="nav-dropdown"><a href="#media">보도자료</a><a href="#media">홍보 영상</a><a href="#media">미디어 센터</a></div></div>
+          <div class="nav-item"><a href="#esg">지속가능경영</a><div class="nav-dropdown"><a href="#esg">ESG 성과</a><a href="#esg">친환경 경영</a><a href="#esg">사회공헌</a></div></div>
+          <div class="nav-item"><a href="#brand-story">브랜드</a><div class="nav-dropdown"><a href="#brand-story">삼양라면</a><a href="#brand-story">삼양1963</a><a href="#brand-story">불닭</a><a href="#brand-story">맵탱</a><a href="#brand-story">탱글</a><a href="#brand-story">펄스랩</a><a href="#brand-story">짜파로니</a></div></div>
+          <div class="nav-item"><a href="#best-products">제품</a><div class="nav-dropdown"><a href="#best-products">전체제품</a><a href="#best-products">라면</a><a href="#best-products">스낵</a><a href="#best-products">소스·간편식</a><a href="#best-products">냉동식품</a></div></div>
         </nav>
 
         <div class="header-tools">
           <a class="utility-link" href="#support">채용안내</a>
           <span class="tool-divider" aria-hidden="true"></span>
-          <a class="utility-link" href="#top" lang="en">EN</a>
-          <button class="icon-button search-button" type="button" aria-label="검색"><span aria-hidden="true"></span></button>
-          <button class="icon-button user-button" type="button" aria-label="마이페이지"><span aria-hidden="true"></span></button>
-          <a class="mall-button" href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noreferrer">삼양몰 바로가기</a>
+          <div class="language-switch" aria-label="언어 선택"><a href="#top" class="is-active" lang="ko">KR</a><span>/</span><a href="#top" lang="en">EN</a></div>
+          <button class="icon-button search-button" type="button" aria-label="통합검색 열기" aria-expanded="false"><span aria-hidden="true"></span></button>
+          <a class="mall-button" href="https://www.samyangfoods.com/kor/index.do" target="_blank" rel="noopener noreferrer">삼양몰 바로가기 <span aria-hidden="true">↗</span></a>
         </div>
+        <form class="header-search-panel" role="search" hidden>
+          <label for="site-search">통합검색</label>
+          <input id="site-search" type="search" placeholder="제품, 보도자료, 공시 정보를 검색하세요">
+          <button type="submit">검색</button>
+        </form>
         <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
