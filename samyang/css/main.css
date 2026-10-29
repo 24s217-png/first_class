@@ -418,29 +418,3 @@ img, video { display: block; max-width: 100%; }
   .stat p { font-size: 13px; }
   .to-top { right: 16px; bottom: 16px; width: 46px; height: 46px; }
 }
-
-/* ===== BRAND STORY: 카드가 위로 쌓이며 덮는 스택 스크롤 ===== */
-:root { --hh: 90px; --stack-top: 24px; --stack-step: 20px; }
-@media (max-width: 1050px) { :root { --hh: 76px; } }
-@media (max-width: 760px) { :root { --hh: 70px; --stack-top: 16px; --stack-step: 14px; } }
-
-.story-deck { display: block; position: relative; padding-bottom: 8px; }
-.story-card { position: sticky; top: calc(var(--hh) + var(--stack-top)); height: calc(100vh - var(--hh) - var(--stack-top) - 110px); height: calc(100dvh - var(--hh) - var(--stack-top) - 110px); min-height: 420px; margin-bottom: 70px; border-radius: 28px; background: var(--peach); box-shadow: 0 -14px 40px #4c291e1f; overflow: hidden; transform-origin: top center; will-change: transform; counter-increment: story; }
-.story-deck { counter-reset: story; }
-.story-card:nth-child(2) { top: calc(var(--hh) + var(--stack-top) + var(--stack-step)); background: #ffe0c7; }
-.story-card:nth-child(3) { top: calc(var(--hh) + var(--stack-top) + var(--stack-step) * 2); background: #ffd0aa; margin-bottom: 0; }
-.story-card a { height: 100%; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.4fr); grid-template-rows: 1fr auto auto 1fr; grid-template-areas: ". i" "h i" "p i" ". i"; column-gap: clamp(28px, 4vw, 80px); padding: clamp(16px, 1.6vw, 28px); }
-.story-card-img { grid-area: i; height: 100%; aspect-ratio: auto; border-radius: 20px; }
-.story-card a:hover .story-card-img { transform: none; box-shadow: 0 16px 32px #ff640030; }
-.story-card h3 { grid-area: h; margin: 0 0 0 clamp(8px, 2.4vw, 48px); font-size: clamp(26px, 2.8vw, 54px); line-height: 1.2; font-weight: 750; letter-spacing: -.04em; }
-.story-card h3::before { content: "0" counter(story); display: block; margin-bottom: 14px; font-size: 16px; font-weight: 700; letter-spacing: .18em; color: var(--orange); }
-.story-card p { grid-area: p; margin: 16px 0 0 clamp(8px, 2.4vw, 48px); font-size: clamp(15px, 1.1vw, 21px); line-height: 1.6; color: var(--text); opacity: .75; }
-
-@media (max-width: 760px) {
-  .story-card { height: calc(100dvh - var(--hh) - var(--stack-top) - 70px); min-height: 380px; margin-bottom: 40px; border-radius: 20px; }
-  .story-card a { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto auto; grid-template-areas: "i" "h" "p"; padding: 12px; }
-  .story-card-img { border-radius: 14px; }
-  .story-card h3 { margin: 18px 6px 0; font-size: 22px; }
-  .story-card h3::before { margin-bottom: 6px; font-size: 12px; }
-  .story-card p { margin: 6px 6px 8px; font-size: 14px; }
-}
