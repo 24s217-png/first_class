@@ -39,6 +39,31 @@ img, video { display: block; max-width: 100%; }
 .utility-link { font-size: 14px; font-weight: 500; }
 .tool-divider { width: 1px; height: 17px; background: #d4d0cc; }
 .mall-button { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 6px; color: #fff; background: var(--orange); font-size: 14px; font-weight: 650; }
+
+/* Google Material Symbols: header utility icons */
+.icon-button .material-symbols-outlined {
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  position: static;
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+.icon-button .material-symbols-outlined::after { content: none; }
+
 .icon-button { width: 24px; height: 28px; padding: 0; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer; }
 .search-button span { width: 14px; height: 14px; border: 1.5px solid #323232; border-radius: 50%; position: relative; }
 .search-button span::after { content: ""; width: 6px; height: 1.5px; background: #323232; position: absolute; right: -4px; bottom: -2px; transform: rotate(48deg); }
@@ -122,13 +147,13 @@ img, video { display: block; max-width: 100%; }
 .support-inner { width: 100%; max-width: var(--content-width); margin: auto; display: grid; grid-template-columns: minmax(300px, 513px) minmax(0, 1fr); align-items: center; gap: 50px; }
 .support-title { font-size: clamp(30px, 2.5vw, 48px); line-height: 1.2; font-weight: 700; letter-spacing: -.04em; }
 .support-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 470px)); gap: 50px; justify-content: end; }
-.support-pill { min-width: 0; min-height: 300px; padding: 28px 30px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border-radius: 999px; transition: transform .25s ease, box-shadow .25s ease; }
+.support-pill { min-width: 0; min-height: 142px; padding: 28px 30px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border-radius: 999px; transition: transform .25s ease, box-shadow .25s ease; }
 .support-pill:hover { transform: translateY(-5px); box-shadow: 0 14px 30px #4c291e22; }
 .support-pill-orange { color: #fff; background: var(--orange); }
 .support-pill-cream { color: var(--text); background: var(--peach); }
 .support-symbol { flex: 0 0 50px; width: 50px; font-size: 40px; line-height: 1; }
 .support-copy { flex: 1; min-width: 0; }
-.support-copy strong { display: block; font-size: 32px; line-height: 1.2; font-weight: 750; }
+.support-copy strong { display: block; font-size: 24px; line-height: 1.2; font-weight: 750; }
 .support-copy small { display: block; margin-top: 15px; font-size: 16px; line-height: 1.5; white-space: normal; }
 .support-arrow { flex: 0 0 auto; font-size: 48px; line-height: 1; }
 .support-symbol svg, .support-arrow svg { display: block; width: 100%; height: auto; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
@@ -162,8 +187,8 @@ img, video { display: block; max-width: 100%; }
   .esg-grid { gap: 32px; }
   .support-inner { grid-template-columns: minmax(250px, .8fr) 1.8fr; gap: 30px; }
   .support-actions { gap: 24px; }
-  .support-pill { min-height: 260px; padding: 24px; }
-  .support-copy strong { font-size: 26px; }
+  .support-pill { min-height: 142px; padding: 20px 24px; }
+  .support-copy strong { font-size: 20px; }
   .support-copy small { font-size: 13px; }
 }
 @media (max-width: 1050px) {
@@ -195,7 +220,7 @@ img, video { display: block; max-width: 100%; }
   .media-thumb-card { height: 250px; }
   .support-inner { grid-template-columns: 1fr; gap: 28px; }
   .support-actions { justify-content: start; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .support-pill { min-height: 220px; }
+  .support-pill { min-height: 142px; }
   .footer-top { gap: 30px; }
   .footer-links { gap: 24px; }
 }
@@ -252,7 +277,7 @@ img, video { display: block; max-width: 100%; }
   .support-inner { gap: 26px; }
   .support-title { font-size: 30px; }
   .support-actions { grid-template-columns: 1fr; gap: 14px; }
-  .support-pill { min-height: 150px; padding: 22px; border-radius: 80px; gap: 14px; }
+  .support-pill { min-height: 142px; padding: 18px 20px; border-radius: 80px; gap: 14px; }
   .support-symbol { flex-basis: 34px; width: 34px; font-size: 28px; }
   .support-copy strong { font-size: 22px; }
   .support-copy small { margin-top: 7px; font-size: 12px; }
