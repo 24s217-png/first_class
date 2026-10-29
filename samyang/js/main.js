@@ -51,10 +51,9 @@
     const bestElement = document.querySelector(".best-swiper");
     if (bestElement) {
       new Swiper(bestElement, {
-        slidesPerView: "auto",
+        slidesPerView: 4,
         spaceBetween: 55.56,
         loop: true,
-        loopAdditionalSlides: 8,
         speed: 600,
         allowTouchMove: true,
         navigation: {
@@ -62,9 +61,10 @@
           prevEl: ".best-btn-prev"
         },
         breakpoints: {
-          0: { spaceBetween: 16 },
-          761: { spaceBetween: 28 },
-          1501: { spaceBetween: 55.56 }
+          0: { slidesPerView: "auto", spaceBetween: 16 },
+          761: { slidesPerView: 3, spaceBetween: 20 },
+          1051: { slidesPerView: 4, spaceBetween: 28 },
+          1501: { slidesPerView: 4, spaceBetween: 55.56 }
         }
       });
     }
