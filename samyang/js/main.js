@@ -73,31 +73,23 @@
   // 헤더: 스크롤하면 그림자
   const progress = document.querySelector(".scroll-progress");
   const toTop = document.querySelector(".to-top");
-  // BRAND STORY: 스크롤 위치에 따라 한 장씩 전환
-  const storySec = document.querySelector(".brand-story-sec");
-  const storyCards = storySec ? Array.from(storySec.querySelectorAll(".story-card")) : [];
-  const storyBars = storySec ? Array.from(storySec.querySelectorAll(".story-bars i")) : [];
-  const storyCount = storySec?.querySelector(".story-count b");
-  let storyIndex = -1;
-  const updateStory = () => {
-    if (!storySec || !storyCards.length) return;
-    const headerH = header ? header.offsetHeight : 90;
-    const travel = storySec.offsetHeight - (window.innerHeight - headerH);
-    const progress = (headerH - storySec.getBoundingClientRect().top) / travel;
-    const index = Math.max(0, Math.min(storyCards.length - 1, Math.floor(Math.max(0, Math.min(progress, 0.9999)) * storyCards.length)));
-    if (index === storyIndex) return;
-    storyIndex = index;
-    storyCards.forEach((card, i) => {
-      card.classList.toggle("is-active", i === index);
-      card.classList.toggle("is-past", i < index);
+  // BRAND STORY: 다음 카드가 덮어 올 때 앞 카드가 살짝 작아짐
+  const stackCards = Array.from(document.querySelectorAll(".story-card"));
+  const updateStack = () => {
+    stackCards.forEach((card, i) => {
+      const next = stackCards[i + 1];
+      if (!next) return;
+      const gap = next.getBoundingClientRect().top - card.getBoundingClientRect().top;
+      const range = card.offsetHeight * 0.9;
+      const p = Math.max(0, Math.min(1, 1 - (gap - 20) / range));
+      card.style.transform = "scale(" + (1 - 0.05 * p).toFixed(4) + ")";
+      card.style.filter = "brightness(" + (1 - 0.06 * p).toFixed(3) + ")";
     });
-    storyBars.forEach((bar, i) => bar.classList.toggle("is-active", i === index));
-    if (storyCount) storyCount.textContent = "0" + (index + 1);
   };
-  window.addEventListener("resize", updateStory);
+  window.addEventListener("resize", updateStack);
 
   const onScroll = () => {
-    updateStory();
+    updateStack();
     header?.classList.toggle("is-scrolled", window.scrollY > 10);
     const max = document.documentElement.scrollHeight - window.innerHeight;
     if (progress && max > 0) progress.style.transform = "scaleX(" + Math.min(window.scrollY / max, 1) + ")";
