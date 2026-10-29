@@ -55,19 +55,8 @@
         spaceBetween: 55.56,
         loop: true,
         loopAdditionalSlides: 8,
-        speed: 9000,
+        speed: 600,
         allowTouchMove: true,
-        freeMode: {
-          enabled: true,
-          momentum: false,
-          sticky: false
-        },
-        autoplay: {
-          delay: 0,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: false,
-          waitForTransition: false
-        },
         navigation: {
           nextEl: ".best-btn-next",
           prevEl: ".best-btn-prev"
