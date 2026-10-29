@@ -71,19 +71,26 @@
   }
 
   // 헤더: 스크롤하면 그림자
-  const onScroll = () => header?.classList.toggle("is-scrolled", window.scrollY > 10);
+  const progress = document.querySelector(".scroll-progress");
+  const toTop = document.querySelector(".to-top");
+  const onScroll = () => {
+    header?.classList.toggle("is-scrolled", window.scrollY > 10);
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (progress && max > 0) progress.style.transform = "scaleX(" + Math.min(window.scrollY / max, 1) + ")";
+    toTop?.classList.toggle("is-show", window.scrollY > 600);
+  };
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
   // 스크롤 등장 효과
   const groups = [
     ".section-title", ".media-header .media-more-btn", ".story-card", ".best-products-container",
-    ".esg-card", ".media-marquee", ".support-title", ".support-actions"
+    ".esg-card", ".stat", ".media-marquee", ".support-title", ".support-actions"
   ];
   const targets = document.querySelectorAll(groups.join(","));
   targets.forEach((el) => {
     el.classList.add("reveal");
-    const siblings = el.parentElement ? Array.from(el.parentElement.children).filter((n) => n.matches(".story-card, .esg-card")) : [];
+    const siblings = el.parentElement ? Array.from(el.parentElement.children).filter((n) => n.matches(".story-card, .esg-card, .stat")) : [];
     const index = siblings.indexOf(el);
     if (index > 0) el.style.transitionDelay = index * 0.12 + "s";
   });
@@ -101,14 +108,39 @@
     targets.forEach((el) => el.classList.add("is-visible"));
   }
 
-  // MEDIA: 끊김 없는 무한 반복 (원본을 한 번 복제해 CSS 애니메이션으로 이동)
-  const mediaTrack = document.querySelector(".media-track");
-  if (mediaTrack) {
-    Array.from(mediaTrack.children).forEach((item) => {
+  // 숫자 카운트업
+  const counters = document.querySelectorAll(".stat-num[data-count]");
+  const runCount = (el) => {
+    const end = Number(el.dataset.count);
+    const suffix = el.dataset.suffix || "";
+    const start = performance.now();
+    const duration = 1800;
+    const tick = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - t, 3))) + suffix;
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  if ("IntersectionObserver" in window) {
+    const countIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          runCount(entry.target);
+          countIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach((el) => { el.textContent = "0" + (el.dataset.suffix || ""); countIO.observe(el); });
+  }
+
+  // 흐르는 줄(MEDIA, 텍스트 띠): 한 번 복제해 끊김 없이 반복
+  document.querySelectorAll(".media-track, .text-band-track").forEach((track) => {
+    Array.from(track.children).forEach((item) => {
       const clone = item.cloneNode(true);
       clone.setAttribute("aria-hidden", "true");
       clone.querySelectorAll("a").forEach((a) => a.setAttribute("tabindex", "-1"));
-      mediaTrack.appendChild(clone);
+      track.appendChild(clone);
     });
-  }
+  });
 })();
