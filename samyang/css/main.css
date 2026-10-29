@@ -3,10 +3,12 @@
 :root {
   --orange: #ff6400;
   --orange-dark: #f2611f;
+  --orange-deep: #b94400;
   --peach: #ffefe0;
-  --text: #323232;
-  --muted: #77716d;
-  --footer: #171614;
+  --cream: #fff8f1;
+  --text: #3b1f10;
+  --muted: #8a6a58;
+  --footer: #9a3b00;
   --content-width: 1720px;
   --gutter: clamp(24px, 5.2083vw, 100px);
 }
@@ -418,3 +420,32 @@ img, video { display: block; max-width: 100%; }
   .stat p { font-size: 13px; }
   .to-top { right: 16px; bottom: 16px; width: 46px; height: 46px; }
 }
+
+
+/* ===== Orange Theme: 전체 색상을 주황 계열로 통일 ===== */
+::selection { background: var(--orange); color: #fff; }
+body { background: var(--cream); }
+.brand-story-sec, .esg-sec { background: var(--cream); }
+.story-card-img { background: var(--peach); }
+.tool-divider { background: #f3c9a8; }
+.language-switch a { color: #b58b70; }
+.language-switch a.is-active { color: var(--orange-deep); }
+.badge-icon { background: #ffe0c7; color: var(--orange-deep); opacity: 1; }
+.media-more-btn .arrow { background: #ffd9bd; color: var(--orange-deep); opacity: 1; }
+.media-thumb-card { background: #ffd9bd; }
+
+/* 숫자 섹션: 주황 그라데이션 */
+.stats-sec { background: linear-gradient(135deg, #f26a10 0%, #d64a00 100%); }
+.stats-sec::before { -webkit-text-stroke: 1px #ffffff40; }
+.stat { border-left-color: #ffffff59; }
+.stat-num { color: #fff; }
+.stat-label { color: #ffe1c8; }
+.stat p { color: #fff0e3; }
+
+/* 푸터: 짙은 주황 */
+.site-footer { color: #ffd9bd; }
+.footer-top { border-bottom-color: #ffffff33; }
+.footer-logo, .footer-links h3, .footer-bottom > a { color: #fff; }
+.footer-logo span { background: #ffb07a; }
+.family-sites > a { border-color: #ffffff4d; background: #ffffff1a; color: #fff; }
+.footer-links div:not(.family-sites) a:hover { color: #fff; }
