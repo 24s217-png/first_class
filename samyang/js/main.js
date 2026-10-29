@@ -68,33 +68,16 @@
         }
       });
     }
+  }
 
-    const mediaElement = document.querySelector(".media-swiper");
-    if (mediaElement) {
-      new Swiper(mediaElement, {
-        slidesPerView: "auto",
-        spaceBetween: 56.38,
-        loop: true,
-        loopAdditionalSlides: 10,
-        speed: 9000,
-        allowTouchMove: true,
-        freeMode: {
-          enabled: true,
-          momentum: false,
-          sticky: false
-        },
-        autoplay: {
-          delay: 0,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: false,
-          waitForTransition: false
-        },
-        breakpoints: {
-          0: { spaceBetween: 14 },
-          761: { spaceBetween: 24 },
-          1501: { spaceBetween: 56.38 }
-        }
-      });
-    }
+  // MEDIA: 끊김 없는 무한 반복 (원본을 한 번 복제해 CSS 애니메이션으로 이동)
+  const mediaTrack = document.querySelector(".media-track");
+  if (mediaTrack) {
+    Array.from(mediaTrack.children).forEach((item) => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.querySelectorAll("a").forEach((a) => a.setAttribute("tabindex", "-1"));
+      mediaTrack.appendChild(clone);
+    });
   }
 })();
