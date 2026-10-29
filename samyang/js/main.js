@@ -73,7 +73,31 @@
   // 헤더: 스크롤하면 그림자
   const progress = document.querySelector(".scroll-progress");
   const toTop = document.querySelector(".to-top");
+  // BRAND STORY: 스크롤 위치에 따라 한 장씩 전환
+  const storySec = document.querySelector(".brand-story-sec");
+  const storyCards = storySec ? Array.from(storySec.querySelectorAll(".story-card")) : [];
+  const storyBars = storySec ? Array.from(storySec.querySelectorAll(".story-bars i")) : [];
+  const storyCount = storySec?.querySelector(".story-count b");
+  let storyIndex = -1;
+  const updateStory = () => {
+    if (!storySec || !storyCards.length) return;
+    const headerH = header ? header.offsetHeight : 90;
+    const travel = storySec.offsetHeight - (window.innerHeight - headerH);
+    const progress = (headerH - storySec.getBoundingClientRect().top) / travel;
+    const index = Math.max(0, Math.min(storyCards.length - 1, Math.floor(Math.max(0, Math.min(progress, 0.9999)) * storyCards.length)));
+    if (index === storyIndex) return;
+    storyIndex = index;
+    storyCards.forEach((card, i) => {
+      card.classList.toggle("is-active", i === index);
+      card.classList.toggle("is-past", i < index);
+    });
+    storyBars.forEach((bar, i) => bar.classList.toggle("is-active", i === index));
+    if (storyCount) storyCount.textContent = "0" + (index + 1);
+  };
+  window.addEventListener("resize", updateStory);
+
   const onScroll = () => {
+    updateStory();
     header?.classList.toggle("is-scrolled", window.scrollY > 10);
     const max = document.documentElement.scrollHeight - window.innerHeight;
     if (progress && max > 0) progress.style.transform = "scaleX(" + Math.min(window.scrollY / max, 1) + ")";
@@ -84,7 +108,7 @@
 
   // 스크롤 등장 효과
   const groups = [
-    ".section-title", ".media-header .media-more-btn", ".story-card", ".best-products-container",
+    ".section-title", ".media-header .media-more-btn", ".best-products-container",
     ".esg-card", ".stat", ".media-marquee", ".support-title", ".support-actions"
   ];
   const targets = document.querySelectorAll(groups.join(","));
