@@ -331,3 +331,50 @@ img, video { display: block; max-width: 100%; }
   .header-logo-image { width: 128px; max-height: 42px; }
   .footer-logo-image { width: 132px; }
 }
+
+
+/* ===== Polish: 인터랙션 & 디테일 ===== */
+/* 헤더: 스크롤 시 그림자 */
+.site-header { transition: box-shadow .3s ease; }
+.site-header.is-scrolled { box-shadow: 0 6px 24px #0000001a; }
+@media (min-width: 761px) {
+  .nav-item > a { position: relative; }
+  .nav-item > a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 24px; height: 2px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+  .nav-item:hover > a::after, .nav-item:focus-within > a::after { transform: scaleX(1); }
+}
+
+/* 히어로: 하단 그라데이션 + 스크롤 안내 */
+.hero-sec::after { content: ""; position: absolute; inset: auto 0 0; height: 32%; background: linear-gradient(transparent, rgba(0, 0, 0, .38)); pointer-events: none; }
+.scroll-cue { position: absolute; z-index: 2; left: 50%; bottom: 26px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .24em; }
+.scroll-cue::after { content: ""; width: 1px; height: 46px; background: linear-gradient(#fff, transparent); transform-origin: top; animation: scroll-cue 1.9s ease-in-out infinite; }
+@keyframes scroll-cue { 0% { transform: scaleY(0); opacity: 1; } 55% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+
+/* 섹션 제목 포인트 */
+.section-title::after { content: ""; display: inline-block; width: .22em; height: .22em; margin-left: .18em; border-radius: 50%; background: var(--orange); }
+
+/* 스크롤 등장 효과 (JS 꺼져 있으면 그냥 보임) */
+.js .reveal { opacity: 0; transform: translateY(36px); transition: opacity .8s ease, transform .8s cubic-bezier(.2, .7, .2, 1); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* 브랜드 스토리 */
+.story-card-img { transition: transform .4s ease, box-shadow .4s ease; }
+.story-card a:hover .story-card-img { transform: translateY(-8px); box-shadow: 0 20px 40px #ff640030; }
+.story-card h3 { transition: color .25s ease; }
+.story-card a:hover h3 { color: var(--orange); }
+
+/* 베스트 제품 */
+.product-box:hover { box-shadow: 0 16px 32px #ff64002e; }
+.product-img-wrap img { transition: transform .45s ease; }
+.product-box:hover .product-img-wrap img { transform: scale(1.07); }
+.badge-icon { transition: background .25s ease, color .25s ease, opacity .25s ease; }
+.product-box:hover .badge-icon { background: var(--orange); color: #fff; opacity: 1; }
+
+/* ESG */
+.play-icon { transition: transform .3s ease, box-shadow .3s ease; }
+.esg-card:hover .play-icon { transform: translate(-50%, -50%) scale(1.12); box-shadow: 0 0 0 12px #ffffff33; }
+
+/* 미디어 / 서포트 */
+.media-more-btn .arrow { transition: background .25s ease, color .25s ease, opacity .25s ease; }
+.media-more-btn:hover .arrow { background: var(--orange); color: #fff; opacity: 1; }
+.support-arrow { transition: transform .25s ease; }
+.support-pill:hover .support-arrow { transform: translateX(8px); }
