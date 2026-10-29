@@ -70,6 +70,37 @@
     }
   }
 
+  // 헤더: 스크롤하면 그림자
+  const onScroll = () => header?.classList.toggle("is-scrolled", window.scrollY > 10);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // 스크롤 등장 효과
+  const groups = [
+    ".section-title", ".media-header .media-more-btn", ".story-card", ".best-products-container",
+    ".esg-card", ".media-marquee", ".support-title", ".support-actions"
+  ];
+  const targets = document.querySelectorAll(groups.join(","));
+  targets.forEach((el) => {
+    el.classList.add("reveal");
+    const siblings = el.parentElement ? Array.from(el.parentElement.children).filter((n) => n.matches(".story-card, .esg-card")) : [];
+    const index = siblings.indexOf(el);
+    if (index > 0) el.style.transitionDelay = index * 0.12 + "s";
+  });
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    targets.forEach((el) => io.observe(el));
+  } else {
+    targets.forEach((el) => el.classList.add("is-visible"));
+  }
+
   // MEDIA: 끊김 없는 무한 반복 (원본을 한 번 복제해 CSS 애니메이션으로 이동)
   const mediaTrack = document.querySelector(".media-track");
   if (mediaTrack) {
