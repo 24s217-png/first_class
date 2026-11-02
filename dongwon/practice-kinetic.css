@@ -1,0 +1,24 @@
+/* KINETIC TYPOGRAPHY: 움직이는 큰 글자와 리듬감 있는 타이포그래피 */
+#wrap.kinetic-type{max-width:393px;min-height:100dvh;background:#101010;color:#f4f0e8}
+#wrap.kinetic-type .header{height:120px;align-items:center;padding:20px;background:#101010}
+#wrap.kinetic-type .brand{color:#d7ff38;font-size:2.4rem;font-weight:900;letter-spacing:-.08em}
+#wrap.kinetic-type .back_btn{top:35px;bottom:auto;filter:invert(1)}
+#wrap.kinetic-type main{padding:35px 22px 55px}
+#wrap.kinetic-type .practice-kicker{color:#d7ff38;font-size:1rem;font-weight:800;letter-spacing:.16em}
+#wrap.kinetic-type .intro{margin:22px 0 62px}
+#wrap.kinetic-type .intro h1{margin:10px 0 16px;color:#d7ff38;font-size:7.2rem;font-weight:900;line-height:.9;letter-spacing:-.1em;animation:typeFloat 2.8s ease-in-out infinite alternate}
+#wrap.kinetic-type .intro p:last-child{color:#c9c9c9;font-size:1.35rem}
+#wrap.kinetic-type .input_group>label{color:#d7ff38}
+#wrap.kinetic-type .input_box input{height:54px;border:1px solid #777;border-radius:0;background:#202020;color:#fff}
+#wrap.kinetic-type .input_box input::placeholder{color:#888}
+#wrap.kinetic-type .login_btn{height:56px;margin-top:24px;border-radius:0;background:#d7ff38;color:#101010;font-size:1.8rem;font-weight:900;letter-spacing:.12em;transition:letter-spacing .25s,background .25s}
+#wrap.kinetic-type .login_btn:hover{letter-spacing:.28em;background:#fff}
+#wrap.kinetic-type .login_options,#wrap.kinetic-type .login_links{color:#ddd}
+#wrap.kinetic-type .login_links a{font-size:1.25rem}
+#wrap.kinetic-type .login_links span{background:#777}
+#wrap.kinetic-type .sns_title h2{color:#d7ff38;font-size:1.25rem}
+#wrap.kinetic-type .sns_title span{background:#555}
+#wrap.kinetic-type .sns_list a{display:grid;place-items:center;width:48px;height:48px;border:1px solid #555;border-radius:50%;background:#f4f0e8}
+#wrap.kinetic-type .sns_list a:hover{transform:translateY(-6px)}
+@keyframes typeFloat{from{transform:translateX(0) skewX(0)}to{transform:translateX(8px) skewX(-4deg)}}
+@media(prefers-reduced-motion:reduce){#wrap.kinetic-type .intro h1{animation:none}}
