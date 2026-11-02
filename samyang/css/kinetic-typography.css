@@ -1,0 +1,123 @@
+/* Kinetic Typography: 글자가 움직임의 중심이 되는 타이포그래피 스타일 */
+#wrap.kinetic-typography {
+  --kinetic-ink: #24211f;
+  --kinetic-orange: #ff6400;
+  --kinetic-cream: #fff4e9;
+  color: var(--kinetic-ink);
+}
+
+/* 섹션 제목을 따라 흐르는 오렌지 그라디언트 */
+#wrap.kinetic-typography .section-title,
+#wrap.kinetic-typography .support-title {
+  display: inline-block;
+  color: transparent;
+  background: linear-gradient(100deg,
+    var(--kinetic-ink) 0%,
+    var(--kinetic-ink) 35%,
+    var(--kinetic-orange) 48%,
+    #ffb36b 54%,
+    var(--kinetic-ink) 68%,
+    var(--kinetic-ink) 100%);
+  background-size: 240% 100%;
+  background-position: 100% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: kinetic-gradient 7s ease-in-out infinite;
+  transition: letter-spacing .35s ease, transform .35s ease;
+}
+
+#wrap.kinetic-typography .section-title:hover,
+#wrap.kinetic-typography .support-title:hover {
+  letter-spacing: .015em;
+  transform: translateY(-3px);
+}
+
+@keyframes kinetic-gradient {
+  0%, 12% { background-position: 100% 50%; }
+  58%, 100% { background-position: 0% 50%; }
+}
+
+/* 기존 띠 배너를 더 강한 타이포 모션으로 */
+#wrap.kinetic-typography .text-band {
+  color: #fff;
+  background: var(--kinetic-ink);
+  overflow: hidden;
+}
+#wrap.kinetic-typography .text-band-track {
+  animation: kinetic-marquee 24s linear infinite;
+  will-change: transform;
+}
+#wrap.kinetic-typography .text-band span {
+  font-size: clamp(24px, 3.1vw, 54px);
+  font-weight: 900;
+  letter-spacing: -.055em;
+  transition: letter-spacing .3s ease, color .3s ease;
+}
+#wrap.kinetic-typography .text-band-track:hover span {
+  color: #ff9a55;
+  letter-spacing: .015em;
+}
+#wrap.kinetic-typography .text-band i {
+  color: var(--kinetic-orange);
+  opacity: 1;
+  animation: kinetic-spin 5s linear infinite;
+}
+@keyframes kinetic-marquee {
+  to { transform: translateX(-50%); }
+}
+@keyframes kinetic-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 숫자 뒤 배경 타이포가 천천히 이동 */
+#wrap.kinetic-typography .stats-sec::before {
+  animation: kinetic-drift 22s ease-in-out infinite alternate;
+}
+@keyframes kinetic-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-8vw); }
+}
+
+/* 카드 제목은 마우스를 올렸을 때 자간이 열리며 반응 */
+#wrap.kinetic-typography .story-card h3,
+#wrap.kinetic-typography .product-name,
+#wrap.kinetic-typography .esg-copy h3 {
+  transition: letter-spacing .3s ease, color .3s ease, transform .3s ease;
+}
+#wrap.kinetic-typography .story-card a:hover h3,
+#wrap.kinetic-typography .product-box:hover .product-name,
+#wrap.kinetic-typography .esg-card:hover h3 {
+  color: var(--kinetic-orange);
+  letter-spacing: .015em;
+  transform: translateX(4px);
+}
+
+/* 히어로 영상 위 SCROLL 텍스트에 미세한 움직임 */
+#wrap.kinetic-typography .scroll-cue {
+  animation: kinetic-float 2.4s ease-in-out infinite;
+}
+@keyframes kinetic-float {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -7px); }
+}
+
+@media (max-width: 760px) {
+  #wrap.kinetic-typography .text-band span {
+    font-size: 27px;
+  }
+  #wrap.kinetic-typography .section-title,
+  #wrap.kinetic-typography .support-title {
+    background-size: 300% 100%;
+  }
+}
+
+/* 움직임 최소화 설정을 사용하는 방문자에게는 애니메이션을 줄임 */
+@media (prefers-reduced-motion: reduce) {
+  #wrap.kinetic-typography *,
+  #wrap.kinetic-typography *::before,
+  #wrap.kinetic-typography *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
