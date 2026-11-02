@@ -20,8 +20,8 @@
   });
 
   nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", (event) => {
-    // Main navigation and submenu links are temporary placeholders for this design mockup.
-    event.preventDefault();
+    // 주소가 #인 임시 메뉴만 이동을 막고, about.html 같은 실제 페이지 링크는 정상 이동시킨다.
+    if (link.getAttribute("href") === "#") event.preventDefault();
     if (window.innerWidth <= 760) closeMenu();
   }));
 
