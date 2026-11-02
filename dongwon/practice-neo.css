@@ -1,0 +1,19 @@
+/* NEO BRUTALISM: 강한 대비, 굵은 테두리, 각진 형태, 단단한 그림자 */
+#wrap.neo-brutalism{--ink:#17233b;--blue:#1748d1;--yellow:#ffe36a;max-width:393px;min-height:100dvh;background:#b9ddff;color:var(--ink);border:3px solid var(--ink)}
+#wrap.neo-brutalism .header{background:var(--yellow);border-bottom:3px solid var(--ink)}
+#wrap.neo-brutalism .brand{width:auto;height:auto;padding:8px 12px;background:var(--blue);color:#fff;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);font-weight:900}
+#wrap.neo-brutalism main{padding:42px 22px 55px}
+#wrap.neo-brutalism .practice-kicker{display:inline-block;margin-bottom:12px;padding:5px 8px;background:var(--ink);color:#fff;font-size:1rem;font-weight:800;letter-spacing:.08em}
+#wrap.neo-brutalism .intro{margin-bottom:55px}
+#wrap.neo-brutalism .intro h1{display:inline-block;padding:5px 10px;background:var(--yellow);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font-size:2.5rem;font-weight:900}
+#wrap.neo-brutalism .input_box input{height:54px;border:2px solid var(--ink);border-radius:0;background:#fffdf5;box-shadow:3px 3px 0 var(--ink)}
+#wrap.neo-brutalism .input_box input:focus{outline:3px solid var(--blue);outline-offset:3px}
+#wrap.neo-brutalism .login_btn{height:56px;margin-top:24px;border:3px solid var(--ink);border-radius:0;background:var(--blue);box-shadow:6px 6px 0 var(--ink);color:#fff;font-weight:900;transition:.15s}
+#wrap.neo-brutalism .login_btn:hover{background:var(--ink)}
+#wrap.neo-brutalism .login_btn:active{transform:translate(6px,6px);box-shadow:none}
+#wrap.neo-brutalism .sns_title h2{padding:5px 8px;background:var(--yellow);border:2px solid var(--ink);font-weight:900}
+#wrap.neo-brutalism .sns_title span{height:2px;background:var(--ink)}
+#wrap.neo-brutalism .sns_list a{display:grid;place-items:center;border:2px solid var(--ink);background:#fff;box-shadow:3px 3px 0 var(--ink)}
+#wrap.neo-brutalism .sns_list a:hover{transform:translate(3px,3px);box-shadow:none}
+#wrap.neo-brutalism .login_links a{font-weight:700}
+#wrap.neo-brutalism button:focus-visible,#wrap.neo-brutalism a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
