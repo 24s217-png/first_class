@@ -20,8 +20,8 @@
   });
 
   nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", (event) => {
-    // 실제 섹션으로 이동하는 링크는 그대로 동작시키고, #만 있는 임시 링크만 막습니다.
-    if (link.getAttribute("href") === "#") event.preventDefault();
+    // Main navigation and submenu links are temporary placeholders for this design mockup.
+    event.preventDefault();
     if (window.innerWidth <= 760) closeMenu();
   }));
 
