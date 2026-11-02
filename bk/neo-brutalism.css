@@ -1,0 +1,275 @@
+/* Burger King login - 07 Neo Brutalism
+   기존 HTML 구조와 클래스명을 유지하고 시각 스타일만 덮어씁니다. */
+#wrap.neo-brutalism {
+  --neo-ink: #24130d;
+  --neo-yellow: #ffd928;
+  --neo-orange: #f5a623;
+  --neo-red: #d62302;
+  --neo-cream: #fff8e9;
+  --neo-white: #fffdf8;
+  --neo-shadow: 6px 6px 0 var(--neo-ink);
+  min-height: 100dvh;
+  background: var(--neo-yellow);
+  color: var(--neo-ink);
+  border-left: 3px solid var(--neo-ink);
+  border-right: 3px solid var(--neo-ink);
+}
+
+#wrap.neo-brutalism header {
+  height: 64px;
+  border-bottom: 3px solid var(--neo-ink);
+  background: var(--neo-cream);
+}
+
+#wrap.neo-brutalism header h1 {
+  font-family: var(--font-BKR);
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+#wrap.neo-brutalism .prev_btn {
+  left: 12px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--neo-ink);
+  background-color: var(--neo-white);
+  background-size: 18px;
+  box-shadow: 3px 3px 0 var(--neo-ink);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+#wrap.neo-brutalism .prev_btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+#wrap.neo-brutalism main {
+  padding: 48px 24px 64px;
+}
+
+#wrap.neo-brutalism .title {
+  margin-bottom: 38px;
+  gap: 8px;
+  color: var(--neo-ink);
+  text-transform: none;
+}
+
+#wrap.neo-brutalism .title span:first-child {
+  width: fit-content;
+  padding: 5px 10px;
+  background: var(--neo-orange);
+  border: 2px solid var(--neo-ink);
+  box-shadow: 3px 3px 0 var(--neo-ink);
+  font-size: 2rem;
+}
+
+#wrap.neo-brutalism .title > span:last-child {
+  font-size: clamp(3.2rem, 8vw, 4.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.06em;
+  text-shadow: 2px 2px 0 var(--neo-white);
+}
+
+#wrap.neo-brutalism fieldset > label {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-family: var(--font-Pre);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+#wrap.neo-brutalism input[type="email"],
+#wrap.neo-brutalism input[type="password"] {
+  width: 100%;
+  height: 54px;
+  padding: 0 16px;
+  border: 2px solid var(--neo-ink);
+  border-radius: 0;
+  background: var(--neo-white);
+  color: var(--neo-ink);
+  box-shadow: 3px 3px 0 var(--neo-ink);
+  font-family: var(--font-Pre);
+  font-size: 1.5rem;
+  transition: box-shadow .15s ease, transform .15s ease;
+}
+
+#wrap.neo-brutalism input[type="email"]::placeholder,
+#wrap.neo-brutalism input[type="password"]::placeholder {
+  color: #8a796c;
+}
+
+#wrap.neo-brutalism input[type="email"]:focus,
+#wrap.neo-brutalism input[type="password"]:focus {
+  outline: 3px solid var(--neo-red);
+  outline-offset: 3px;
+}
+
+#wrap.neo-brutalism .password_box {
+  margin-top: 14px;
+}
+
+#wrap.neo-brutalism .password_box input {
+  padding-right: 56px;
+}
+
+#wrap.neo-brutalism .pw_btn {
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--neo-ink);
+  background-color: var(--neo-orange);
+  background-size: 18px;
+}
+
+#wrap.neo-brutalism .login_option {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 18px;
+  font-family: var(--font-Pre);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+#wrap.neo-brutalism .login_option label {
+  margin: 0;
+}
+
+#wrap.neo-brutalism .login_option span {
+  gap: 7px;
+}
+
+#wrap.neo-brutalism .login_option .check + span::before,
+#wrap.neo-brutalism .login_option .check:checked + span::before {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--neo-ink);
+  background: var(--neo-white) url(img/checkbox_disabled.svg) no-repeat center / 13px;
+}
+
+#wrap.neo-brutalism .login_option .check:checked + span::before {
+  background-color: var(--neo-orange);
+  background-image: url(img/checkbox_active.svg);
+}
+
+#wrap.neo-brutalism .login_btn {
+  height: 56px;
+  margin-top: 24px;
+  border: 3px solid var(--neo-ink);
+  border-radius: 0;
+  background: var(--neo-red);
+  color: #fff;
+  box-shadow: var(--neo-shadow);
+  opacity: 1;
+  font-family: var(--font-BKR);
+  font-size: 1.8rem;
+  font-weight: 900;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+#wrap.neo-brutalism .login_btn:hover {
+  background: var(--neo-ink);
+}
+
+#wrap.neo-brutalism .login_btn:active {
+  transform: translate(6px, 6px);
+  box-shadow: none;
+}
+
+#wrap.neo-brutalism .login_link {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 24px;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+#wrap.neo-brutalism .login_link a {
+  padding: 5px 8px;
+  border: 1px solid transparent;
+}
+
+#wrap.neo-brutalism .login_link a:hover {
+  border-color: var(--neo-ink);
+  background: var(--neo-cream);
+}
+
+#wrap.neo-brutalism .login_link a::after {
+  display: none;
+}
+
+#wrap.neo-brutalism .sns_login {
+  margin-top: 64px;
+}
+
+#wrap.neo-brutalism .sns_login > p {
+  margin-bottom: 24px;
+  color: var(--neo-ink);
+  font-family: var(--font-Pre);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+#wrap.neo-brutalism .sns_login > p::before,
+#wrap.neo-brutalism .sns_login > p::after {
+  height: 2px;
+  background: var(--neo-ink);
+  opacity: 1;
+}
+
+#wrap.neo-brutalism .sns_list {
+  gap: 14px;
+}
+
+#wrap.neo-brutalism .sns_list > a {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--neo-ink);
+  border-radius: 0;
+  background-color: var(--neo-white);
+  background-size: 28px;
+  box-shadow: 3px 3px 0 var(--neo-ink);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+#wrap.neo-brutalism .sns_list > a:hover {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+#wrap.neo-brutalism button:focus-visible,
+#wrap.neo-brutalism a:focus-visible {
+  outline: 3px solid var(--neo-red);
+  outline-offset: 3px;
+}
+
+@media (min-width: 700px) {
+  #wrap.neo-brutalism main {
+    max-width: 520px;
+    margin: 0 auto;
+    padding-top: 64px;
+  }
+}
+
+@media (max-width: 420px) {
+  #wrap.neo-brutalism main {
+    padding: 40px 20px 56px;
+  }
+  #wrap.neo-brutalism .title > span:last-child {
+    font-size: 3.2rem;
+  }
+  #wrap.neo-brutalism .login_option {
+    gap: 8px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #wrap.neo-brutalism *,
+  #wrap.neo-brutalism *::before,
+  #wrap.neo-brutalism *::after {
+    transition-duration: .01ms !important;
+  }
+}
