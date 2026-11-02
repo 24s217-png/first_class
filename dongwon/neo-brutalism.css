@@ -1,0 +1,274 @@
+/* 동원그룹 로그인 - 07 Neo Brutalism
+   기존 login.css 뒤에 연결해 스타일만 덮어씁니다. */
+#wrap.neo-brutalism {
+    --neo-ink: #17233b;
+    --neo-blue: #1748d1;
+    --neo-sky: #b9ddff;
+    --neo-yellow: #ffe36a;
+    --neo-paper: #fffdf5;
+    --neo-shadow: 6px 6px 0 var(--neo-ink);
+    max-width: 393px;
+    min-height: 100dvh;
+    color: var(--neo-ink);
+    background: var(--neo-sky);
+    border-left: 3px solid var(--neo-ink);
+    border-right: 3px solid var(--neo-ink);
+}
+
+#wrap.neo-brutalism .header {
+    height: 140px;
+    padding-bottom: 21px;
+    background: var(--neo-yellow);
+    border-bottom: 3px solid var(--neo-ink);
+}
+
+#wrap.neo-brutalism .back_btn {
+    left: 12px;
+    bottom: 20px;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--neo-ink);
+    background: var(--neo-paper);
+    box-shadow: 3px 3px 0 var(--neo-ink);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+#wrap.neo-brutalism .back_btn img {
+    width: 24px;
+    height: 24px;
+}
+
+#wrap.neo-brutalism .back_btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
+
+#wrap.neo-brutalism .brand {
+    width: auto;
+    height: auto;
+    padding: 7px 12px;
+    border: 3px solid var(--neo-ink);
+    background: var(--neo-blue);
+    color: #fff;
+    font-size: 2.1rem;
+    font-weight: 900;
+    letter-spacing: -.05em;
+    box-shadow: 4px 4px 0 var(--neo-ink);
+}
+
+#wrap.neo-brutalism main {
+    padding: 42px 22px 56px;
+}
+
+#wrap.neo-brutalism .intro {
+    margin-bottom: 58px;
+}
+
+#wrap.neo-brutalism .intro h1 {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    border: 2px solid var(--neo-ink);
+    background: var(--neo-yellow);
+    box-shadow: 3px 3px 0 var(--neo-ink);
+    font-size: 2.3rem;
+    font-weight: 900;
+    letter-spacing: -.05em;
+}
+
+#wrap.neo-brutalism .intro p {
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+#wrap.neo-brutalism .input_group {
+    gap: 12px;
+}
+
+#wrap.neo-brutalism .input_group > label {
+    font-size: 1.45rem;
+    font-weight: 800;
+}
+
+#wrap.neo-brutalism .input_box input {
+    height: 54px;
+    padding: 0 14px;
+    border: 2px solid var(--neo-ink);
+    border-radius: 0;
+    background: var(--neo-paper);
+    color: var(--neo-ink);
+    box-shadow: 3px 3px 0 var(--neo-ink);
+    font-size: 1.45rem;
+    transition: box-shadow .15s ease, transform .15s ease;
+}
+
+#wrap.neo-brutalism .input_box input::placeholder {
+    color: #777b86;
+}
+
+#wrap.neo-brutalism .input_box input:focus {
+    outline: 3px solid var(--neo-blue);
+    outline-offset: 3px;
+}
+
+#wrap.neo-brutalism .password_box input {
+    padding-right: 54px;
+}
+
+#wrap.neo-brutalism .eye_btn {
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--neo-ink);
+    background: var(--neo-yellow);
+}
+
+#wrap.neo-brutalism .eye_btn img {
+    width: 22px;
+    height: 22px;
+    margin: auto;
+}
+
+#wrap.neo-brutalism .login_options {
+    gap: 18px;
+    margin-top: 18px;
+}
+
+#wrap.neo-brutalism .check_item {
+    gap: 7px;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+#wrap.neo-brutalism .check_item img {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--neo-ink);
+    background: var(--neo-paper);
+}
+
+#wrap.neo-brutalism .login_btn {
+    height: 56px;
+    margin-top: 24px;
+    border: 3px solid var(--neo-ink);
+    border-radius: 0;
+    background: var(--neo-blue);
+    color: #fff;
+    box-shadow: var(--neo-shadow);
+    font-size: 1.7rem;
+    font-weight: 900;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+#wrap.neo-brutalism .login_btn:hover {
+    background: var(--neo-ink);
+}
+
+#wrap.neo-brutalism .login_btn:active {
+    transform: translate(6px, 6px);
+    box-shadow: none;
+}
+
+#wrap.neo-brutalism .login_links {
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    margin-top: 25px;
+}
+
+#wrap.neo-brutalism .login_links a {
+    padding: 4px 6px;
+    border: 1px solid transparent;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+#wrap.neo-brutalism .login_links a:hover {
+    border-color: var(--neo-ink);
+    background: var(--neo-yellow);
+}
+
+#wrap.neo-brutalism .login_links span {
+    height: 14px;
+    background: var(--neo-ink);
+}
+
+#wrap.neo-brutalism .sns_login {
+    margin-top: 62px;
+}
+
+#wrap.neo-brutalism .sns_title {
+    gap: 10px;
+}
+
+#wrap.neo-brutalism .sns_title span {
+    height: 2px;
+    background: var(--neo-ink);
+}
+
+#wrap.neo-brutalism .sns_title h2 {
+    padding: 4px 7px;
+    border: 2px solid var(--neo-ink);
+    background: var(--neo-yellow);
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+#wrap.neo-brutalism .sns_list {
+    gap: 14px;
+    margin-top: 28px;
+}
+
+#wrap.neo-brutalism .sns_list a {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--neo-ink);
+    background: var(--neo-paper);
+    box-shadow: 3px 3px 0 var(--neo-ink);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+#wrap.neo-brutalism .sns_list a:hover {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
+
+#wrap.neo-brutalism .sns_list img {
+    width: 27px;
+    height: 27px;
+}
+
+#wrap.neo-brutalism button:focus-visible,
+#wrap.neo-brutalism a:focus-visible {
+    outline: 3px solid var(--neo-blue);
+    outline-offset: 3px;
+}
+
+@media (max-width: 393px) {
+    #wrap.neo-brutalism .header {
+        height: 120px;
+    }
+
+    #wrap.neo-brutalism main {
+        padding-top: 35px;
+    }
+
+    #wrap.neo-brutalism .intro {
+        margin-bottom: 48px;
+    }
+
+    #wrap.neo-brutalism .sns_login {
+        margin-top: 50px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #wrap.neo-brutalism *,
+    #wrap.neo-brutalism *::before,
+    #wrap.neo-brutalism *::after {
+        transition-duration: .01ms !important;
+    }
+}
