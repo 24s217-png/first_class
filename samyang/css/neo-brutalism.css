@@ -1,0 +1,234 @@
+/* Neo Brutalism theme
+   기존 HTML 구조와 클래스는 유지하고, #wrap.neo-brutalism 안에서 시각 스타일만 덮어씁니다. */
+#wrap.neo-brutalism {
+  --neo-black: #171717;
+  --neo-yellow: #ffe600;
+  --neo-pink: #ff5c9a;
+  --neo-blue: #65d9ff;
+  --neo-green: #b8f35b;
+  --neo-paper: #fffdf4;
+  --neo-shadow: 7px 7px 0 var(--neo-black);
+  color: var(--neo-black);
+  background: var(--neo-paper);
+  font-family: "Pretendard", sans-serif;
+}
+
+/* 공통: 둥근 느낌을 줄이고 검정 외곽선과 단단한 그림자 사용 */
+#wrap.neo-brutalism .site-header,
+#wrap.neo-brutalism .nav-dropdown,
+#wrap.neo-brutalism .header-search-panel,
+#wrap.neo-brutalism .story-card-img,
+#wrap.neo-brutalism .product-box,
+#wrap.neo-brutalism .esg-media,
+#wrap.neo-brutalism .media-thumb-card,
+#wrap.neo-brutalism .support-pill,
+#wrap.neo-brutalism .family-sites > a {
+  border: 3px solid var(--neo-black);
+  border-radius: 0;
+  box-shadow: var(--neo-shadow);
+}
+
+#wrap.neo-brutalism .site-header {
+  background: var(--neo-paper);
+  box-shadow: 0 4px 0 var(--neo-black);
+}
+
+#wrap.neo-brutalism .primary-nav a,
+#wrap.neo-brutalism .utility-link,
+#wrap.neo-brutalism .language-switch,
+#wrap.neo-brutalism .mall-button {
+  color: var(--neo-black);
+  font-weight: 800;
+}
+
+#wrap.neo-brutalism .nav-dropdown {
+  border-top: 3px solid var(--neo-black);
+  background: var(--neo-yellow);
+}
+
+#wrap.neo-brutalism .nav-dropdown a:hover,
+#wrap.neo-brutalism .nav-dropdown a:focus-visible {
+  color: var(--neo-black);
+  background: var(--neo-pink);
+}
+
+#wrap.neo-brutalism .mall-button,
+#wrap.neo-brutalism .header-search-panel button,
+#wrap.neo-brutalism .media-more-btn,
+#wrap.neo-brutalism .to-top {
+  color: var(--neo-black);
+  background: var(--neo-yellow);
+  border: 3px solid var(--neo-black);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--neo-black);
+  font-weight: 900;
+}
+
+#wrap.neo-brutalism .hero-sec {
+  border-bottom: 4px solid var(--neo-black);
+}
+
+#wrap.neo-brutalism .scroll-cue {
+  padding: 12px 16px;
+  color: var(--neo-black);
+  background: var(--neo-yellow);
+  border: 3px solid var(--neo-black);
+  box-shadow: 5px 5px 0 var(--neo-black);
+  font-weight: 900;
+}
+
+#wrap.neo-brutalism .text-band {
+  color: var(--neo-black);
+  background: var(--neo-pink);
+  border-bottom: 3px solid var(--neo-black);
+  border-top: 3px solid var(--neo-black);
+}
+
+#wrap.neo-brutalism .brand-story-sec { background: var(--neo-paper); }
+#wrap.neo-brutalism .best-products-sec { background: var(--neo-blue); }
+#wrap.neo-brutalism .esg-sec { background: var(--neo-green); }
+#wrap.neo-brutalism .media-sec { background: var(--neo-yellow); }
+#wrap.neo-brutalism .stats-sec {
+  color: var(--neo-paper);
+  background: var(--neo-black);
+  border-top: 4px solid var(--neo-black);
+  border-bottom: 4px solid var(--neo-black);
+}
+#wrap.neo-brutalism .support-sec {
+  background: var(--neo-pink);
+  border-bottom: 4px solid var(--neo-black);
+}
+
+#wrap.neo-brutalism .section-title,
+#wrap.neo-brutalism .support-title {
+  color: var(--neo-black);
+  font-weight: 950;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 var(--neo-paper);
+}
+
+#wrap.neo-brutalism .section-title::after {
+  width: .3em;
+  height: .3em;
+  border: 2px solid var(--neo-black);
+  border-radius: 0;
+  background: var(--neo-pink);
+}
+
+#wrap.neo-brutalism .story-card-img,
+#wrap.neo-brutalism .esg-media,
+#wrap.neo-brutalism .media-thumb-card {
+  overflow: hidden;
+  box-shadow: 7px 7px 0 var(--neo-black);
+}
+
+#wrap.neo-brutalism .story-card a:hover .story-card-img {
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0 var(--neo-black);
+}
+
+#wrap.neo-brutalism .story-card h3,
+#wrap.neo-brutalism .product-name,
+#wrap.neo-brutalism .esg-copy h3 {
+  color: var(--neo-black);
+  font-weight: 900;
+}
+
+#wrap.neo-brutalism .product-box {
+  height: 370px;
+  padding: 22px;
+  background: var(--neo-paper);
+  box-shadow: 8px 8px 0 var(--neo-black);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+#wrap.neo-brutalism .product-box:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 var(--neo-black);
+}
+
+#wrap.neo-brutalism .badge-icon,
+#wrap.neo-brutalism .play-icon {
+  color: var(--neo-black);
+  background: var(--neo-yellow);
+  border: 2px solid var(--neo-black);
+  border-radius: 0;
+  font-weight: 900;
+}
+
+#wrap.neo-brutalism .best-nav-btn {
+  color: var(--neo-black);
+  background: var(--neo-pink);
+  border: 3px solid var(--neo-black);
+  box-shadow: 4px 4px 0 var(--neo-black);
+}
+
+#wrap.neo-brutalism .esg-copy p,
+#wrap.neo-brutalism .story-card p,
+#wrap.neo-brutalism .stat p {
+  color: inherit;
+  font-weight: 550;
+}
+
+#wrap.neo-brutalism .stat {
+  border-left: 3px solid var(--neo-paper);
+}
+#wrap.neo-brutalism .stat-num { color: var(--neo-yellow); }
+#wrap.neo-brutalism .stat-label { font-weight: 900; }
+
+#wrap.neo-brutalism .media-more-btn {
+  padding: 10px 16px;
+}
+#wrap.neo-brutalism .media-more-btn .arrow {
+  color: var(--neo-black);
+  background: var(--neo-pink);
+  border: 2px solid var(--neo-black);
+  border-radius: 0;
+}
+
+#wrap.neo-brutalism .support-pill {
+  min-height: 230px;
+  padding: 28px;
+  box-shadow: 8px 8px 0 var(--neo-black);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+#wrap.neo-brutalism .support-pill-orange { color: var(--neo-black); background: var(--neo-yellow); }
+#wrap.neo-brutalism .support-pill-cream { color: var(--neo-black); background: var(--neo-blue); }
+#wrap.neo-brutalism .support-pill:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 var(--neo-black);
+}
+#wrap.neo-brutalism .support-copy strong { font-weight: 950; }
+
+#wrap.neo-brutalism .site-footer {
+  color: var(--neo-paper);
+  background: var(--neo-black);
+  border-top: 4px solid var(--neo-black);
+}
+#wrap.neo-brutalism .footer-top { border-bottom: 2px solid var(--neo-paper); }
+#wrap.neo-brutalism .footer-links h3,
+#wrap.neo-brutalism .footer-bottom > a { color: var(--neo-yellow); }
+#wrap.neo-brutalism .family-sites > a {
+  color: var(--neo-black);
+  background: var(--neo-yellow);
+}
+
+#wrap.neo-brutalism a:focus-visible,
+#wrap.neo-brutalism button:focus-visible {
+  outline: 4px solid var(--neo-pink);
+  outline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+  #wrap.neo-brutalism .product-box { height: 330px; }
+  #wrap.neo-brutalism .support-pill { min-height: 150px; padding: 20px; }
+  #wrap.neo-brutalism .site-header { box-shadow: 0 3px 0 var(--neo-black); }
+  #wrap.neo-brutalism .primary-nav {
+    background: var(--neo-yellow);
+    border-bottom: 3px solid var(--neo-black);
+  }
+  #wrap.neo-brutalism .nav-dropdown {
+    box-shadow: none;
+  }
+}
