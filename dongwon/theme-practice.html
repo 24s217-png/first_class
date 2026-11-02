@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../font/css/pretendardvariable.css">
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="theme-practice.css">
+    <link id="theme-style" rel="stylesheet" href="practice-neo.css" disabled>
+    <title>동원그룹 로그인 테마 연습</title>
+</head>
+<body class="theme-lab">
+    <section class="theme-toolbar" aria-label="디자인 테마 선택">
+        <div class="toolbar-inner">
+            <div>
+                <p class="eyebrow">DONGWON GROUP / UI STYLE LAB</p>
+                <h1>LOGIN THEME PLAYGROUND</h1>
+                <p class="toolbar-desc">테마를 선택하면 아래 로그인 화면에 바로 적용됩니다.</p>
+            </div>
+            <label for="theme-select">디자인 테마 선택
+                <select id="theme-select">
+                    <option value="original">Original · 기본 디자인</option>
+                    <option value="neo">Neo Brutalism</option>
+                    <option value="kinetic">Kinetic Typography</option>
+                    <option value="y2k">Y2K Chrome</option>
+                    <option value="glass">Glassmorphism</option>
+                </select>
+            </label>
+        </div>
+        <p class="theme-description" id="theme-description" aria-live="polite">기본 동원 로그인 디자인입니다.</p>
+    </section>
+
+    <div id="wrap">
+        <header class="header">
+            <button type="button" class="back_btn">
+                <span class="sr-only">이전</span>
+                <img src="img/back_icon.svg" alt="">
+            </button>
+            <div class="brand" aria-label="동원그룹">DONGWON</div>
+        </header>
+        <main>
+            <section class="intro">
+                <p class="practice-kicker">DONGWON GROUP / MEMBER</p>
+                <h2>로그인</h2>
+                <p>이메일 주소와 비밀번호를 입력해 주세요</p>
+            </section>
+            <form action="" method="post" class="login_form">
+                <fieldset>
+                    <legend class="sr-only">이메일 로그인</legend>
+                    <div class="input_group">
+                        <label for="email">이메일 로그인</label>
+                        <div class="input_box">
+                            <input type="email" id="email" name="email" placeholder="이메일 주소를 입력해 주세요.">
+                        </div>
+                        <div class="input_box password_box">
+                            <label class="sr-only" for="password">비밀번호</label>
+                            <input type="password" id="password" name="password" placeholder="비밀번호를 입력해 주세요.">
+                            <button type="button" class="eye_btn">
+                                <span class="sr-only">비밀번호 보기</span>
+                                <img src="img/eye_icon.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="login_options">
+                        <label class="check_item"><input type="checkbox" name="auto_login"><img src="img/checkbox_disabled.svg" alt=""><span>자동 로그인</span></label>
+                        <label class="check_item"><input type="checkbox" name="save_id"><img src="img/checkbox_disabled.svg" alt=""><span>아이디 저장</span></label>
+                    </div>
+                    <button type="submit" class="login_btn">로그인</button>
+                </fieldset>
+            </form>
+            <nav class="login_links" aria-label="회원 관련 메뉴">
+                <a href="#">아이디 찾기</a><span aria-hidden="true"></span>
+                <a href="#">비밀번호 재설정</a><span aria-hidden="true"></span>
+                <a href="#">회원가입</a>
+            </nav>
+            <section class="sns_login">
+                <div class="sns_title"><span></span><h3>SNS으로 간편하게 로그인</h3><span></span></div>
+                <div class="sns_list">
+                    <a href="#" aria-label="카카오 로그인"><img src="img/kakao_logo_icon.svg" alt=""></a>
+                    <a href="#" aria-label="네이버 로그인"><img src="img/naver_logo_icon.svg" alt=""></a>
+                    <a href="#" aria-label="Apple 로그인"><img src="img/apple_logo_icon.svg" alt=""></a>
+                    <a href="#" aria-label="동원그룹 로그인"><img src="img/samsung_logo_icon.svg" alt=""></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const themeSelect = document.querySelector("#theme-select");
+        const themeStyle = document.querySelector("#theme-style");
+        const wrap = document.querySelector("#wrap");
+        const description = document.querySelector("#theme-description");
+
+        const themes = {
+            original: {
+                className: "",
+                css: "",
+                description: "기본 동원 로그인 디자인입니다."
+            },
+            neo: {
+                className: "neo-brutalism",
+                css: "practice-neo.css",
+                description: "굵은 테두리, 강한 색상 대비, 각진 형태와 그림자를 사용합니다."
+            },
+            kinetic: {
+                className: "kinetic-type",
+                css: "practice-kinetic.css",
+                description: "크고 역동적인 타이포그래피와 움직임으로 시선을 집중시킵니다."
+            },
+            y2k: {
+                className: "y2k-chrome",
+                css: "practice-y2k.css",
+                description: "메탈릭 그라데이션과 크롬 광택으로 미래적인 분위기를 표현합니다."
+            },
+            glass: {
+                className: "glassmorphism",
+                css: "practice-glass.css",
+                description: "반투명한 유리 패널, 배경 블러, 부드러운 빛과 그림자를 사용합니다."
+            }
+        };
+
+        themeSelect.addEventListener("change", function () {
+            const selectedTheme = themes[this.value];
+            wrap.className = selectedTheme.className;
+            themeStyle.href = selectedTheme.css || "practice-neo.css";
+            themeStyle.disabled = !selectedTheme.css;
+            description.textContent = selectedTheme.description;
+        });
+    </script>
+</body>
+</html>
