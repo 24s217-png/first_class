@@ -5,7 +5,7 @@
   const sBtn = $(".search-button"), sPanel = $(".header-search-panel"), sInput = $("#site-search");
   const progress = $(".scroll-progress"), toTop = $(".to-top");
 
-  /* 헤더 / 모바일 메뉴 / 검색 (공통 동작은 main.js와 동일) */
+  /* 헤더 / 모바일 메뉴 / 검색 */
   const closeMenu = () => { menuBtn.setAttribute("aria-expanded", "false"); menuBtn.setAttribute("aria-label", "메뉴 열기"); nav.classList.remove("is-open"); };
   menuBtn.addEventListener("click", () => {
     const open = menuBtn.getAttribute("aria-expanded") === "true";
@@ -22,65 +22,33 @@
     sPanel.hidden = open;
     if (!open) sInput.focus();
   });
+  /* 검색: 메뉴 이름이 일치하는 페이지로 이동 (외부 사이트 연결 없음) */
+  const keys = { "연혁": "company.html#history", "보도자료": "media.html#press", "esg": "esg.html" };
+  sPanel.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const q = sInput.value.trim().toLowerCase();
+    if (!q) return sInput.focus();
+    const tab = $$(".sub-tab").find((t) => t.textContent.toLowerCase().includes(q));
+    const target = keys[q] || (tab && tab.getAttribute("href"));
+    if (target) location.href = target;
+    else { sInput.value = ""; sInput.placeholder = "검색 결과가 없습니다"; sInput.focus(); }
+  });
 
-  /* 탭 */
-  const tabs = $$(".sub-tab"), panels = $$(".tab-panel");
-  const swipers = new Set();
-  const initSwipers = (panel) => {
-    if (typeof Swiper === "undefined" || swipers.has(panel.id)) return;
-    swipers.add(panel.id);
-    const h = $(".history-swiper", panel);
+  /* Swiper */
+  if (typeof Swiper !== "undefined") {
+    const h = $(".history-swiper");
     if (h) new Swiper(h, {
       speed: 600, grabCursor: true,
       pagination: { el: ".history-pagination", type: "progressbar" },
       breakpoints: { 0: { slidesPerView: 1.15, spaceBetween: 16 }, 761: { slidesPerView: 2.4, spaceBetween: 20 }, 1051: { slidesPerView: 4, spaceBetween: 28 } }
     });
-    const p = $(".prod-swiper", panel);
+    const p = $(".prod-swiper");
     if (p) new Swiper(p, {
       speed: 600, allowTouchMove: true,
       navigation: { nextEl: ".best-btn-next", prevEl: ".best-btn-prev" },
       breakpoints: { 0: { slidesPerView: "auto", spaceBetween: 16 }, 761: { slidesPerView: 3, spaceBetween: 20 }, 1051: { slidesPerView: 4, spaceBetween: 28 }, 1501: { slidesPerView: 4, spaceBetween: 55.56 } }
     });
-  };
-  const activate = (id) => {
-    const panel = panels.find((p) => p.id === id) || panels[0];
-    panels.forEach((p) => { p.hidden = p !== panel; });
-    tabs.forEach((t) => {
-      const on = t.dataset.tab === panel.id;
-      t.setAttribute("aria-selected", String(on));
-      t.tabIndex = on ? 0 : -1;
-      if (on) t.scrollIntoView({ block: "nearest", inline: "center" });
-    });
-    initSwipers(panel);
-    return panel;
-  };
-  const route = () => {
-    const id = decodeURIComponent(location.hash.slice(1));
-    const el = id && document.getElementById(id);
-    const panel = activate(el ? (el.closest(".tab-panel") || el).id : "about");
-    if (el && el !== panel) el.scrollIntoView();
-    else if (scrollY > $(".sub-hero").offsetHeight) scrollTo({ top: $(".sub-hero").offsetHeight });
-  };
-  tabs.forEach((t, i) => {
-    t.addEventListener("click", () => { location.hash = t.dataset.tab; });
-    t.addEventListener("keydown", (e) => {
-      const d = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
-      if (!d) return;
-      const n = tabs[(i + d + tabs.length) % tabs.length];
-      n.focus(); location.hash = n.dataset.tab;
-    });
-  });
-  addEventListener("hashchange", route);
-
-  /* 검색: 페이지 내부 탭/내용에서 찾아 이동 (외부 사이트 연결 없음) */
-  sPanel.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const q = sInput.value.trim().toLowerCase();
-    if (!q) return sInput.focus();
-    const hit = panels.find((p) => p.textContent.toLowerCase().includes(q) || $(`.sub-tab[data-tab="${p.id}"]`).textContent.toLowerCase().includes(q));
-    if (hit) { location.hash = hit.id; sBtn.click(); }
-    else { sInput.value = ""; sInput.placeholder = "검색 결과가 없습니다"; sInput.focus(); }
-  });
+  }
 
   /* 스크롤: 헤더 그림자 / 진행바 / TOP */
   const onScroll = () => {
@@ -90,8 +58,9 @@
     toTop.classList.toggle("is-show", scrollY > 600);
   };
   addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-  /* 등장 효과 + 숫자 카운트업 (탭이 열릴 때 실행됨) */
+  /* 등장 효과 + 숫자 카운트업 */
   const targets = $$(".section-title, .story-card, .esg-card, .stat, .history-swiper, .press-row, .intro-grid > *, .best-products-container");
   targets.forEach((el) => {
     el.classList.add("reveal");
@@ -117,7 +86,37 @@
     if (en.isIntersecting) { count(en.target); cio.unobserve(en.target); }
   }), { threshold: 0.6 });
   $$(".stat-num[data-count]").forEach((el) => { el.textContent = "0" + (el.dataset.suffix || ""); cio.observe(el); });
+})();
 
-  route();
-  onScroll();
+/* 제품 목록: 카테고리 필터 + 페이지 이동 */
+(() => {
+  const list = document.querySelector(".prod-grid");
+  if (!list) return;
+  const items = Array.from(list.children), pager = document.querySelector(".prod-pager");
+  const filters = Array.from(document.querySelectorAll(".prod-filter button")), PER = 12;
+  let cat = "전체보기", page = 1;
+  const render = () => {
+    const shown = items.filter((i) => cat === "전체보기" || i.dataset.cat === cat);
+    const pages = Math.max(Math.ceil(shown.length / PER), 1);
+    page = Math.min(page, pages);
+    items.forEach((i) => { i.hidden = true; });
+    shown.slice((page - 1) * PER, page * PER).forEach((i) => { i.hidden = false; });
+    pager.innerHTML = pages < 2 ? "" :
+      '<button data-p="' + (page - 1) + '"' + (page === 1 ? " disabled" : "") + ">&lt; Prev</button>" +
+      Array.from({ length: pages }, (_, k) => '<button data-p="' + (k + 1) + '"' + (k + 1 === page ? ' aria-current="page"' : "") + ">" + (k + 1) + "</button>").join("") +
+      '<button data-p="' + (page + 1) + '"' + (page === pages ? " disabled" : "") + ">Next &gt;</button>";
+  };
+  filters.forEach((b) => b.addEventListener("click", () => {
+    cat = b.textContent; page = 1;
+    filters.forEach((f) => f.setAttribute("aria-pressed", String(f === b)));
+    render();
+  }));
+  pager.addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-p]");
+    if (!b || b.disabled) return;
+    page = Number(b.dataset.p);
+    render();
+    document.querySelector(".prod-filter").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  render();
 })();
