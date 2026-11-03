@@ -118,5 +118,14 @@
     render();
     document.querySelector(".prod-filter").scrollIntoView({ behavior: "smooth", block: "start" });
   });
+  const map = { all: "전체보기", ramen: "라면", snack: "스낵", sauce: "소스·간편식", frozen: "냉동 간편식" };
+  const fromHash = () => {
+    const c = map[location.hash.slice(1)];
+    if (!c) return;
+    cat = c; page = 1;
+    filters.forEach((f) => f.setAttribute("aria-pressed", String(f.textContent === c)));
+  };
+  addEventListener("hashchange", () => { fromHash(); render(); });
+  fromHash();
   render();
 })();
