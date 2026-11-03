@@ -81,7 +81,7 @@
   };
 
   tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => activateTab(tab));
+    tab.addEventListener("click", (event) => { event.preventDefault(); activateTab(tab); });
     tab.addEventListener("keydown", (event) => {
       let next = index;
       if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
