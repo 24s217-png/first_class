@@ -84,3 +84,42 @@
   .press-row .badge-icon { grid-column: 2; grid-row: 1 / span 2; }
 }
 @media (prefers-reduced-motion: reduce) { .tab-panel { animation: none; } }
+
+/* 페이지 이동형 탭 (링크) */
+.sub-tab { display: inline-block; }
+.sub-tab[aria-current="page"] { color: var(--orange); }
+.sub-tab[aria-current="page"]::after { transform: scaleX(1); }
+
+/* 제품 목록 */
+.prod-filter { display: grid; grid-template-columns: repeat(6, 1fr); margin-bottom: var(--title-gap); border: 1px solid #e5e5e5; border-radius: 14px; overflow: hidden; scroll-margin-top: 180px; }
+.prod-filter button { padding: 20px 8px; border: 0; border-left: 1px solid #e5e5e5; background: #fff; color: var(--text); font-size: 18px; font-weight: 600; cursor: pointer; transition: background .25s ease, color .25s ease; }
+.prod-filter button:first-child { border-left: 0; }
+.prod-filter button:hover { color: var(--orange); }
+.prod-filter button[aria-pressed="true"] { background: var(--orange); color: #fff; }
+.prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px var(--card-gap); list-style: none; }
+.prod-item[hidden] { display: none; }
+.prod-img { aspect-ratio: 1 / 1; border-radius: 20px; overflow: hidden; }
+.prod-name { margin: 18px 0 14px; font-size: 16px; line-height: 1.4; font-weight: 600; text-align: center; letter-spacing: -.035em; }
+.prod-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.prod-btns a { padding: 11px 0; border: 1px solid #d4d0cc; border-radius: 999px; font-size: 14px; font-weight: 600; text-align: center; transition: background .25s ease, border-color .25s ease, color .25s ease; }
+.prod-btns a:hover { background: var(--orange); border-color: var(--orange); color: #fff; }
+.prod-pager { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 72px; }
+.prod-pager button { min-width: 36px; height: 36px; padding: 0 8px; border: 0; border-radius: 999px; background: none; color: var(--text); font-size: 14px; font-weight: 600; cursor: pointer; transition: background .25s ease, color .25s ease; }
+.prod-pager button:hover { color: var(--orange); }
+.prod-pager button[aria-current="page"] { background: var(--orange); color: #fff; }
+.prod-pager button:disabled { opacity: .35; cursor: default; }
+@media (max-width: 1050px) {
+  .prod-filter button { font-size: 15px; }
+  .prod-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 760px) {
+  .prod-filter { grid-template-columns: repeat(3, 1fr); scroll-margin-top: 150px; }
+  .prod-filter button { padding: 16px 4px; font-size: 14px; }
+  .prod-filter button:nth-child(4) { border-left: 0; }
+  .prod-filter button:nth-child(n+4) { border-top: 1px solid #e5e5e5; }
+  .prod-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 16px; }
+  .prod-img { border-radius: 14px; }
+  .prod-name { font-size: 14px; }
+  .prod-btns a { font-size: 13px; }
+  .prod-pager { gap: 4px; margin-top: 48px; }
+}
