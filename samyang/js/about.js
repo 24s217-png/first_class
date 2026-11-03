@@ -96,8 +96,11 @@
   });
 
   const syncTabFromHash = () => {
-    const hashTab = tabs.find((tab) => "#" + tab.id === location.hash);
-    if (hashTab) activateTab(hashTab, false);
+    const hashId = location.hash.slice(1);
+    const directTab = tabs.find((tab) => tab.id === hashId);
+    const panelTab = tabs.find((tab) => tab.getAttribute("aria-controls") === hashId);
+    const targetTab = directTab || panelTab;
+    if (targetTab) activateTab(targetTab, false);
   };
   syncTabFromHash();
   window.addEventListener("hashchange", syncTabFromHash);
