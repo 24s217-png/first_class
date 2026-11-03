@@ -95,9 +95,12 @@
     });
   });
 
-  const hashTab = tabs.find((tab) => "#" + tab.id === location.hash);
-  if (hashTab) activateTab(hashTab, false);
-  else activateTab(tabs[0], false);
+  const syncTabFromHash = () => {
+    const hashTab = tabs.find((tab) => "#" + tab.id === location.hash);
+    if (hashTab) activateTab(hashTab, false);
+  };
+  syncTabFromHash();
+  window.addEventListener("hashchange", syncTabFromHash);
 
   window.addEventListener("resize", () => {
     if (window.innerWidth > 760) closeMenu();
