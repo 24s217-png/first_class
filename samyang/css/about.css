@@ -202,3 +202,8 @@
 @media(prefers-reduced-motion:reduce){
  .content-tab::after,.sub-product-card,.outline-link{transition:none}
 }
+
+/* The global header navigation is also the subpage content selector. */
+.about-page ~ .site-footer {}
+.site-header .primary-nav a[role="tab"][aria-selected="true"]{color:var(--orange)}
+.site-header .primary-nav a[role="tab"][aria-selected="true"]::after{transform:scaleX(1)}
