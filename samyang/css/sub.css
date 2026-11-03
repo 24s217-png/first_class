@@ -141,3 +141,8 @@
   .info-list > div { grid-template-columns: 90px 1fr; gap: 12px; padding: 16px 0; }
   .info-list dt, .info-list dd { font-size: 14px; }
 }
+
+/* 헤더 아이콘: main.css의 옛날 CSS 아이콘을 무력화하고 구글 아이콘만 표시 */
+.header-tools .icon-button > span { width: auto; height: auto; margin: 0; border: 0; border-radius: 0; position: static; }
+.header-tools .icon-button > span::after { content: none; }
+.header-tools .icon-button .material-symbols-outlined { font-size: 24px; line-height: 1; color: #323232; }
