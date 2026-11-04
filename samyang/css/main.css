@@ -335,12 +335,6 @@ img, video { display: block; max-width: 100%; }
 /* 헤더: 스크롤 시 그림자 */
 .site-header { transition: box-shadow .3s ease; }
 .site-header.is-scrolled { box-shadow: 0 6px 24px #0000001a; }
-@media (min-width: 761px) {
-  .nav-item > a { position: relative; }
-  .nav-item > a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 24px; height: 2px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
-  .nav-item:hover > a::after, .nav-item:focus-within > a::after { transform: scaleX(1); }
-}
-
 /* 히어로: 하단 그라데이션 + 스크롤 안내 */
 .hero-sec::after { content: ""; position: absolute; inset: auto 0 0; height: 32%; background: linear-gradient(transparent, rgba(0, 0, 0, .38)); pointer-events: none; }
 .scroll-cue { position: absolute; z-index: 2; left: 50%; bottom: 26px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .24em; }
