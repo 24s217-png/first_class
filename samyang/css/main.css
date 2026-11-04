@@ -162,7 +162,7 @@ img, video { display: block; max-width: 100%; }
   .esg-grid { gap: 32px; }
   .support-inner { grid-template-columns: minmax(250px, .8fr) 1.8fr; gap: 30px; }
   .support-actions { gap: 24px; }
-  .support-pill { min-height: 260px; padding: 24px; }
+  .support-pill { min-height: 142px; padding: 24px; }
   .support-copy strong { font-size: 20px; }
   .support-copy small { font-size: 13px; }
 }
@@ -195,7 +195,7 @@ img, video { display: block; max-width: 100%; }
   .media-thumb-card { height: 250px; }
   .support-inner { grid-template-columns: 1fr; gap: 28px; }
   .support-actions { justify-content: start; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .support-pill { min-height: 220px; }
+  .support-pill { min-height: 142px; }
   .footer-top { gap: 30px; }
   .footer-links { gap: 24px; }
 }
