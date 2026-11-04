@@ -23,13 +23,12 @@
     if (!open) sInput.focus();
   });
   /* 검색: 메뉴 이름이 일치하는 페이지로 이동 (외부 사이트 연결 없음) */
-  const keys = { "연혁": "company.html#history", "보도자료": "media.html#press", "esg": "esg.html" };
+  const keys = { "삼양식품소개": "company.html", "미디어/pr": "media.html", "미디어": "media.html", "보도자료": "media.html#press", "지속가능경영": "esg.html", "esg": "esg.html", "브랜드": "brand.html", "제품": "product.html", "연혁": "company.html#history" };
   sPanel.addEventListener("submit", (e) => {
     e.preventDefault();
     const q = sInput.value.trim().toLowerCase();
     if (!q) return sInput.focus();
-    const tab = $$(".sub-tab").find((t) => t.textContent.toLowerCase().includes(q));
-    const target = keys[q] || (tab && tab.getAttribute("href"));
+    const target = keys[q];
     if (target) location.href = target;
     else { sInput.value = ""; sInput.placeholder = "검색 결과가 없습니다"; sInput.focus(); }
   });
