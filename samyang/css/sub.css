@@ -9,18 +9,6 @@
 .crumb { margin-bottom: 20px; font-size: 14px; color: var(--muted); }
 .sub-lead { max-width: 560px; margin-top: 24px; font-size: 18px; line-height: 1.5; color: var(--muted); }
 
-/* Tabs */
-.sub-tabs { position: sticky; top: 90px; z-index: 50; background: #fff; border-bottom: 1px solid #e5e5e5; }
-.tablist { display: flex; gap: clamp(28px, 5.47vw, 105px); overflow-x: auto; scrollbar-width: none; }
-.tablist::-webkit-scrollbar { display: none; }
-.sub-tab { position: relative; flex: 0 0 auto; padding: 26px 0; border: 0; background: none; color: var(--text); font-size: 18px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: color .2s ease; }
-.sub-tab::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
-.sub-tab:hover, .sub-tab[aria-selected="true"] { color: var(--orange); }
-.sub-tab[aria-selected="true"]::after { transform: scaleX(1); }
-.sub-tab:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
-.tab-panel { animation: panel-in .5s ease; }
-.tab-panel[hidden] { display: none; }
-@keyframes panel-in { from { opacity: 0; } to { opacity: 1; } }
 
 /* 이미지 박스 (나중에 <img>로 교체) */
 .ph { width: 100%; height: 100%; min-height: 120px; display: grid; place-items: center; background: #f3eee8; border: 1px dashed #d4d0cc; color: var(--muted); font-size: 14px; font-weight: 700; letter-spacing: .09em; text-align: center; }
@@ -60,9 +48,7 @@
 /* Product placeholder */
 .product-img-wrap .ph { border-radius: 14px; }
 
-@media (max-width: 1500px) { .sub-tab { font-size: 18px; } }
 @media (max-width: 1050px) {
-  .sub-tabs { top: 76px; }
   .sub-lead { font-size: 18px; }
   .intro-grid { gap: var(--card-gap); }
   .intro-head, .history-card h3, .press-row h3 { font-size: 18px; }
@@ -70,9 +56,6 @@
   .history-card { border-radius: 24px; }
 }
 @media (max-width: 760px) {
-  .sub-tabs { top: 70px; }
-  .tablist { gap: 24px; }
-  .sub-tab { padding: 18px 0; font-size: 18px; }
   .sub-lead { font-size: 13px; }
   .intro-grid { grid-template-columns: 1fr; }
   .ph-wide { border-radius: 14px; }
