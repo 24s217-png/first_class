@@ -69,9 +69,6 @@
 @media (prefers-reduced-motion: reduce) { .tab-panel { animation: none; } }
 
 /* 페이지 이동형 탭 (링크) */
-.sub-tab { display: inline-block; }
-.sub-tab[aria-current="page"] { color: var(--orange); }
-.sub-tab[aria-current="page"]::after { transform: scaleX(1); }
 
 /* 제품 목록 */
 .prod-filter { display: grid; grid-template-columns: repeat(6, 1fr); margin-bottom: var(--title-gap); border: 1px solid #e5e5e5; border-radius: 14px; overflow: hidden; scroll-margin-top: 180px; }
