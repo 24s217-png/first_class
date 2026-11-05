@@ -172,7 +172,7 @@ img, video { display: block; max-width: 100%; }
   .site-header { height: 76px; }
   .brand-logo { flex-basis: auto; }
   .primary-nav { gap: 18px; }
-  .primary-nav a { font-size: 13px; }
+  .primary-nav a { font-size: 18px; }
   .header-tools .utility-link, .header-tools .tool-divider, .header-tools .icon-button { display: none; }
   .mall-button { padding: 9px 12px; font-size: 12px; }
   .story-grid { gap: 18px; }
