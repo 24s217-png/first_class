@@ -367,3 +367,33 @@
  .media-detail-body { margin-top: 32px; }
  .media-detail-body > p:not(.product-detail-label) { font-size: 16px; }
 }
+
+
+/* Company page: unify border color, width, and corner radius */
+#about .intro-grid > img,
+#history .history-card,
+#global .global-network-image,
+#location .info-list,
+#location .info-list > div,
+#location .map-embed {
+  border: 1px solid #d4d0cc;
+  border-radius: 16px;
+}
+#location .info-list {
+  overflow: hidden;
+}
+#location .info-list > div {
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+#location .info-list > div:last-child {
+  border-bottom: 0;
+}
+#history .history-card {
+  border-color: #d4d0cc;
+  border-radius: 16px;
+}
+#history .history-card .ph {
+  border: 0;
+  border-radius: 10px;
+}
