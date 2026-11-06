@@ -23,7 +23,7 @@
     if (!open) sInput.focus();
   });
   /* 검색: 메뉴 이름이 일치하는 페이지로 이동 (외부 사이트 연결 없음) */
-  const keys = { "삼양식품소개": "company.html", "미디어/pr": "media.html", "미디어": "media.html", "보도자료": "media.html#press", "지속가능경영": "esg.html", "esg": "esg.html", "브랜드": "brand.html", "제품": "product.html", "연혁": "company.html#history" };
+  const keys = { "삼양식품소개": "company.html", "미디어/pr": "media.html", "미디어": "media.html", "보도자료": "media.html#press", "지속가능경영": "esg.html", "esg": "esg.html", "브랜드": "brand.html", "제품": "product.html", "연혁": "company.html#history", "ir": "ir.html", "공시정보": "ir.html#disclosure", "재무정보": "ir.html#financial", "주가정보": "ir.html#stock", "ir자료실": "ir.html#library", "홍보영상": "media-video.html", "미디어센터": "media-center.html" };
   sPanel.addEventListener("submit", (e) => {
     e.preventDefault();
     const q = sInput.value.trim().toLowerCase();
