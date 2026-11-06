@@ -29,8 +29,8 @@
   <div class="scroll-progress"></div>
 </header>
 <main id="main" class="product-detail-page">
-<section class="product-detail-hero"><div class="section-inner"><p class="crumb">HOME &gt; 제품 &gt; 제품소개</p><p class="product-detail-kicker" id="detail-category">PRODUCT</p><div class="product-detail-layout"><div class="product-detail-visual"><img id="detail-image" src="img/Carbonara.png" alt="까르보 불닭볶음면"></div><div class="product-detail-copy"><p class="product-detail-label">SAMYANG FOODS</p><h1 id="detail-name">까르보 불닭볶음면</h1><p class="product-detail-lead" id="detail-lead">불닭의 화끈한 매운맛에 부드럽고 고소한 크림 풍미를 더한 제품입니다.</p><div class="product-detail-rule"></div><p class="product-detail-description" id="detail-description">매콤함과 크리미한 풍미가 조화를 이루는 까르보 불닭볶음면. 불닭 브랜드의 개성 있는 맛을 색다르게 즐길 수 있습니다.</p><ul class="product-detail-points" id="detail-points"><li>불닭 특유의 매콤한 맛</li><li>부드럽고 고소한 크림 풍미</li><li>꾸준히 사랑받는 까르보 맛</li></ul><a class="product-detail-back" href="product.html">전체 제품 보기 <span>↗</span></a></div></div></div></section>
-<section class="product-detail-extra"><div class="section-inner"><p class="product-detail-label">PRODUCT STORY</p><h2>한 입에 담은<br><em>삼양의 맛</em></h2><p>삼양식품의 다양한 제품을 경험해 보세요.</p><a href="product-intro.html">제품소개로 돌아가기</a></div></section>
+<section class="product-detail-hero"><div class="section-inner"><p class="crumb">HOME &gt; 제품 &gt; 제품소개</p><p class="product-detail-kicker" id="detail-category">PRODUCT</p><div class="product-detail-layout"><div class="product-detail-visual"><img id="detail-image" src="img/Carbonara.png" alt="까르보 불닭볶음면"></div><div class="product-detail-copy"><p class="product-detail-label">SAMYANG FOODS</p><h1 id="detail-name">까르보 불닭볶음면</h1><p class="product-detail-lead" id="detail-lead">불닭의 화끈한 매운맛에 부드럽고 고소한 크림 풍미를 더한 제품입니다.</p><div class="product-detail-rule"></div><p class="product-detail-description" id="detail-description">매콤함과 크리미한 풍미가 조화를 이루는 까르보 불닭볶음면. 불닭 브랜드의 개성 있는 맛을 색다르게 즐길 수 있습니다.</p><ul class="product-detail-points" id="detail-points"><li>불닭 특유의 매콤한 맛</li><li>부드럽고 고소한 크림 풍미</li><li>꾸준히 사랑받는 까르보 맛</li></ul><div class="product-detail-actions"><a class="product-detail-buy" id="detail-buy" href="https://search.shopping.naver.com/search/all?query=까르보%20불닭볶음면" target="_blank" rel="noopener">구매하기 <span>↗</span></a><a class="product-detail-back" href="product.html">전체 제품 보기</a></div></div></div></div></section>
+<section class="product-related"><div class="section-inner"><div class="product-related-heading"><div><p class="product-detail-label">YOU MAY ALSO LIKE</p><h2>다른 제품도 만나보세요</h2></div><a href="product.html">전체 제품 보기 <span>↗</span></a></div><div class="product-related-grid" id="related-products"></div></div></section>
 </main>
 <script>
 (() => {
@@ -44,7 +44,12 @@
  document.getElementById("detail-name").textContent=selected.name;
  document.getElementById("detail-lead").textContent=selected.lead;
  document.getElementById("detail-description").textContent=selected.desc;
+ 
  document.getElementById("detail-points").innerHTML=selected.point.map(point=>"<li>"+point+"</li>").join("");
+ document.getElementById("detail-buy").href="https://search.shopping.naver.com/search/all?query="+encodeURIComponent(selected.name);
+ const related=products.filter(item=>item.id!==selected.id);
+ document.getElementById("related-products").innerHTML=related.map(item=>'<a class="product-related-card" href="product-detail.html?item='+item.id+'"><span class="product-related-image"><img src="img/'+item.image+'" alt="'+item.name+'"></span><span class="product-related-category">'+item.category+'</span><strong>'+item.name+'</strong><span class="product-related-more">제품 보기 ↗</span></a>').join("");
+
 })();
 </script>
 
