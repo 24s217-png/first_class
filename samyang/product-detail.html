@@ -47,8 +47,8 @@
  
  document.getElementById("detail-points").innerHTML=selected.point.map(point=>"<li>"+point+"</li>").join("");
  document.getElementById("detail-buy").href="https://search.shopping.naver.com/search/all?query="+encodeURIComponent(selected.name);
- const related=products.filter(item=>item.id!==selected.id);
- document.getElementById("related-products").innerHTML=related.map(item=>'<a class="product-related-card" href="product-detail.html?item='+item.id+'"><span class="product-related-image"><img src="img/'+item.image+'" alt="'+item.name+'"></span><span class="product-related-category">'+item.category+'</span><strong>'+item.name+'</strong><span class="product-related-more">제품 보기 ↗</span></a>').join("");
+ const related=products;
+ document.getElementById("related-products").innerHTML=related.map(item=>'<a class="product-related-card'+(item.id===selected.id?' is-current':'')+'" href="product-detail.html?item='+item.id+'"><span class="product-related-image"><img src="img/'+item.image+'" alt="'+item.name+'"></span><span class="product-related-category">'+(item.id===selected.id?'CURRENT PRODUCT':item.category)+'</span><strong>'+item.name+'</strong></a>').join("")+'<a class="product-related-card product-related-all" href="product.html"><span class="product-related-all-icon">＋</span><strong>전체 제품 보기</strong><span class="product-related-category">VIEW ALL PRODUCTS</span></a>';
 
 })();
 </script>
