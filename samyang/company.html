@@ -15,25 +15,6 @@
 .map-embed{position:relative;width:100%;aspect-ratio:16/10;background:#eee;overflow:hidden}
 .map-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 #location .info-list a{display:inline-block;margin-left:8px;color:#e60012;text-decoration:underline;text-underline-offset:3px}
-/* IR section redesign */
-.ir-sec .ir-layout{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:center}
-.ir-sec .ir-intro .intro-text{margin-top:20px;max-width:30em;word-break:keep-all}
-.ir-sec .ir-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:2px solid #1a1a1a;border-left:1px solid #d9d9d9}
-.ir-sec .ir-link{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:36px;min-height:200px;padding:28px 28px 26px;color:#1a1a1a;text-decoration:none;border-right:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9;background:#fff;transition:background-color .25s,color .25s}
-.ir-sec .ir-icon{font-size:36px;color:#e60012;transition:color .25s}
-.ir-sec .ir-text{display:flex;flex-direction:column;gap:6px}
-.ir-sec .ir-text strong{font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:-.02em}
-.ir-sec .ir-text small{font-size:14px;line-height:1.5;color:#666;transition:color .25s}
-.ir-sec .ir-arrow{position:absolute;top:24px;right:24px;font-size:24px;color:#999;transition:transform .25s,color .25s}
-.ir-sec .ir-link:hover,.ir-sec .ir-link:focus-visible{background:#e60012;color:#fff}
-.ir-sec .ir-link:hover .ir-icon,.ir-sec .ir-link:focus-visible .ir-icon,
-.ir-sec .ir-link:hover .ir-text small,.ir-sec .ir-link:focus-visible .ir-text small,
-.ir-sec .ir-link:hover .ir-arrow,.ir-sec .ir-link:focus-visible .ir-arrow{color:#fff}
-.ir-sec .ir-link:hover .ir-arrow,.ir-sec .ir-link:focus-visible .ir-arrow{transform:translate(3px,-3px)}
-.ir-sec .ir-link:focus-visible{outline:3px solid #1a1a1a;outline-offset:-3px}
-@media (max-width:900px){.ir-sec .ir-layout{grid-template-columns:1fr;align-items:start}}
-@media (max-width:560px){.ir-sec .ir-links{grid-template-columns:1fr}.ir-sec .ir-link{min-height:150px;gap:24px}}
-@media (prefers-reduced-motion:reduce){.ir-sec *{transition:none!important}}
 </style>
 </head>
 <body>
@@ -71,7 +52,6 @@
     
     <section class="best-products-sec" id="history"><div class="section-inner"><h2 class="section-title">HISTORY</h2><div class="swiper history-swiper"><div class="swiper-wrapper"><div class="swiper-slide"><article class="history-card"><strong>1961</strong><h3>삼양식품 설립</h3><p>연혁 내용을 입력하세요.</p><img class="ph is-practice-image" src="img/HISTORY_1.jpg" alt="삼양식품 연혁 1"></article></div><div class="swiper-slide"><article class="history-card"><strong>YEAR</strong><h3>연혁 제목</h3><p>연혁 내용을 입력하세요.</p><img class="ph is-practice-image" src="img/HISTORY_2.jpg" alt="삼양식품 연혁 2"></article></div><div class="swiper-slide"><article class="history-card"><strong>YEAR</strong><h3>연혁 제목</h3><p>연혁 내용을 입력하세요.</p><img class="ph is-practice-image" src="img/HISTORY_3.png" alt="삼양식품 연혁 3"></article></div><div class="swiper-slide"><article class="history-card"><strong>YEAR</strong><h3>연혁 제목</h3><p>연혁 내용을 입력하세요.</p><img class="ph is-practice-image" src="img/HISTORY_4.png" alt="삼양식품 연혁 4"></article></div><div class="swiper-slide"><article class="history-card"><strong>YEAR</strong><h3>연혁 제목</h3><p>연혁 내용을 입력하세요.</p><img class="ph is-practice-image" src="img/img_1.png" alt="IMAGE"></article></div></div></div><div class="swiper-pagination history-pagination"></div></div></section>
     <section class="brand-story-sec" id="global"><div class="section-inner"><h2 class="section-title">GLOBAL NETWORK</h2><p class="intro-text sec-lead">삼양식품의 제품은 전 세계 고객에게 전달되고 있습니다. 해외 법인과 수출 현황을 입력하세요.</p><img class="global-network-image" src="img/GLOBAL_NETWORK_1.png" alt="삼양식품 글로벌 네트워크"></div></section>
-    <section class="best-products-sec ir-sec" id="ir"><div class="section-inner"><div class="ir-layout"><div class="ir-intro"><h2 class="section-title">IR</h2><p class="intro-text">투자자를 위한 경영 정보를 안내합니다. 공시부터 재무, 주가, 자료실까지 필요한 정보를 바로 찾아보세요.</p></div><div class="ir-links"><a class="ir-link" href="#"><span class="material-symbols-outlined ir-icon" aria-hidden="true">campaign</span><span class="ir-text"><strong>공시정보</strong><small>전자공시와 주요 경영사항</small></span><span class="ir-arrow material-symbols-outlined" aria-hidden="true">arrow_outward</span></a><a class="ir-link" href="#"><span class="material-symbols-outlined ir-icon" aria-hidden="true">bar_chart</span><span class="ir-text"><strong>재무정보</strong><small>재무제표와 실적 현황</small></span><span class="ir-arrow material-symbols-outlined" aria-hidden="true">arrow_outward</span></a><a class="ir-link" href="#"><span class="material-symbols-outlined ir-icon" aria-hidden="true">show_chart</span><span class="ir-text"><strong>주가정보</strong><small>주가 추이와 주식 현황</small></span><span class="ir-arrow material-symbols-outlined" aria-hidden="true">arrow_outward</span></a><a class="ir-link" href="#"><span class="material-symbols-outlined ir-icon" aria-hidden="true">folder_open</span><span class="ir-text"><strong>IR 자료실</strong><small>설명회 자료와 사업보고서</small></span><span class="ir-arrow material-symbols-outlined" aria-hidden="true">arrow_outward</span></a></div></div></div></section>
     <section class="brand-story-sec" id="location"><div class="section-inner"><h2 class="section-title">LOCATION</h2><div class="intro-grid"><dl class="info-list"><div><dt>본사</dt><dd>서울특별시 중구 충무로2가 53-2 (명동 사옥) <a href="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%A4%91%EA%B5%AC%20%EC%B6%A9%EB%AC%B4%EB%A1%9C2%EA%B0%80%2053-2" target="_blank" rel="noopener">큰 지도에서 보기</a></dd></div><div><dt>연락처</dt><dd>전화번호를 입력하세요</dd></div><div><dt>찾아오시는 길</dt><dd>교통편 안내를 입력하세요</dd></div></dl><div class="map-embed"><iframe title="삼양식품 본사 위치 지도" src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%A4%91%EA%B5%AC%20%EC%B6%A9%EB%AC%B4%EB%A1%9C2%EA%B0%80%2053-2&amp;hl=ko&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div></div></section>
   </div>
 </main>
@@ -80,7 +60,7 @@
         <div class="footer-top">
           <a class="footer-logo" href="#top" aria-label="삼양식품 홈"><span aria-hidden="true"></span>Samyang</a>
           <div class="footer-links">
-            <div><h3>기업정보</h3><a href="#brand-story">삼양식품 소개</a><a href="#esg">IR 투자정보</a><a href="#esg">지속가능경영</a></div>
+            <div><h3>기업정보</h3><a href="#brand-story">삼양식품 소개</a><a href="#esg">지속가능경영</a></div>
             <div><h3>브랜드 &amp; 제품</h3><a href="#brand-story">브랜드 전체 보기</a><a href="#best-products">제품 둘러보기</a><a href="#best-products">신제품</a></div>
             <div><h3>고객지원</h3><a href="#support">FAQ</a><a href="#support">1:1 문의</a><a href="#footer">개인정보처리방침</a></div>
             <div class="family-sites"><a href="#">패밀리 사이트 선택 <span>⌄</span></a></div>
