@@ -428,3 +428,6 @@ img, video { display: block; max-width: 100%; }
 
 /* BRAND STORY cards are informational and non-interactive */
 .story-card { cursor: default; }
+
+/* ESG heading shares a row with its shortcut button */
+.esg-sec .media-header .section-title { margin-bottom: 0; }
