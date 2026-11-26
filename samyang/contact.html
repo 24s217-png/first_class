@@ -56,6 +56,62 @@
     .form-buttons button { min-width:92px; height:44px; border:0; color:#fff; font-size:14px; font-weight:700; cursor:pointer; }
     .submit-button { background:#ff6400; }
     .cancel-button { background:#858585; }
+
+    /* 문의 폼 모서리와 체크박스 */
+    .contact-form { overflow:hidden; border:1px solid #dedede; border-radius:10px; }
+    .form-field input:not([type=checkbox]):not([type=file]),
+    .form-field select,
+    .form-field textarea,
+    .form-action,
+    .policy-button,
+    .form-buttons button,
+    .file-line input[type=file] { border-radius:10px; }
+    .form-field input:not([type=checkbox]):not([type=file]),
+    .form-field select,
+    .form-field textarea { border-radius:8px; }
+    .file-line input[type=file]::file-selector-button { border:0; border-radius:8px; padding:8px 12px; margin-right:8px; cursor:pointer; }
+    .country-options { align-items:flex-start; }
+    .country-options label,
+    .agree-line label { cursor:pointer; }
+    .country-options input[type="checkbox"],
+    .agree-line input[type="checkbox"] {
+      appearance:none;
+      -webkit-appearance:none;
+      position:relative;
+      display:inline-grid;
+      place-items:center;
+      flex:0 0 19px;
+      width:19px;
+      height:19px;
+      margin:0;
+      border:1.7px solid #c8c8c8;
+      border-radius:50%;
+      background:#fff;
+      cursor:pointer;
+      transition:border-color .15s ease, box-shadow .15s ease;
+    }
+    .country-options input[type="checkbox"]::before,
+    .agree-line input[type="checkbox"]::before {
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:#1e6bff;
+      content:"";
+      transform:scale(0);
+      transition:transform .15s ease;
+    }
+    .country-options input[type="checkbox"]:checked,
+    .agree-line input[type="checkbox"]:checked {
+      border:1.8px solid #1e6bff;
+      box-shadow:inset 0 0 0 3px #fff;
+    }
+    .country-options input[type="checkbox"]:checked::before,
+    .agree-line input[type="checkbox"]:checked::before { transform:scale(1); }
+    .country-options input[type="checkbox"]:focus-visible,
+    .agree-line input[type="checkbox"]:focus-visible {
+      outline:3px solid #1e6bff35;
+      outline-offset:3px;
+    }
     @media(max-width:700px) {
       .contact-page { padding:42px 0 70px; }
       .contact-inner { width:calc(100% - 32px); }
@@ -128,11 +184,8 @@
               <span class="form-label"><span class="required-mark">*</span>&nbsp; 거주지</span>
               <div class="form-field">
                 <div class="country-options">
-                  <label><input type="radio" name="country" value="국내" checked> 국내</label>
-                  <p class="country-note">대한민국 거주 고객은 국내를 선택해 주세요.</p>
-                  <label><input type="radio" name="country" value="중국"> 중국</label>
-                  <p class="country-note">중국 거주 고객은 중국을 선택해 주세요.</p>
-                  <label><input type="radio" name="country" value="기타"> 기타 국가</label>
+                  <label for="country-domestic"><input type="checkbox" id="country-domestic" name="country" value="국내" checked> 국내</label>
+                  <input class="field-medium" id="customer-address" name="address" type="text" placeholder="상세주소를 입력해주세요" autocomplete="street-address" required>
                 </div>
               </div>
             </div>
