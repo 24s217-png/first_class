@@ -389,6 +389,19 @@
 #location .info-list > div:last-child {
   border-bottom: 0;
 }
+#about .intro-grid > img,
+#global .global-network-image {
+  box-sizing: border-box;
+  padding: 14px;
+}
+#location .info-list > div {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#location .map-embed {
+  box-sizing: border-box;
+  padding: 12px;
+}
 #history .history-card {
   border-color: #d4d0cc;
   border-radius: 16px;
@@ -396,6 +409,12 @@
 #history .history-card .ph {
   border: 0;
   border-radius: 10px;
+}
+@media (max-width: 760px) {
+  #about .intro-grid > img,
+  #global .global-network-image { padding: 10px; }
+  #location .info-list > div { padding-left: 14px; padding-right: 14px; }
+  #location .map-embed { padding: 10px; }
 }
 
 
