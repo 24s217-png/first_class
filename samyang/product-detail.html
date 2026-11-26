@@ -58,7 +58,7 @@
  const params=new URLSearchParams(location.search);
  const selected=products.find(item=>item.id===params.get("item"))||products[0];
  document.title="삼양식품 | "+selected.name;
- document.getElementById("detail-category").textContent=selected.category;
+
  document.getElementById("detail-image").src="img/"+selected.image;
  document.getElementById("detail-image").alt=selected.name;
  document.getElementById("detail-name").textContent=selected.name;
