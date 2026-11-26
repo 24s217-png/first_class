@@ -586,3 +586,31 @@
     margin-top: 36px;
   }
 }
+
+
+/* ESG ECO: SOCIAL과 동일한 2단 레이아웃 */
+#eco .eco-list {
+  display: grid;
+  gap: clamp(40px, 6vw, 88px);
+}
+#eco .eco-row {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+#eco .eco-row img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 20px;
+}
+@media (max-width: 760px) {
+  #eco .eco-row {
+    grid-template-columns: 1fr;
+  }
+  #eco .eco-row img {
+    order: -1;
+    border-radius: 14px;
+  }
+}
