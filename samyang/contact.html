@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>고객문의 | Samyang Foods</title>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="../css/default.css">
+  <link rel="stylesheet" href="../font/css/pretendardvariable.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/sub.css">
+  <script src="js/main.js" defer></script>
+  <style>
+    .contact-page { padding: 64px 0 100px; background:#fff; }
+    .contact-inner { width:min(1200px, calc(100% - 48px)); margin:0 auto; }
+    .contact-heading { display:flex; align-items:flex-start; gap:22px; padding-bottom:22px; border-bottom:1px solid #d8d8d8; }
+    .contact-heading h1 { flex:0 0 auto; font-size:clamp(26px,3vw,38px); line-height:1.1; font-weight:800; letter-spacing:-.06em; }
+    .contact-heading p { font-size:13px; line-height:1.7; color:#555; }
+    .required-note { margin-left:auto; flex:0 0 auto; padding-top:4px; font-size:12px; color:#777; }
+    .required-mark { color:#f05a28; font-weight:800; }
+    .contact-form { margin-top:0; border-top:0; }
+    .form-row { display:grid; grid-template-columns:150px minmax(0,1fr); min-height:62px; border-bottom:1px solid #dedede; }
+    .form-label { display:flex; align-items:center; padding:14px 18px; background:#f3f3f3; font-size:14px; font-weight:650; }
+    .form-field { display:flex; align-items:center; flex-wrap:wrap; gap:10px; min-width:0; padding:12px 18px; }
+    .form-field input:not([type=checkbox]):not([type=file]), .form-field select, .form-field textarea {
+      height:40px; border:1px solid #c9c9c9; border-radius:0; background:#fff; padding:0 12px; color:#333; font:inherit; font-size:14px; outline:none;
+    }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color:#ff6400; box-shadow:0 0 0 2px #ff64001a; }
+    .field-wide { width:min(100%,640px); }
+    .field-medium { width:min(100%,370px); }
+    .field-small { width:160px; }
+    .field-phone { width:min(100%,370px); }
+    .form-field select { min-width:180px; }
+    .country-options { display:flex; flex-direction:column; gap:8px; width:100%; font-size:13px; }
+    .country-options label { display:flex; align-items:center; gap:7px; }
+    .country-note { padding-left:21px; color:#666; line-height:1.6; }
+    .country-note a { color:#e85b21; text-decoration:underline; }
+    .email-fields { display:flex; align-items:center; flex-wrap:wrap; gap:7px; width:100%; }
+    .email-fields input { width:min(180px,100%); }
+    .email-fields select { min-width:150px; }
+    .email-at { color:#777; }
+    .form-help { flex-basis:100%; margin-top:0; color:#e65325; font-size:11px; line-height:1.5; }
+    .form-action { height:38px; padding:0 18px; border:0; background:#555; color:#fff; font-size:13px; font-weight:650; cursor:pointer; }
+    .form-action:hover { background:#333; }
+    .verify-code { width:120px !important; }
+    .inquiry-content { width:100%; min-height:300px; padding:12px !important; resize:vertical; }
+    .file-line { display:flex; align-items:center; flex-wrap:wrap; gap:8px; width:100%; }
+    .file-line input[type=file] { max-width:100%; font-size:13px; }
+    .file-help { flex-basis:100%; color:#777; font-size:11px; }
+    .agree-line { display:flex; align-items:center; flex-wrap:wrap; gap:10px; width:100%; font-size:13px; }
+    .agree-line label { display:flex; align-items:center; gap:8px; }
+    .policy-button { margin-left:auto; border:1px solid #bbb; padding:7px 13px; background:#fff; color:#555; font-size:12px; cursor:pointer; }
+    .form-buttons { display:flex; justify-content:flex-end; gap:8px; margin-top:28px; }
+    .form-buttons button { min-width:92px; height:44px; border:0; color:#fff; font-size:14px; font-weight:700; cursor:pointer; }
+    .submit-button { background:#ff6400; }
+    .cancel-button { background:#858585; }
+    @media(max-width:700px) {
+      .contact-page { padding:42px 0 70px; }
+      .contact-inner { width:calc(100% - 32px); }
+      .contact-heading { display:block; }
+      .contact-heading p { margin-top:12px; }
+      .required-note { display:block; margin-top:10px; }
+      .form-row { grid-template-columns:100px minmax(0,1fr); }
+      .form-label { padding:12px 10px; font-size:12px; }
+      .form-field { padding:10px; gap:8px; }
+      .form-field input:not([type=checkbox]):not([type=file]), .form-field select { max-width:100%; }
+      .email-fields input { width:calc(50% - 14px); }
+      .email-fields select { width:100%; }
+      .inquiry-content { min-height:220px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand-logo" href="index.html#top" aria-label="삼양식품 홈"><img src="img/logo.png" alt="삼양식품" class="header-logo-image"></a>
+        <nav class="primary-nav" aria-label="주요 메뉴">
+          <div class="nav-item"><a href="company.html">삼양식품소개</a><div class="nav-dropdown"><a href="company.html#about">삼양식품</a><a href="company.html#history">연혁</a><a href="company.html#global">글로벌 네트워크</a><a href="company.html#location">위치정보</a></div></div>
+          <div class="nav-item"><a href="ir.html">IR</a><div class="nav-dropdown"><a href="ir.html#disclosure">공시정보</a><a href="ir.html#financial">재무정보</a><a href="ir.html#stock">주가정보</a><a href="ir.html#library">IR자료실</a></div></div>
+          <div class="nav-item"><a href="media.html">미디어/PR</a><div class="nav-dropdown"><a href="media-press.html">보도자료</a><a href="media-video.html">홍보영상</a><a href="media-center.html">미디어센터</a></div></div>
+          <div class="nav-item"><a href="esg.html">지속가능경영</a><div class="nav-dropdown"><a href="esg.html#performance">ESG 성과</a><a href="esg.html#eco">친환경 경영</a><a href="esg.html#social">사회공헌</a></div></div>
+          <div class="nav-item"><a href="brand.html">브랜드</a><div class="nav-dropdown"><a href="brand.html#ramen">삼양라면</a><a href="brand.html#samyang1963">삼양1963</a><a href="brand.html#buldak">불닭</a></div></div>
+          <div class="nav-item"><a href="product.html">제품</a><div class="nav-dropdown"><a href="product-intro.html">제품소개</a><a href="product.html#all">전체제품</a><a href="product.html#ramen">라면</a><a href="product.html#snack">스낵</a></div></div>
+        </nav>
+        <div class="header-tools">
+          <a class="utility-link" href="index.html#support">채용안내</a><span class="tool-divider" aria-hidden="true"></span>
+          <div class="language-switch" aria-label="언어 선택"><a href="#top" class="is-active" lang="ko">KR</a><span>/</span><a href="#top" lang="en">EN</a></div>
+          <button class="icon-button search-button" type="button" aria-label="통합검색 열기" aria-expanded="false"><span class="material-symbols-outlined" aria-hidden="true">search</span></button>
+          <button class="icon-button user-button" type="button" aria-label="마이페이지"><span class="material-symbols-outlined" aria-hidden="true">person</span></button>
+          <a class="mall-button" href="#" target="_blank" rel="noopener noreferrer">삼양몰 바로가기 <span aria-hidden="true">↗</span></a>
+        </div>
+        <form class="header-search-panel" role="search" hidden><label for="site-search">통합검색</label><input id="site-search" type="search" placeholder="제품, 보도자료, 공시 정보를 검색하세요"><button type="submit">검색</button></form>
+        <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+      <div class="scroll-progress" aria-hidden="true"></div>
+    </header>
+
+    <main id="main">
+      <section class="sub-hero">
+        <div class="section-inner">
+          <p class="crumb">HOME &gt; 고객지원 &gt; 고객문의</p>
+          <h1 class="section-title">CUSTOMER INQUIRY</h1>
+          <p class="sub-lead">삼양식품에 대한 문의사항을 남겨주세요. 확인 후 안내해 드리겠습니다.</p>
+        </div>
+      </section>
+
+      <section class="contact-page">
+        <div class="contact-inner">
+          <div class="contact-heading">
+            <h1>고객문의</h1>
+            <p>삼양식품에 대한 문의사항을 남겨주시면 담당 부서에서 확인 후 답변드리겠습니다.<br>정확한 답변을 위해 문의 내용을 자세히 작성해 주세요.</p>
+            <span class="required-note"><span class="required-mark">*</span> 필수 입력 항목</span>
+          </div>
+
+          <form class="contact-form" id="customer-inquiry-form">
+            <div class="form-row">
+              <label class="form-label" for="inquiry-title"><span class="required-mark">*</span>&nbsp; 제목</label>
+              <div class="form-field"><input class="field-wide" id="inquiry-title" name="title" type="text" placeholder="제목을 입력해 주세요." required></div>
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="customer-name"><span class="required-mark">*</span>&nbsp; 성명</label>
+              <div class="form-field"><input class="field-medium" id="customer-name" name="name" type="text" required></div>
+            </div>
+            <div class="form-row">
+              <span class="form-label"><span class="required-mark">*</span>&nbsp; 거주지</span>
+              <div class="form-field">
+                <div class="country-options">
+                  <label><input type="radio" name="country" value="국내" checked> 국내</label>
+                  <p class="country-note">대한민국 거주 고객은 국내를 선택해 주세요.</p>
+                  <label><input type="radio" name="country" value="중국"> 중국</label>
+                  <p class="country-note">중국 거주 고객은 중국을 선택해 주세요.</p>
+                  <label><input type="radio" name="country" value="기타"> 기타 국가</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="customer-phone"><span class="required-mark">*</span>&nbsp; 휴대폰</label>
+              <div class="form-field"><input class="field-medium" id="customer-phone" name="phone" type="tel" placeholder="숫자만 입력해 주세요." required></div>
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="customer-email"><span class="required-mark">*</span>&nbsp; 이메일</label>
+              <div class="form-field">
+                <div class="email-fields">
+                  <input id="customer-email" name="email-id" type="text" aria-label="이메일 아이디" required>
+                  <span class="email-at">@</span>
+                  <input name="email-domain" type="text" aria-label="이메일 도메인" required>
+                  <select name="email-domain-select" aria-label="이메일 도메인 선택"><option value="">직접입력</option><option>naver.com</option><option>gmail.com</option><option>daum.net</option><option>hanmail.net</option></select>
+                  <button class="form-action" type="button" data-demo="email">인증</button>
+                  <p class="form-help">※ 답변을 받을 수 있는 정확한 이메일 주소를 입력해 주세요.</p>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="verification-code"><span class="required-mark">*</span>&nbsp; 인증번호</label>
+              <div class="form-field"><input class="verify-code" id="verification-code" name="verification-code" type="text" inputmode="numeric"><button class="form-action" type="button" data-demo="phone">인증확인</button></div>
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="inquiry-type"><span class="required-mark">*</span>&nbsp; 문의유형</label>
+              <div class="form-field"><select id="inquiry-type" name="type" required><option value="">선택하세요</option><option>제품 문의</option><option>제품 품질 및 불편사항</option><option>구매 및 유통 문의</option><option>기업 및 제휴 문의</option><option>기타 문의</option></select></div>
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="inquiry-content"><span class="required-mark">*</span>&nbsp; 내용</label>
+              <div class="form-field"><textarea class="inquiry-content" id="inquiry-content" name="content" placeholder="문의하실 내용을 입력해 주세요." required></textarea></div>
+            </div>
+            <div class="form-row">
+              <span class="form-label">파일첨부</span>
+              <div class="form-field"><div class="file-line"><input type="file" id="inquiry-file" name="attachment" multiple><span class="file-help">※ 첨부파일은 이미지 및 문서 파일을 권장합니다.</span></div></div>
+            </div>
+            <div class="form-row">
+              <span class="form-label"><span class="required-mark">*</span>&nbsp; 약관동의</span>
+              <div class="form-field">
+                <div class="agree-line">
+                  <label><input type="checkbox" id="privacy-agree" required> 개인정보 수집 및 이용에 동의합니다.</label>
+                  <button class="policy-button" type="button" id="policy-view">약관보기</button>
+                </div>
+              </div>
+            </div>
+            <div class="form-buttons">
+              <button class="submit-button" type="submit">저장</button>
+              <button class="cancel-button" type="reset">취소</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <a class="footer-logo" href="index.html#top" aria-label="삼양식품 홈"><span aria-hidden="true"></span>Samyang</a>
+          <div class="footer-links">
+            <div><h3>기업정보</h3><a href="company.html">삼양식품 소개</a><a href="ir.html">IR 투자정보</a><a href="esg.html">지속가능경영</a></div>
+            <div><h3>브랜드 &amp; 제품</h3><a href="brand.html">브랜드 전체 보기</a><a href="product.html">제품 둘러보기</a></div>
+            <div><h3>고객지원</h3><a href="contact.html">고객문의</a><a href="contact.html">1:1 문의</a></div>
+            <div class="family-sites"><a href="#">패밀리 사이트 선택 <span>⌄</span></a></div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© SAMYANG FOODS&nbsp; · &nbsp;CONCEPT REDESIGN</p>
+          <p>본 페이지는 삼양식품 홈페이지 리뉴얼 학습을 위한 시안입니다. 일반 이용자의 콘텐츠는 디자인 목업입니다.</p>
+        </div>
+      </div>
+    </footer>
+    <a class="to-top" href="index.html#top" aria-label="맨 위로"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg></a>
+  </div>
+  <script>
+    document.querySelectorAll("[data-demo]").forEach(function(button) {
+      button.addEventListener("click", function() {
+        alert("현재 페이지는 화면 시안으로, 인증번호 발송 기능은 연결되어 있지 않습니다.");
+      });
+    });
+    document.getElementById("policy-view").addEventListener("click", function() {
+      alert("개인정보 수집 및 이용 안내\n문의 답변을 위해 성명, 연락처, 이메일 및 문의 내용을 수집하는 화면 시안입니다. 실제 운영 전 개인정보 처리방침과 보관 기간을 확정해야 합니다.");
+    });
+    document.getElementById("customer-inquiry-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      if (!this.reportValidity()) return;
+      alert("입력 항목을 확인했습니다. 현재 페이지는 디자인 시안으로 실제 문의 접수 서버와 연결되어 있지 않습니다.");
+    });
+    const domainSelect = document.querySelector('[name="email-domain-select"]');
+    const domainInput = document.querySelector('[name="email-domain"]');
+    domainSelect.addEventListener("change", function() {
+      if (this.value) domainInput.value = this.value;
+      else domainInput.focus();
+    });
+  </script>
+</body>
+</html>
