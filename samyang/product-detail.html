@@ -54,6 +54,7 @@
 <script>
 (() => {
  const products=[{"id":"carbonara","name":"까르보 불닭볶음면","category":"BULDAK RAMEN","image":"gbk_1.png","lead":"불닭의 화끈한 매운맛에 부드럽고 고소한 크림 풍미를 더한 제품입니다.","desc":"매콤함과 크리미한 풍미가 조화를 이루는 까르보 불닭볶음면. 불닭 브랜드의 개성 있는 맛을 색다르게 즐길 수 있습니다.","point":["불닭 특유의 매콤한 맛","부드럽고 고소한 크림 풍미","꾸준히 사랑받는 까르보 맛"]},{"id":"1963","name":"삼양1963","category":"SAMYANG RAMEN","image":"1963.png","lead":"삼양식품의 시작을 상징하는 삼양라면의 헤리티지를 담은 제품입니다.","desc":"삼양식품의 오랜 경험과 라면에 대한 노하우를 바탕으로 선보이는 제품입니다. 익숙하면서도 깊은 라면의 맛을 경험할 수 있습니다.","point":["삼양라면의 헤리티지","깊고 진한 국물 맛","삼양식품의 라면 노하우"]},{"id":"cup1963","name":"큰컵 삼양1963","category":"CUP RAMEN","image":"cup1963.png","lead":"삼양1963의 맛을 간편하게 즐길 수 있는 컵라면 제품입니다.","desc":"간편한 조리 방식으로 언제 어디서나 삼양1963의 맛을 즐길 수 있도록 구성한 제품입니다.","point":["간편한 컵 타입","간편한 조리","삼양1963의 맛"]},{"id":"tang","name":"큰컵 탱글 갈릭오일","category":"TANGLE","image":"tang.png","lead":"탱글한 면과 갈릭오일 풍미를 즐길 수 있는 제품입니다.","desc":"면의 식감과 갈릭오일의 풍미를 조합해 색다른 맛을 경험할 수 있도록 한 제품입니다.","point":["탱글한 면 식감","갈릭오일 풍미","간편하게 즐기는 컵 제품"]}];
+
  const params=new URLSearchParams(location.search);
  const selected=products.find(item=>item.id===params.get("item"))||products[0];
  document.title="삼양식품 | "+selected.name;
@@ -73,38 +74,63 @@
  const sampleImages=["gbk_1.png","1963.png","cup1963.png","tang.png","gbk_1.png"];
  const originalCards=products.map(item=>'<a class="product-related-card'+(item.id===selected.id?' is-current':'')+'" href="product-detail.html?item='+item.id+'"><span class="product-related-image"><img src="img/'+item.image+'" alt="'+item.name+'"></span><span class="product-related-category">'+(item.id===selected.id?'CURRENT PRODUCT':item.category)+'</span><strong>'+item.name+'</strong></a>').join("");
  const sampleCards=sampleImages.map((image,index)=>'<a class="product-related-card product-related-sample" href="#" aria-label="임시 제품 '+(index+1)+'"><span class="product-related-image"><img src="img/'+image+'" alt="임시 제품 '+(index+1)+'"></span><span class="product-related-category">SAMPLE</span><strong>임시 제품 '+(index+1)+'</strong></a>').join("");
- relatedTrack.innerHTML=originalCards+'<!-- 임시 제품 카드 시작: 테스트 완료 후 이 영역을 삭제하세요. -->'+sampleCards+'<!-- 임시 제품 카드 끝 -->';
+ const originalHTML=originalCards+'<!-- 임시 제품 카드 시작: 테스트 완료 후 이 영역을 삭제하세요. -->'+sampleCards+'<!-- 임시 제품 카드 끝 -->';
+ relatedTrack.innerHTML=originalHTML;
 
- let currentIndex=0;
  let visibleCount=5;
+ let currentIndex=0;
  let step=0;
- let maxIndex=0;
+ let realCount=0;
  let touchStartX=0;
  let touchStartY=0;
+ let isAnimating=false;
  const getVisibleCount=()=>{
    if(window.matchMedia("(max-width: 760px)").matches) return 2;
    if(window.matchMedia("(max-width: 1050px)").matches) return 3;
    return 5;
  };
- const updateRelatedSlider=()=>{
-   const cards=relatedTrack.querySelectorAll(".product-related-card");
-   if(!cards.length) return;
-   visibleCount=getVisibleCount();
-   const trackStyle=getComputedStyle(relatedTrack);
-   const gap=parseFloat(trackStyle.columnGap||trackStyle.gap)||14;
-   step=cards[0].getBoundingClientRect().width+gap;
-   maxIndex=Math.max(0,cards.length-visibleCount);
-   currentIndex=Math.min(currentIndex,maxIndex);
-   relatedTrack.style.transform="translate3d("+(-currentIndex*step)+"px,0,0)";
-   relatedPrev.disabled=currentIndex===0;
-   relatedNext.disabled=currentIndex>=maxIndex;
+ const getStep=()=>{
+   const firstCard=relatedTrack.querySelector(".product-related-card");
+   const style=getComputedStyle(relatedTrack);
+   return firstCard.getBoundingClientRect().width+(parseFloat(style.columnGap||style.gap)||14);
  };
- const moveRelated=(direction)=>{
-   currentIndex=Math.max(0,Math.min(maxIndex,currentIndex+direction));
-   updateRelatedSlider();
+ const setPosition=(animate=true)=>{
+   relatedTrack.style.transition=animate?"transform .4s ease":"none";
+   relatedTrack.style.transform="translate3d("+(-currentIndex*step)+"px,0,0)";
+ };
+ const rebuildSlider=()=>{
+   const oldVisible=visibleCount;
+   const oldLogical=((currentIndex-oldVisible)%Math.max(realCount,1)+Math.max(realCount,1))%Math.max(realCount,1);
+   visibleCount=getVisibleCount();
+   relatedTrack.innerHTML=originalHTML;
+   const originals=Array.from(relatedTrack.children).filter(node=>node.classList&&node.classList.contains("product-related-card"));
+   realCount=originals.length;
+   const before=originals.slice(-visibleCount).map(node=>node.cloneNode(true));
+   const after=originals.slice(0,visibleCount).map(node=>node.cloneNode(true));
+   before.forEach(node=>{node.setAttribute("aria-hidden","true");relatedTrack.insertBefore(node,relatedTrack.firstChild);});
+   after.forEach(node=>{node.setAttribute("aria-hidden","true");relatedTrack.appendChild(node);});
+   step=getStep();
+   currentIndex=visibleCount+oldLogical;
+   setPosition(false);
+   relatedPrev.disabled=false;
+   relatedNext.disabled=false;
+   requestAnimationFrame(()=>{relatedTrack.style.transition="transform .4s ease";});
+ };
+ const moveRelated=direction=>{
+   if(isAnimating) return;
+   isAnimating=true;
+   currentIndex+=direction;
+   setPosition(true);
  };
  relatedPrev.addEventListener("click",()=>moveRelated(-1));
  relatedNext.addEventListener("click",()=>moveRelated(1));
+ relatedTrack.addEventListener("transitionend",event=>{
+   if(event.propertyName!=="transform") return;
+   if(currentIndex<visibleCount) currentIndex+=realCount;
+   else if(currentIndex>=visibleCount+realCount) currentIndex-=realCount;
+   setPosition(false);
+   requestAnimationFrame(()=>{relatedTrack.style.transition="transform .4s ease";isAnimating=false;});
+ });
  relatedTrack.addEventListener("click",event=>{
    const sample=event.target.closest(".product-related-sample");
    if(sample) event.preventDefault();
@@ -120,9 +146,13 @@
    const deltaY=event.changedTouches[0].clientY-touchStartY;
    if(Math.abs(deltaX)>40&&Math.abs(deltaX)>Math.abs(deltaY)) moveRelated(deltaX<0?1:-1);
  },{passive:true});
- window.addEventListener("resize",updateRelatedSlider);
- if("ResizeObserver" in window) new ResizeObserver(updateRelatedSlider).observe(relatedViewport);
- requestAnimationFrame(updateRelatedSlider);
+ let resizeTimer;
+ window.addEventListener("resize",()=>{
+   clearTimeout(resizeTimer);
+   resizeTimer=setTimeout(()=>{isAnimating=false;rebuildSlider();},100);
+ });
+ if("ResizeObserver" in window) new ResizeObserver(()=>{if(!isAnimating){step=getStep();setPosition(false);}}).observe(relatedViewport);
+ rebuildSlider();
 })();
 </script>
 
