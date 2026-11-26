@@ -49,7 +49,7 @@
     </header>
 <main id="main" class="product-detail-page">
 <section class="product-detail-hero"><div class="section-inner"><p class="crumb">HOME &gt; 제품 &gt; 제품소개</p><p class="product-detail-kicker" id="detail-category">PRODUCT</p><div class="product-detail-layout"><div class="product-detail-visual"><img id="detail-image" src="img/gbk_1.png" alt="까르보 불닭볶음면"></div><div class="product-detail-copy"><p class="product-detail-label">SAMYANG FOODS</p><h1 id="detail-name">까르보 불닭볶음면</h1><p class="product-detail-lead" id="detail-lead">불닭의 화끈한 매운맛에 부드럽고 고소한 크림 풍미를 더한 제품입니다.</p><div class="product-detail-rule"></div><p class="product-detail-description" id="detail-description">매콤함과 크리미한 풍미가 조화를 이루는 까르보 불닭볶음면. 불닭 브랜드의 개성 있는 맛을 색다르게 즐길 수 있습니다.</p><ul class="product-detail-points" id="detail-points"><li>불닭 특유의 매콤한 맛</li><li>부드럽고 고소한 크림 풍미</li><li>꾸준히 사랑받는 까르보 맛</li></ul><div class="product-detail-actions"><a class="product-detail-buy" id="detail-buy" href="https://search.shopping.naver.com/search/all?query=까르보%20불닭볶음면" target="_blank" rel="noopener">구매하기 <span>↗</span></a><a class="product-detail-back" href="product.html">전체 제품 보기</a></div></div></div></div></section>
-<section class="product-related"><div class="section-inner"><div class="product-related-heading"><div><p class="product-detail-label">YOU MAY ALSO LIKE</p><h2>다른 제품도 만나보세요</h2></div><a class="media-more-btn" href="product.html">전체 제품 보기 <span class="arrow" aria-hidden="true">↗</span></a></div><div class="product-related-slider"><button class="best-nav-btn best-btn-prev related-btn-prev" type="button" aria-label="이전 제품" disabled><svg viewBox="0 0 24 48" aria-hidden="true"><path d="M20 3 4 24l16 21"/></svg></button><div class="product-related-grid" id="related-products"></div><button class="best-nav-btn best-btn-next related-btn-next" type="button" aria-label="다음 제품"><svg viewBox="0 0 24 48" aria-hidden="true"><path d="m4 3 16 21L4 45"/></svg></button></div></div></section>
+<section class="product-related"><div class="section-inner"><div class="product-related-heading"><div><p class="product-detail-label">YOU MAY ALSO LIKE</p><h2>다른 제품도 만나보세요</h2></div><a class="media-more-btn" href="product.html">전체 제품 보기 <span class="arrow" aria-hidden="true">↗</span></a></div><div class="product-related-slider"><button class="related-slider-arrow related-btn-prev" type="button" aria-label="이전 제품" disabled><svg viewBox="0 0 12 32" aria-hidden="true"><path d="M9 3 3 16l6 13"/></svg></button><div class="product-related-viewport"><div class="product-related-grid" id="related-products"></div></div><button class="related-slider-arrow related-btn-next" type="button" aria-label="다음 제품"><svg viewBox="0 0 12 32" aria-hidden="true"><path d="m3 3 6 13-6 13"/></svg></button></div></div></section>
 </main>
 <script>
 (() => {
@@ -63,31 +63,66 @@
  document.getElementById("detail-name").textContent=selected.name;
  document.getElementById("detail-lead").textContent=selected.lead;
  document.getElementById("detail-description").textContent=selected.desc;
- 
  document.getElementById("detail-points").innerHTML=selected.point.map(point=>"<li>"+point+"</li>").join("");
  document.getElementById("detail-buy").href="https://search.shopping.naver.com/search/all?query="+encodeURIComponent(selected.name);
- const related=products;
- document.getElementById("related-products").innerHTML=related.map(item=>'<a class="product-related-card'+(item.id===selected.id?' is-current':'')+'" href="product-detail.html?item='+item.id+'"><span class="product-related-image"><img src="img/'+item.image+'" alt="'+item.name+'"></span><span class="product-related-category">'+(item.id===selected.id?'CURRENT PRODUCT':item.category)+'</span><strong>'+item.name+'</strong></a>').join("");
+
  const relatedTrack=document.getElementById("related-products");
+ const relatedViewport=document.querySelector(".product-related-viewport");
  const relatedPrev=document.querySelector(".related-btn-prev");
  const relatedNext=document.querySelector(".related-btn-next");
- const updateRelatedArrows=()=>{
-   const maxScroll=relatedTrack.scrollWidth-relatedTrack.clientWidth;
-   relatedPrev.disabled=relatedTrack.scrollLeft<=2;
-   relatedNext.disabled=relatedTrack.scrollLeft>=maxScroll-2;
+ const sampleImages=["gbk_1.png","1963.png","cup1963.png","tang.png","gbk_1.png"];
+ const originalCards=products.map(item=>'<a class="product-related-card'+(item.id===selected.id?' is-current':'')+'" href="product-detail.html?item='+item.id+'"><span class="product-related-image"><img src="img/'+item.image+'" alt="'+item.name+'"></span><span class="product-related-category">'+(item.id===selected.id?'CURRENT PRODUCT':item.category)+'</span><strong>'+item.name+'</strong></a>').join("");
+ const sampleCards=sampleImages.map((image,index)=>'<a class="product-related-card product-related-sample" href="#" aria-label="임시 제품 '+(index+1)+'"><span class="product-related-image"><img src="img/'+image+'" alt="임시 제품 '+(index+1)+'"></span><span class="product-related-category">SAMPLE</span><strong>임시 제품 '+(index+1)+'</strong></a>').join("");
+ relatedTrack.innerHTML=originalCards+'<!-- 임시 제품 카드 시작: 테스트 완료 후 이 영역을 삭제하세요. -->'+sampleCards+'<!-- 임시 제품 카드 끝 -->';
+
+ let currentIndex=0;
+ let visibleCount=5;
+ let step=0;
+ let maxIndex=0;
+ let touchStartX=0;
+ let touchStartY=0;
+ const getVisibleCount=()=>{
+   if(window.matchMedia("(max-width: 760px)").matches) return 2;
+   if(window.matchMedia("(max-width: 1050px)").matches) return 3;
+   return 5;
+ };
+ const updateRelatedSlider=()=>{
+   const cards=relatedTrack.querySelectorAll(".product-related-card");
+   if(!cards.length) return;
+   visibleCount=getVisibleCount();
+   const trackStyle=getComputedStyle(relatedTrack);
+   const gap=parseFloat(trackStyle.columnGap||trackStyle.gap)||14;
+   step=cards[0].getBoundingClientRect().width+gap;
+   maxIndex=Math.max(0,cards.length-visibleCount);
+   currentIndex=Math.min(currentIndex,maxIndex);
+   relatedTrack.style.transform="translate3d("+(-currentIndex*step)+"px,0,0)";
+   relatedPrev.disabled=currentIndex===0;
+   relatedNext.disabled=currentIndex>=maxIndex;
  };
  const moveRelated=(direction)=>{
-   const card=relatedTrack.querySelector(".product-related-card");
-   if(!card)return;
-   const gap=parseFloat(getComputedStyle(relatedTrack).columnGap)||14;
-   relatedTrack.scrollBy({left:direction*(card.getBoundingClientRect().width+gap),behavior:"smooth"});
+   currentIndex=Math.max(0,Math.min(maxIndex,currentIndex+direction));
+   updateRelatedSlider();
  };
  relatedPrev.addEventListener("click",()=>moveRelated(-1));
  relatedNext.addEventListener("click",()=>moveRelated(1));
- relatedTrack.addEventListener("scroll",updateRelatedArrows,{passive:true});
- window.addEventListener("resize",updateRelatedArrows);
- requestAnimationFrame(updateRelatedArrows);
-
+ relatedTrack.addEventListener("click",event=>{
+   const sample=event.target.closest(".product-related-sample");
+   if(sample) event.preventDefault();
+ });
+ relatedViewport.addEventListener("touchstart",event=>{
+   if(!event.touches.length) return;
+   touchStartX=event.touches[0].clientX;
+   touchStartY=event.touches[0].clientY;
+ },{passive:true});
+ relatedViewport.addEventListener("touchend",event=>{
+   if(!event.changedTouches.length) return;
+   const deltaX=event.changedTouches[0].clientX-touchStartX;
+   const deltaY=event.changedTouches[0].clientY-touchStartY;
+   if(Math.abs(deltaX)>40&&Math.abs(deltaX)>Math.abs(deltaY)) moveRelated(deltaX<0?1:-1);
+ },{passive:true});
+ window.addEventListener("resize",updateRelatedSlider);
+ if("ResizeObserver" in window) new ResizeObserver(updateRelatedSlider).observe(relatedViewport);
+ requestAnimationFrame(updateRelatedSlider);
 })();
 </script>
 
