@@ -430,6 +430,8 @@
 }
 .product-related-viewport {
   width:100%;
+  padding:12px 0 18px;
+  box-sizing:border-box;
   overflow:hidden;
   touch-action:pan-y;
 }
@@ -438,8 +440,8 @@
   flex-wrap:nowrap;
   gap:14px;
   width:100%;
-  padding:12px 2px 18px;
-  margin:-12px -2px -18px;
+  padding:0 2px;
+  margin:0 -2px;
   overflow:visible;
   transform:translate3d(0,0,0);
   transition:transform .4s ease;
