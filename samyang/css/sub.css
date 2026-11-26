@@ -420,3 +420,71 @@
   .product-detail-visual { height:auto; min-height:0; aspect-ratio:1 / 1; padding:22px; }
   .product-detail-visual img { width:100%; height:100%; max-height:none; }
 }
+
+
+/* YOU MAY ALSO LIKE: horizontal product slider */
+.product-related-slider { position:relative; isolation:isolate; }
+.product-related-grid {
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-behavior:smooth;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  padding:12px 2px 18px;
+  margin:-12px -2px -18px;
+}
+.product-related-grid::-webkit-scrollbar { display:none; }
+.product-related-grid .product-related-card {
+  flex:0 0 calc((100% - 42px) / 4);
+  scroll-snap-align:start;
+}
+.product-related-slider .best-nav-btn { width:44px; height:80px; }
+.product-related-slider .best-btn-prev { left:-44px; }
+.product-related-slider .best-btn-next { right:-44px; }
+.product-related-slider .best-nav-btn:disabled {
+  opacity:.25;
+  cursor:default;
+  pointer-events:none;
+}
+.product-related-heading { align-items:center; }
+.product-related-heading > .media-more-btn {
+  padding:0;
+  border:0;
+  font-size:24px;
+  line-height:1;
+  white-space:nowrap;
+}
+.product-related-heading > .media-more-btn .arrow {
+  display:grid;
+  place-items:center;
+  width:33px;
+  height:33px;
+  border-radius:50%;
+  background:#e5e5e5;
+  color:inherit;
+  font-size:18px;
+  opacity:.65;
+  transition:background .25s ease,color .25s ease,opacity .25s ease;
+}
+.product-related-heading > .media-more-btn:hover .arrow {
+  background:var(--orange);
+  color:#fff;
+  opacity:1;
+}
+@media(max-width:1050px) {
+  .product-related-grid .product-related-card { flex-basis:calc((100% - 28px) / 3); }
+  .product-related-slider .best-btn-prev { left:-34px; }
+  .product-related-slider .best-btn-next { right:-34px; }
+}
+@media(max-width:760px) {
+  .product-related-grid .product-related-card { flex-basis:calc((100% - 14px) / 2); }
+  .product-related-slider .best-nav-btn { width:28px; height:56px; }
+  .product-related-slider .best-btn-prev { left:-27px; }
+  .product-related-slider .best-btn-next { right:-27px; }
+  .product-related-heading { align-items:center; gap:12px; }
+  .product-related-heading > .media-more-btn { gap:6px; font-size:14px; }
+  .product-related-heading > .media-more-btn .arrow { width:19px; height:19px; font-size:11px; }
+}
