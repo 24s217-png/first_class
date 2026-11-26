@@ -449,7 +449,7 @@
 }
 .product-related-viewport {
   width:100%;
-  padding:12px 0 18px;
+  padding:12px 5px 18px;
   box-sizing:border-box;
   overflow:hidden;
   touch-action:pan-y;
@@ -511,9 +511,13 @@
 .related-btn-next { right:0; }
 .product-related-heading { align-items:center; }
 .product-related-heading > .media-more-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
   padding:0;
   border:0;
   font-size:24px;
+  font-weight:inherit;
   line-height:1;
   white-space:nowrap;
 }
@@ -612,5 +616,30 @@
   #eco .eco-row img {
     order: -1;
     border-radius: 14px;
+  }
+}
+
+
+/* YOU MAY ALSO LIKE: match main-page shortcut button and hover-only current highlight */
+.product-related-card,
+.product-related-grid .product-related-card {
+  box-sizing:border-box;
+  border:1px solid transparent;
+  background:#f7f6f4;
+  transition:background .2s ease,border-color .2s ease;
+}
+.product-related-card.is-current {
+  outline:0;
+  border-color:transparent;
+  background:#f7f6f4;
+}
+.product-related-card:hover {
+  transform:none;
+  box-shadow:none;
+}
+@media (hover:hover) {
+  .product-related-card:hover {
+    border-color:var(--orange);
+    background:#fff8f2;
   }
 }
