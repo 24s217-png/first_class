@@ -635,3 +635,24 @@
 /* Keep product titles aligned after removing category labels */
 .product-related-card { height:100%; box-sizing:border-box; }
 .product-related-card strong { display:block; min-height:2.7em; }
+
+
+/* ECO: reverse only the resource-circulation row on desktop */
+#eco .eco-row.row-reverse > div {
+  grid-column: 2;
+}
+#eco .eco-row.row-reverse > img {
+  grid-column: 1;
+  grid-row: 1;
+}
+@media (max-width: 760px) {
+  #eco .eco-row.row-reverse > img {
+    grid-column: 1;
+    grid-row: 1;
+    order: -1;
+  }
+  #eco .eco-row.row-reverse > div {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
