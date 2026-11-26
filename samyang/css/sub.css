@@ -561,3 +561,23 @@
 @media(prefers-reduced-motion:reduce) {
   .product-related-grid { transition:none; }
 }
+
+ 
+/* ESG ECO cards: image crop and aligned description area */
+#eco .esg-card {
+  display: flex;
+  flex-direction: column;
+}
+#eco .esg-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#eco .esg-copy {
+  flex: 1;
+}
+#eco .esg-copy p {
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
