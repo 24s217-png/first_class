@@ -34,6 +34,7 @@
     .field-phone { width:min(100%,370px); }
     .form-field select { min-width:180px; }
     .country-options { display:flex; flex-direction:column; gap:8px; width:100%; font-size:13px; }
+    .country-options select:disabled { background:#f3f3f3; color:#777; cursor:not-allowed; opacity:1; }
     .country-options label { display:flex; align-items:center; gap:7px; }
     .country-note { padding-left:21px; color:#666; line-height:1.6; }
     .country-note a { color:#e85b21; text-decoration:underline; }
@@ -184,8 +185,106 @@
               <span class="form-label"><span class="required-mark">*</span>&nbsp; 거주지</span>
               <div class="form-field">
                 <div class="country-options">
-                  <label for="country-domestic"><input type="checkbox" id="country-domestic" name="country" value="국내" checked> 국내</label>
-                  <input class="field-medium" id="customer-address" name="address" type="text" placeholder="상세주소를 입력해주세요" autocomplete="street-address" required>
+                  <label for="country-domestic"><input type="checkbox" id="country-domestic" checked> 국내</label>
+                  <input type="hidden" id="domestic-country-value" name="country" value="대한민국">
+                  <select class="field-medium" id="customer-country" name="country" required disabled>
+                    <option value="">국가를 선택해주세요</option>
+                    <option value="대한민국">대한민국</option>
+                    <option value="가나">가나</option>
+                    <option value="가봉">가봉</option>
+                    <option value="가이아나">가이아나</option>
+                    <option value="감비아">감비아</option>
+                    <option value="과테말라">과테말라</option>
+                    <option value="그레나다">그레나다</option>
+                    <option value="그리스">그리스</option>
+                    <option value="기니">기니</option>
+                    <option value="기니비사우">기니비사우</option>
+                    <option value="나미비아">나미비아</option>
+                    <option value="나우루">나우루</option>
+                    <option value="나이지리아">나이지리아</option>
+                    <option value="남수단">남수단</option>
+                    <option value="남아프리카공화국">남아프리카공화국</option>
+                    <option value="네덜란드">네덜란드</option>
+                    <option value="네팔">네팔</option>
+                    <option value="노르웨이">노르웨이</option>
+                    <option value="뉴질랜드">뉴질랜드</option>
+                    <option value="니제르">니제르</option>
+                    <option value="니카라과">니카라과</option>
+                    <option value="덴마크">덴마크</option>
+                    <option value="도미니카공화국">도미니카공화국</option>
+                    <option value="독일">독일</option>
+                    <option value="라오스">라오스</option>
+                    <option value="라이베리아">라이베리아</option>
+                    <option value="라트비아">라트비아</option>
+                    <option value="러시아">러시아</option>
+                    <option value="레바논">레바논</option>
+                    <option value="루마니아">루마니아</option>
+                    <option value="룩셈부르크">룩셈부르크</option>
+                    <option value="르완다">르완다</option>
+                    <option value="리비아">리비아</option>
+                    <option value="리투아니아">리투아니아</option>
+                    <option value="마다가스카르">마다가스카르</option>
+                    <option value="말레이시아">말레이시아</option>
+                    <option value="멕시코">멕시코</option>
+                    <option value="모나코">모나코</option>
+                    <option value="모로코">모로코</option>
+                    <option value="모잠비크">모잠비크</option>
+                    <option value="몽골">몽골</option>
+                    <option value="미국">미국</option>
+                    <option value="미얀마">미얀마</option>
+                    <option value="바레인">바레인</option>
+                    <option value="방글라데시">방글라데시</option>
+                    <option value="베트남">베트남</option>
+                    <option value="벨기에">벨기에</option>
+                    <option value="볼리비아">볼리비아</option>
+                    <option value="브라질">브라질</option>
+                    <option value="사우디아라비아">사우디아라비아</option>
+                    <option value="세네갈">세네갈</option>
+                    <option value="스웨덴">스웨덴</option>
+                    <option value="스위스">스위스</option>
+                    <option value="스페인">스페인</option>
+                    <option value="싱가포르">싱가포르</option>
+                    <option value="아랍에미리트">아랍에미리트</option>
+                    <option value="아르헨티나">아르헨티나</option>
+                    <option value="아이슬란드">아이슬란드</option>
+                    <option value="아일랜드">아일랜드</option>
+                    <option value="아프가니스탄">아프가니스탄</option>
+                    <option value="영국">영국</option>
+                    <option value="오스트레일리아">오스트레일리아</option>
+                    <option value="오스트리아">오스트리아</option>
+                    <option value="우간다">우간다</option>
+                    <option value="우루과이">우루과이</option>
+                    <option value="우즈베키스탄">우즈베키스탄</option>
+                    <option value="우크라이나">우크라이나</option>
+                    <option value="이라크">이라크</option>
+                    <option value="이란">이란</option>
+                    <option value="이스라엘">이스라엘</option>
+                    <option value="이집트">이집트</option>
+                    <option value="이탈리아">이탈리아</option>
+                    <option value="인도">인도</option>
+                    <option value="인도네시아">인도네시아</option>
+                    <option value="일본">일본</option>
+                    <option value="중국">중국</option>
+                    <option value="체코">체코</option>
+                    <option value="칠레">칠레</option>
+                    <option value="카자흐스탄">카자흐스탄</option>
+                    <option value="캄보디아">캄보디아</option>
+                    <option value="캐나다">캐나다</option>
+                    <option value="케냐">케냐</option>
+                    <option value="콜롬비아">콜롬비아</option>
+                    <option value="쿠바">쿠바</option>
+                    <option value="태국">태국</option>
+                    <option value="튀르키예">튀르키예</option>
+                    <option value="파나마">파나마</option>
+                    <option value="파키스탄">파키스탄</option>
+                    <option value="페루">페루</option>
+                    <option value="포르투갈">포르투갈</option>
+                    <option value="폴란드">폴란드</option>
+                    <option value="프랑스">프랑스</option>
+                    <option value="핀란드">핀란드</option>
+                    <option value="필리핀">필리핀</option>
+                    <option value="헝가리">헝가리</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -273,6 +372,28 @@
       if (!this.reportValidity()) return;
       alert("입력 항목을 확인했습니다. 현재 페이지는 디자인 시안으로 실제 문의 접수 서버와 연결되어 있지 않습니다.");
     });
+    const domesticCheckbox = document.getElementById("country-domestic");
+    const countrySelect = document.getElementById("customer-country");
+    const domesticCountryValue = document.getElementById("domestic-country-value");
+
+    function syncCountryField() {
+      if (domesticCheckbox.checked) {
+        countrySelect.value = "대한민국";
+        countrySelect.disabled = true;
+        domesticCountryValue.disabled = false;
+      } else {
+        countrySelect.disabled = false;
+        countrySelect.value = "";
+        domesticCountryValue.disabled = true;
+      }
+    }
+
+    domesticCheckbox.addEventListener("change", syncCountryField);
+    document.getElementById("customer-inquiry-form").addEventListener("reset", function() {
+      setTimeout(syncCountryField, 0);
+    });
+    syncCountryField();
+
     const domainSelect = document.querySelector('[name="email-domain-select"]');
     const domainInput = document.querySelector('[name="email-domain"]');
     domainSelect.addEventListener("change", function() {
