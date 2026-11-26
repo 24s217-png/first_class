@@ -106,8 +106,8 @@ img, video { display: block; max-width: 100%; }
 .media-sec { padding: 123px 0; background: var(--peach); overflow: hidden; }
 .media-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 78px; }
 .media-subtitle { margin-top: 14px; color: var(--muted); font-size: 18px; line-height: 1.5; }
-.media-more-btn { display: inline-flex; align-items: center; gap: 12px; font-size: 31px; line-height: 1; white-space: nowrap; }
-.media-more-btn .arrow { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #e5e5e5; font-size: 24px; opacity: .65; }
+.media-more-btn { display: inline-flex; align-items: center; gap: 9px; font-size: 24px; line-height: 1; white-space: nowrap; }
+.media-more-btn .arrow { display: grid; place-items: center; width: 33px; height: 33px; border-radius: 50%; background: #e5e5e5; font-size: 18px; opacity: .65; }
 .media-marquee { width: 100%; overflow: visible; }
 .media-track { display: flex; align-items: stretch; width: max-content; animation: media-scroll 50s linear infinite; will-change: transform; }
 .media-item { flex: 0 0 auto; width: 430.77px; margin-right: 56.38px; }
@@ -245,8 +245,8 @@ img, video { display: block; max-width: 100%; }
   .media-sec { padding: 56px 0 60px; }
   .media-header { margin-bottom: 24px; align-items: flex-start; }
   .media-subtitle { max-width: 230px; margin-top: 8px; font-size: 12px; }
-  .media-more-btn { gap: 7px; font-size: 18px; }
-  .media-more-btn .arrow { width: 24px; height: 24px; font-size: 14px; }
+  .media-more-btn { gap: 6px; font-size: 14px; }
+  .media-more-btn .arrow { width: 19px; height: 19px; font-size: 11px; }
   .media-item { width: 78vw; margin-right: 14px; }
   .media-thumb-card { height: auto; aspect-ratio: 1.35 / 1; border-radius: 15px; }
   .support-sec { min-height: 0; padding: 50px 22px; }
@@ -424,3 +424,7 @@ img, video { display: block; max-width: 100%; }
 .stats-sec .section-title,
 .media-header { margin-bottom: var(--title-gap); }
 .story-grid, .esg-grid { gap: var(--card-gap); }
+
+
+/* BRAND STORY cards are informational and non-interactive */
+.story-card { cursor: default; }
