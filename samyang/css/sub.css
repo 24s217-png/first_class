@@ -615,3 +615,18 @@
 .prod-detail-link { cursor: pointer; }
 .prod-detail-link:hover .prod-name { color: var(--orange); }
 .product-detail-actions .product-detail-back { cursor: pointer; font: inherit; }
+
+/* Product related thumbnails: reduce image block and separate it from title */
+.product-related-image {
+  aspect-ratio: 1 / .82;
+  margin-bottom: 14px;
+}
+.product-related-image img {
+  width: 68%;
+  height: 68%;
+}
+@media(max-width:760px) {
+  .product-related-image {
+    margin-bottom: 10px;
+  }
+}
