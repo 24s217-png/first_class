@@ -632,3 +632,7 @@
 }
 
 
+
+
+/* Media page uses the same filter layout as the product page */
+.media-filter { grid-template-columns: repeat(3, 1fr); }
