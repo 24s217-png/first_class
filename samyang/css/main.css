@@ -279,9 +279,10 @@ img, video { display: block; max-width: 100%; }
 .primary-nav { gap: clamp(28px, 5.47vw, 105px); }
 .nav-item { position: relative; height: 100%; display: flex; align-items: center; }
 .nav-item > a { display: flex; align-items: center; min-height: 90px; }
-.nav-dropdown { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 190px; padding: 12px 0; background: #fff; box-shadow: 0 14px 28px #00000014; border-radius: 0 0 8px 8px; }
+.nav-dropdown { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 190px; padding: 12px 0; background: #fff; box-shadow: 0 14px 28px #00000014; border-radius: 8px; }
 .nav-item:hover .nav-dropdown, .nav-item:focus-within .nav-dropdown { display: block; }
 .nav-dropdown a { display: block; padding: 11px 20px; font-size: 18px; font-weight: 450; white-space: nowrap; }
+.nav-dropdown a:first-child:not(:hover):not(:focus-visible) { background: transparent; color: inherit; }
 .nav-dropdown a:hover, .nav-dropdown a:focus-visible { background: #fff3eb; color: var(--orange); }
 .language-switch { display: flex; align-items: center; gap: 5px; font-size: 13px; white-space: nowrap; }
 .language-switch a { color: #888; }
