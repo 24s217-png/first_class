@@ -49,16 +49,20 @@
     </header>
 <main id="main">
   <section class="sub-hero"><div class="section-inner"><p class="crumb">HOME &gt; 미디어/PR</p><h1 class="section-title">MEDIA &amp; PR</h1><p class="sub-lead">삼양식품의 소식과 다양한 콘텐츠를 만나보세요.</p></div></section>
-  <section class="brand-story-sec">
-    <div class="section-inner">
-      <h2 class="section-title">MEDIA &amp; PR</h2>
-      <ul class="prod-grid">
-        <li class="prod-item"><a href="media-press.html"><div class="prod-img"><img src="img/media_1.png" alt="보도자료"></div><h3 class="prod-name">보도자료</h3></a></li>
-        <li class="prod-item"><a href="media-video.html"><div class="prod-img"><img src="img/media_5.png" alt="홍보영상"></div><h3 class="prod-name">홍보영상</h3></a></li>
-        <li class="prod-item"><a href="media-center.html"><div class="prod-img"><img src="img/media_8.png" alt="미디어센터"></div><h3 class="prod-name">미디어센터</h3></a></li>
-      </ul>
+  <section class="brand-story-sec"><div class="section-inner">
+    <h2 class="section-title">MEDIA &amp; PR</h2>
+    <div class="prod-filter media-filter" role="group" aria-label="미디어 카테고리">
+      <button type="button" aria-pressed="true">보도자료</button>
+      <button type="button" aria-pressed="false">홍보영상</button>
+      <button type="button" aria-pressed="false">미디어센터</button>
     </div>
-  </section>
+    <ul class="prod-grid">
+      <li class="prod-item" data-cat="보도자료"><a class="prod-detail-link" href="media-press.html" aria-label="보도자료 보기"><div class="prod-img"><img src="img/media_1.png" alt="보도자료"></div><h3 class="prod-name">보도자료</h3></a></li>
+      <li class="prod-item" data-cat="홍보영상"><a class="prod-detail-link" href="media-video.html" aria-label="홍보영상 보기"><div class="prod-img"><img src="img/media_5.png" alt="홍보영상"></div><h3 class="prod-name">홍보영상</h3></a></li>
+      <li class="prod-item" data-cat="미디어센터"><a class="prod-detail-link" href="media-center.html" aria-label="미디어센터 보기"><div class="prod-img"><img src="img/media_8.png" alt="미디어센터"></div><h3 class="prod-name">미디어센터</h3></a></li>
+    </ul>
+    <nav class="prod-pager" aria-label="페이지 이동"></nav>
+  </div></section>
 </main>
 <footer class="site-footer" id="footer">
       <div class="footer-inner">
