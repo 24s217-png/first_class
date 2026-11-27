@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>삼양식품 | 삼양1963</title>
+<script>document.documentElement.classList.add("js");</script>
+<link rel="stylesheet" href="../font/css/pretendardvariable.css">
+<link rel="stylesheet" href="../css/default.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/sub.css">
+<style>
+/* ===== 삼양1963 브랜드 상세 페이지 전용 스타일 ===== */
+.primary-nav .nav-item > a.is-current { color:var(--orange); }
+.brand-detail-tabs { position:sticky;top:90px;z-index:20;background:#fff;border-bottom:1px solid #eee; }
+.brand-detail-tabs .section-inner { display:flex;align-items:center;gap:14px;min-height:64px; }
+.brand-tab-arrow { flex:0 0 30px;width:30px;height:30px;border:1px solid #ddd;border-radius:50%;background:#fff;color:var(--text);cursor:pointer; }
+.brand-tab-list { display:flex;align-items:center;justify-content:space-between;gap:28px;min-width:0;flex:1;overflow-x:auto;scrollbar-width:thin; }
+.brand-tab-list a { flex:0 0 auto;padding:22px 2px 18px;color:var(--muted);font-size:15px;font-weight:650;white-space:nowrap;border-bottom:3px solid transparent; }
+.brand-tab-list a[aria-current="page"],.brand-tab-list a:hover { color:var(--orange);border-color:var(--orange); }
+.brand-detail-hero { padding:clamp(62px,8vw,120px) 0 70px;text-align:center;background:#fff; }
+.brand-detail-logo { color:var(--orange);font-size:clamp(64px,11vw,170px);font-weight:900;line-height:.92;letter-spacing:-.075em; }
+.brand-detail-logo span { color:#b7a18d; }
+.brand-detail-slogan { margin:26px auto 0;font-size:clamp(18px,2vw,26px);font-weight:700; }
+.brand-detail-intro { max-width:620px;margin:12px auto 0;color:var(--muted);font-size:16px;line-height:1.7; }
+.brand-detail-products { padding:70px 0 100px;background:#fff; }
+.brand-detail-heading { margin-bottom:38px;text-align:center; }
+.brand-detail-heading .section-title { margin-bottom:12px; }
+.brand-detail-heading p { color:var(--muted);font-size:16px; }
+.brand-product-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px; }
+.brand-product-card { display:block;min-width:0;padding:18px;border:1px solid #eee;border-radius:22px;background:#f4f4f4;transition:background .25s ease,border-color .25s ease,transform .25s ease; }
+.brand-product-card:hover,.brand-product-card:focus-visible { background:#fff3eb;border-color:var(--orange);transform:translateY(-5px);outline:none; }
+.brand-product-image { display:grid;place-items:center;overflow:hidden;aspect-ratio:1/1;border-radius:15px;background:#fff; }
+.brand-product-image img { width:100%;height:100%;object-fit:contain; }
+.brand-product-card h3 { margin-top:16px;text-align:center;font-size:18px;font-weight:650; }
+.brand-practice-image { display:grid;place-items:center;min-height:180px;padding:18px;border:1px dashed #d4d0cc;border-radius:20px;background:#f1f1f1;color:#8b8580;text-align:center;font-size:15px;font-weight:700; }
+.brand-practice-image span { display:block; }
+.brand-story-intro { padding:90px 0 78px;text-align:center;background:#ffefe0; }
+.brand-story-intro .eyebrow { margin-bottom:14px;color:var(--orange);font-size:14px;font-weight:800;letter-spacing:.16em; }
+.brand-story-intro h2 { font-size:clamp(28px,4vw,54px);line-height:1.2;letter-spacing:-.045em; }
+.brand-story-intro h2 span { color:var(--orange); }
+.brand-story-intro p { max-width:700px;margin:20px auto 0;color:#68615b;font-size:17px;line-height:1.8; }
+.brand-full-banner { padding:0;background:#fff3eb; }
+.brand-full-banner .brand-practice-image { min-height:clamp(220px,36vw,560px);border:0;border-radius:0;background:#f0e6df;font-size:20px; }
+.brand-history { padding:100px 0;background:#292522;color:#fff; }
+.brand-history-layout { display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:50px; }
+.brand-history-year { display:block;margin-bottom:18px;color:#ff8a43;font-size:18px;font-weight:800; }
+.brand-history h2 { max-width:600px;font-size:clamp(28px,3.5vw,48px);line-height:1.2;letter-spacing:-.04em; }
+.brand-history p { max-width:580px;margin-top:18px;color:#d4cfca;font-size:16px;line-height:1.8; }
+.brand-history .brand-practice-image { min-height:320px;background:#3b3733;border-color:#5b534d;color:#c8beb5; }
+.brand-history-gallery { display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:42px; }
+.brand-history-gallery .brand-practice-image { min-height:130px;border-radius:14px;background:#3b3733; }
+.brand-current-story { padding:100px 0;background:#ffefe0; }
+.brand-current-layout { display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:60px; }
+.brand-current-copy .brand-history-year { color:var(--orange); }
+.brand-current-copy h2 { font-size:clamp(28px,3.5vw,48px);line-height:1.2;letter-spacing:-.04em; }
+.brand-current-copy p { margin-top:18px;color:var(--muted);font-size:16px;line-height:1.8; }
+.brand-current-layout .brand-practice-image { min-height:390px;background:#f4e7dc; }
+.brand-feature { padding:100px 0;background:#fff; }
+.brand-feature-layout { display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px; }
+.brand-feature-logo { color:var(--orange);font-size:clamp(54px,8vw,110px);font-weight:900;line-height:.9;letter-spacing:-.07em; }
+.brand-feature-logo span { display:block;color:#b7a18d; }
+.brand-feature-slogan { margin-top:20px;color:var(--muted);font-size:17px;line-height:1.6; }
+.brand-feature-list { border-top:1px solid #ddd; }
+.brand-feature-list li { display:flex;align-items:center;gap:20px;padding:20px 0;border-bottom:1px solid #ddd;list-style:none;font-size:18px; }
+.brand-feature-list b { display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:12px;background:var(--orange);color:#fff;font-size:18px; }
+.brand-feature-package { max-width:520px;margin:60px auto 0; }
+.brand-feature-package .brand-practice-image { min-height:300px;background:#f4f4f4; }
+.brand-bi { padding:90px 0;background:#ffefe0; }
+.brand-bi-logos { display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:38px auto 70px; }
+.brand-bi-logo { display:grid;place-items:center;min-height:180px;padding:24px;border:1px solid #eadfd6;border-radius:18px;background:#fff; }
+.brand-bi-logo .brand-detail-logo { font-size:clamp(42px,6vw,82px); }
+.brand-color-title { margin:0 0 22px;text-align:center;font-size:22px; }
+.brand-color-grid { display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;border-radius:16px; }
+.brand-color { min-height:120px;padding:18px;color:#fff;font-size:14px;font-weight:750; }
+.brand-color:nth-child(1){background:#ff6400}.brand-color:nth-child(2){background:#ffefe0;color:#6f6257}.brand-color:nth-child(3){background:#b7a18d}.brand-color:nth-child(4){background:#292522}
+.brand-media { padding:100px 0;background:#fff; }
+.brand-media-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:38px; }
+.brand-media-card { display:block;min-width:0; }
+.brand-media-thumb { position:relative;overflow:hidden;border-radius:18px; }
+.brand-media-thumb .brand-practice-image { min-height:200px;border:0;border-radius:18px; }
+.brand-media-play { position:absolute;left:50%;top:50%;display:grid;place-items:center;width:48px;height:48px;transform:translate(-50%,-50%);border-radius:50%;background:#ff6400;color:#fff;font-size:18px; }
+.brand-media-card h3 { margin-top:14px;font-size:17px;font-weight:650; }
+.brand-media-more { display:table;margin:36px auto 0;padding:11px 28px;border:1px solid var(--orange);border-radius:999px;color:var(--orange);font-size:14px;font-weight:700; }
+.brand-detail-reveal { opacity:1;transform:none; }
+.js .brand-detail-reveal { opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease; }
+.js .brand-detail-reveal.is-visible { opacity:1;transform:none; }
+@media(max-width:1050px){
+ .brand-tab-list { justify-content:flex-start;gap:30px; }
+ .brand-history-layout,.brand-current-layout,.brand-feature-layout { gap:30px; }
+ .brand-product-grid,.brand-media-grid { gap:16px; }
+}
+@media(max-width:760px){
+ .brand-detail-tabs { top:70px; }
+ .brand-detail-tabs .section-inner { min-height:56px;gap:8px; }
+ .brand-tab-arrow { flex-basis:26px;width:26px;height:26px; }
+ .brand-tab-list { gap:24px; }
+ .brand-tab-list a { padding:18px 0 15px;font-size:13px; }
+ .brand-detail-hero { padding:54px 0 50px; }
+ .brand-detail-intro { font-size:13px; }
+ .brand-detail-products,.brand-history,.brand-current-story,.brand-feature,.brand-media { padding:58px 0; }
+ .brand-product-grid { grid-template-columns:repeat(2,minmax(0,1fr));gap:14px; }
+ .brand-product-card { padding:10px;border-radius:16px; }
+ .brand-product-card h3 { font-size:14px; }
+ .brand-story-intro { padding:60px 0; }
+ .brand-story-intro p,.brand-history p,.brand-current-copy p { font-size:13px; }
+ .brand-history-layout,.brand-current-layout,.brand-feature-layout { grid-template-columns:1fr;gap:24px; }
+ .brand-history .brand-practice-image { min-height:220px; }
+ .brand-history-gallery { gap:8px;margin-top:24px; }
+ .brand-history-gallery .brand-practice-image { min-height:90px;font-size:11px; }
+ .brand-current-layout .brand-practice-image { min-height:240px; }
+ .brand-feature-list li { padding:14px 0;font-size:14px; }
+ .brand-feature-package { margin-top:32px; }
+ .brand-feature-package .brand-practice-image { min-height:220px; }
+ .brand-bi { padding:58px 0; }
+ .brand-bi-logos { gap:12px;margin:28px auto 46px; }
+ .brand-bi-logo { min-height:110px;padding:12px; }
+ .brand-color-grid { grid-template-columns:repeat(2,1fr); }
+ .brand-color { min-height:90px;padding:12px;font-size:12px; }
+ .brand-media-grid { grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px; }
+ .brand-media-thumb .brand-practice-image { min-height:120px;font-size:12px; }
+ .brand-media-card h3 { font-size:13px; }
+}
+@media(prefers-reduced-motion:reduce){.js .brand-detail-reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<header class="site-header">
+      <div class="header-inner">
+        <a class="brand-logo" href="index.html#top" aria-label="삼양식품 홈">
+          <img src="img/logo.png" alt="삼양식품" class="header-logo-image">
+        </a>
+
+        <nav class="primary-nav" aria-label="주요 메뉴">
+  <div class="nav-item"><a href="company.html">삼양식품소개</a><div class="nav-dropdown"><a href="company.html#about">삼양식품</a><a href="company.html#history">연혁</a><a href="company.html#global">글로벌 네트워크</a><a href="company.html#location">위치정보</a></div></div>
+  <div class="nav-item"><a href="ir.html">IR</a><div class="nav-dropdown"><a href="ir.html#disclosure">공시정보</a><a href="ir.html#financial">재무정보</a><a href="ir.html#stock">주가정보</a><a href="ir.html#library">IR자료실</a></div></div>
+  <div class="nav-item"><a href="media.html">미디어/PR</a><div class="nav-dropdown"><a href="media-press.html">보도자료</a><a href="media-video.html">홍보영상</a><a href="media-center.html">미디어센터</a></div></div>
+  <div class="nav-item"><a href="esg.html">지속가능경영</a><div class="nav-dropdown"><a href="esg.html#performance">ESG 성과</a><a href="esg.html#eco">친환경 경영</a><a href="esg.html#social">사회공헌</a></div></div>
+  <div class="nav-item"><a class="is-current" href="brand.html">브랜드</a><div class="nav-dropdown"><a href="brand.html#ramen">삼양라면</a><a href="brand.html#samyang1963">삼양1963</a><a href="brand.html#buldak">불닭</a><a href="brand.html#maptang">맵탱</a><a href="brand.html#tangle">탱글</a><a href="brand.html#pulselab">펄스랩</a><a href="brand.html#jjaparoni">짜파로니</a></div></div>
+  <div class="nav-item"><a href="product.html">제품</a><div class="nav-dropdown"><a href="product.html#ramen">라면</a><a href="product.html#snack">스낵</a><a href="product.html#sauce">소스·간편식</a><a href="product.html#frozen">냉동식품</a></div></div>
+</nav>
+
+        <div class="header-tools">
+          <a class="utility-link" href="#support">채용안내</a>
+          <span class="tool-divider" aria-hidden="true"></span>
+          <div class="language-switch" aria-label="언어 선택"><a href="#top" class="is-active" lang="ko">KR</a><span>/</span><a href="#top" lang="en">EN</a></div>
+          <button class="icon-button search-button" type="button" aria-label="통합검색 열기" aria-expanded="false"><span class="material-symbols-outlined" aria-hidden="true">search</span></button>
+          <button class="icon-button user-button" type="button" aria-label="마이페이지"><span class="material-symbols-outlined" aria-hidden="true">person</span></button>
+          <a class="mall-button" href="#" target="_blank" rel="noopener noreferrer">삼양몰 바로가기 <span aria-hidden="true">↗</span></a>
+        </div>
+        <form class="header-search-panel" role="search" hidden>
+          <label for="site-search">통합검색</label>
+          <input id="site-search" type="search" placeholder="제품, 보도자료, 공시 정보를 검색하세요">
+          <button type="submit">검색</button>
+        </form>
+        <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="scroll-progress" aria-hidden="true"></div>
+    </header>
+<main id="main">
+  <!-- 브랜드 탭 바: 브랜드 페이지 링크는 나머지 6개 페이지 제작 후 연결 -->
+  <nav class="brand-detail-tabs" aria-label="브랜드 선택">
+    <div class="section-inner">
+      <button class="brand-tab-arrow" type="button" aria-label="브랜드 목록 왼쪽으로 이동" data-scroll="-1">‹</button>
+      <div class="brand-tab-list" id="brand-tab-list">
+        <a href="brand.html#ramen">삼양라면</a>
+        <a href="brand-samyang1963.html" aria-current="page">삼양1963</a>
+        <a href="brand.html#buldak">불닭</a>
+        <a href="brand.html#maptang">맵탱</a>
+        <a href="brand.html#tangle">탱글</a>
+        <a href="brand.html#pulselab">펄스랩</a>
+        <a href="brand.html#jjaparoni">짜파로니</a>
+      </div>
+      <button class="brand-tab-arrow" type="button" aria-label="브랜드 목록 오른쪽으로 이동" data-scroll="1">›</button>
+    </div>
+  </nav>
+
+  <!-- 브랜드 히어로: 로고와 소개 문구 -->
+  <section class="brand-detail-hero">
+    <div class="section-inner brand-detail-reveal">
+      <h1 class="brand-detail-logo">삼양<span>1963</span></h1>
+      <p class="brand-detail-slogan">브랜드 슬로건을 입력하세요</p>
+      <p class="brand-detail-intro">브랜드 소개 문구를 입력하세요. 삼양1963 브랜드의 핵심 메시지를 이곳에 작성해 주세요.</p>
+    </div>
+  </section>
+
+  <!-- 제품 리스트: 실제 제품 2개와 추가 예정 임시 카드 1개 -->
+  <section class="brand-detail-products">
+    <div class="section-inner">
+      <div class="brand-detail-heading brand-detail-reveal">
+        <h2 class="section-title">제품 리스트</h2>
+        <p>브랜드에 해당하는 제품을 확인해 보세요.</p>
+      </div>
+      <div class="brand-product-grid">
+        <a class="brand-product-card brand-detail-reveal" href="product-detail.html?item=1963">
+          <div class="brand-product-image"><img src="img/1963.png" alt="삼양1963 제품"></div>
+          <h3>삼양1963</h3>
+        </a>
+        <a class="brand-product-card brand-detail-reveal" href="product-detail.html?item=cup1963">
+          <div class="brand-product-image"><img src="img/cup1963.png" alt="큰컵 삼양1963 제품"></div>
+          <h3>큰컵 삼양1963</h3>
+        </a>
+        <a class="brand-product-card brand-detail-reveal" href="product-detail.html">
+          <div class="brand-product-image"><div class="brand-practice-image">연습용이미지파일</div></div>
+          <h3>제품명 입력</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Story: 소개 문구 -->
+  <section class="brand-story-intro">
+    <div class="section-inner brand-detail-reveal">
+      <p class="eyebrow">BRAND STORY</p>
+      <h2>브랜드의 이야기를 <span>입력하세요.</span></h2>
+      <p>브랜드가 시작된 배경과 전달하고 싶은 가치를 입력하세요. 실제 브랜드 소개 문구를 준비한 뒤 이 영역의 내용을 교체하면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 전폭 배너 이미지 -->
+  <section class="brand-full-banner">
+    <div class="brand-practice-image">연습용이미지파일</div>
+  </section>
+
+  <!-- 브랜드 히스토리: 연도, 제목, 설명, 이미지 -->
+  <section class="brand-history">
+    <div class="section-inner">
+      <div class="brand-history-layout brand-detail-reveal">
+        <div>
+          <span class="brand-history-year">YEAR</span>
+          <h2>브랜드 히스토리 제목을 입력하세요.</h2>
+          <p>브랜드의 주요 변화와 관련된 내용을 입력하세요. 확인된 연도와 사실을 준비한 후 이 문단을 교체해 주세요.</p>
+        </div>
+        <div class="brand-practice-image">연습용이미지파일</div>
+      </div>
+      <div class="brand-history-gallery brand-detail-reveal">
+        <div class="brand-practice-image">연습용이미지파일</div>
+        <div class="brand-practice-image">연습용이미지파일</div>
+        <div class="brand-practice-image">연습용이미지파일</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 현재 이야기: 최신 연도와 대표 이미지 -->
+  <section class="brand-current-story">
+    <div class="section-inner brand-current-layout brand-detail-reveal">
+      <div class="brand-current-copy">
+        <span class="brand-history-year">YEAR</span>
+        <h2>현재의 브랜드 이야기를 입력하세요.</h2>
+        <p>현재 브랜드가 전하고 있는 메시지와 특징을 입력하세요. 실제 정보가 준비되면 이 문단을 수정해 주세요.</p>
+      </div>
+      <div class="brand-practice-image">연습용이미지파일</div>
+    </div>
+  </section>
+
+  <!-- 브랜드 특징: 로고, 슬로건, 특징 4개, 패키지 이미지 -->
+  <section class="brand-feature">
+    <div class="section-inner">
+      <div class="brand-feature-layout brand-detail-reveal">
+        <div>
+          <div class="brand-feature-logo">삼양<span>1963</span></div>
+          <p class="brand-feature-slogan">브랜드 슬로건을 입력하세요.</p>
+        </div>
+        <ul class="brand-feature-list">
+          <li><b>特</b><span>브랜드 특징을 입력하세요.</span></li>
+          <li><b>味</b><span>브랜드 특징을 입력하세요.</span></li>
+          <li><b>品</b><span>브랜드 특징을 입력하세요.</span></li>
+          <li><b>新</b><span>브랜드 특징을 입력하세요.</span></li>
+        </ul>
+      </div>
+      <div class="brand-feature-package brand-detail-reveal">
+        <div class="brand-practice-image">연습용이미지파일</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND BI: 대표 로고와 가로형 로고 -->
+  <section class="brand-bi">
+    <div class="section-inner">
+      <div class="brand-detail-heading brand-detail-reveal">
+        <h2 class="section-title">BRAND BI</h2>
+        <p>브랜드 로고의 기본형과 가로형을 배치하는 영역입니다.</p>
+      </div>
+      <div class="brand-bi-logos brand-detail-reveal">
+        <div class="brand-bi-logo"><div class="brand-detail-logo">삼양<span>1963</span></div></div>
+        <div class="brand-bi-logo"><div class="brand-detail-logo">삼양<span>1963</span></div></div>
+      </div>
+      <!-- Color System: 실제 브랜드 컬러로 교체 -->
+      <h3 class="brand-color-title brand-detail-reveal">Color System</h3>
+      <div class="brand-color-grid brand-detail-reveal">
+        <div class="brand-color">ORANGE</div>
+        <div class="brand-color">PEACH</div>
+        <div class="brand-color">BROWN</div>
+        <div class="brand-color">DARK</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA: 영상 썸네일 3개와 더보기 -->
+  <section class="brand-media">
+    <div class="section-inner">
+      <div class="brand-detail-heading brand-detail-reveal">
+        <h2 class="section-title">MEDIA</h2>
+        <p>브랜드와 관련된 영상 및 콘텐츠를 소개하는 영역입니다.</p>
+      </div>
+      <div class="brand-media-grid">
+        <a class="brand-media-card brand-detail-reveal" href="media-video.html">
+          <div class="brand-media-thumb"><div class="brand-practice-image">연습용이미지파일</div><span class="brand-media-play">▶</span></div>
+          <h3>영상 제목을 입력하세요.</h3>
+        </a>
+        <a class="brand-media-card brand-detail-reveal" href="media-video.html">
+          <div class="brand-media-thumb"><div class="brand-practice-image">연습용이미지파일</div><span class="brand-media-play">▶</span></div>
+          <h3>영상 제목을 입력하세요.</h3>
+        </a>
+        <a class="brand-media-card brand-detail-reveal" href="media-video.html">
+          <div class="brand-media-thumb"><div class="brand-practice-image">연습용이미지파일</div><span class="brand-media-play">▶</span></div>
+          <h3>영상 제목을 입력하세요.</h3>
+        </a>
+      </div>
+      <a class="brand-media-more" href="media-video.html">더보기 <span aria-hidden="true">›</span></a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer" id="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <a class="footer-logo" href="#top" aria-label="삼양식품 홈"><span aria-hidden="true"></span>Samyang</a>
+          <div class="footer-links">
+            <div><h3>기업정보</h3><a href="#brand-story">삼양식품 소개</a><a href="#esg">IR 투자정보</a><a href="#esg">지속가능경영</a></div>
+            <div><h3>브랜드 &amp; 제품</h3><a href="#brand-story">브랜드 전체 보기</a><a href="#best-products">제품 둘러보기</a><a href="#best-products">신제품</a></div>
+            <div><h3>고객지원</h3><a href="#support">FAQ</a><a href="#support">1:1 문의</a><a href="#footer">개인정보처리방침</a></div>
+            <div class="family-sites"><a href="#">패밀리 사이트 선택 <span>⌄</span></a></div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© SAMYANG FOODS&nbsp; · &nbsp;CONCEPT REDESIGN</p>
+          <p>본 페이지는 삼양식품 홈페이지 리뉴얼 학습을 위한 시안입니다. 일반 이용자의 콘텐츠는 디자인 목업입니다.</p>
+          
+        </div>
+      </div>
+    </footer>
+<a class="to-top" href="#main" aria-label="맨 위로"><svg viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></svg></a>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+<script src="js/sub.js"></script>
+<script>
+/* 브랜드 탭 바: 좌우 화살표 스크롤 */
+(() => {
+  const list = document.getElementById("brand-tab-list");
+  document.querySelectorAll(".brand-tab-arrow").forEach((button) => {
+    button.addEventListener("click", () => {
+      list.scrollBy({ left: Number(button.dataset.scroll) * 220, behavior: "smooth" });
+    });
+  });
+  /* 브랜드 상세 섹션 fade-in */
+  const targets = document.querySelectorAll(".brand-detail-reveal");
+  if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    targets.forEach((target) => target.classList.add("is-visible"));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  targets.forEach((target) => observer.observe(target));
+})();
+</script>
+</body>
+</html>
