@@ -93,7 +93,7 @@
   if (!list) return;
   const items = Array.from(list.children), pager = document.querySelector(".prod-pager");
   const filters = Array.from(document.querySelectorAll(".prod-filter button")), PER = 12;
-  let cat = "라면", page = 1;
+  let cat = filters[0]?.textContent.trim() || "라면", page = 1;
   const render = () => {
     const shown = items.filter((i) => i.dataset.cat === cat);
     const pages = Math.max(Math.ceil(shown.length / PER), 1);
