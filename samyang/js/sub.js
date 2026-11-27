@@ -23,7 +23,7 @@
     if (!open) sInput.focus();
   });
   /* 검색: 메뉴 이름이 일치하는 페이지로 이동 (외부 사이트 연결 없음) */
-  const keys = { "삼양식품소개": "company.html", "미디어/pr": "media.html", "미디어": "media.html", "보도자료": "media.html#press", "지속가능경영": "esg.html", "esg": "esg.html", "브랜드": "brand.html", "제품": "product.html", "연혁": "company.html#history", "ir": "ir.html", "공시정보": "ir.html#disclosure", "재무정보": "ir.html#financial", "주가정보": "ir.html#stock", "ir자료실": "ir.html#library", "홍보영상": "media-video.html", "미디어센터": "media-center.html" };
+  const keys = { "삼양식품소개": "company.html", "미디어/pr": "media.html", "미디어": "media.html", "보도자료": "media.html#press", "지속가능경영": "esg.html", "esg": "esg.html", "브랜드": "brand.html", "제품": "product.html", "연혁": "company.html#history", "ir": "ir.html", "공시정보": "ir.html#disclosure", "재무정보": "ir.html#financial", "주가정보": "ir.html#stock", "ir자료실": "ir.html#library", "홍보영상": "media.html#video", "미디어센터": "media.html#center" };
   sPanel.addEventListener("submit", (e) => {
     e.preventDefault();
     const q = sInput.value.trim().toLowerCase();
@@ -94,8 +94,10 @@
   const items = Array.from(list.children), pager = document.querySelector(".prod-pager");
   const filters = Array.from(document.querySelectorAll(".prod-filter button")), PER = 12;
   let cat = filters[0]?.textContent.trim() || "라면", page = 1;
+  const hashMap = { press: "보도자료", video: "홍보영상", center: "미디어센터" };
+  const catHash = { "보도자료": "press", "홍보영상": "video", "미디어센터": "center" };
   const render = () => {
-    const shown = items.filter((i) => i.dataset.cat === cat);
+    const shown = items.filter((i) => i.dataset.cat.trim() === cat);
     const pages = Math.max(Math.ceil(shown.length / PER), 1);
     page = Math.min(page, pages);
     items.forEach((i) => { i.hidden = true; });
@@ -106,8 +108,10 @@
       '<button data-p="' + (page + 1) + '"' + (page === pages ? " disabled" : "") + ">Next &gt;</button>";
   };
   filters.forEach((b) => b.addEventListener("click", () => {
-    cat = b.textContent; page = 1;
+    cat = b.textContent.trim(); page = 1;
     filters.forEach((f) => f.setAttribute("aria-pressed", String(f === b)));
+    const hash = catHash[cat];
+    if (hash && location.hash !== "#" + hash) history.replaceState(null, "", "#" + hash);
     render();
   }));
   pager.addEventListener("click", (e) => {
@@ -117,12 +121,12 @@
     render();
     document.querySelector(".prod-filter").scrollIntoView({ behavior: "smooth", block: "start" });
   });
-  const map = { ramen: "라면", snack: "스낵", sauce: "소스·간편식", frozen: "냉동 간편식" };
+  const map = { ramen: "라면", snack: "스낵", sauce: "소스·간편식", frozen: "냉동 간편식", ...hashMap };
   const fromHash = () => {
     const c = map[location.hash.slice(1)];
-    if (!c) return;
+    if (!c || !filters.some((f) => f.textContent.trim() === c)) return;
     cat = c; page = 1;
-    filters.forEach((f) => f.setAttribute("aria-pressed", String(f.textContent === c)));
+    filters.forEach((f) => f.setAttribute("aria-pressed", String(f.textContent.trim() === c)));
   };
   addEventListener("hashchange", () => { fromHash(); render(); });
   fromHash();
