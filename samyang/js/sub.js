@@ -93,9 +93,9 @@
   if (!list) return;
   const items = Array.from(list.children), pager = document.querySelector(".prod-pager");
   const filters = Array.from(document.querySelectorAll(".prod-filter button")), PER = 12;
-  let cat = "전체보기", page = 1;
+  let cat = "라면", page = 1;
   const render = () => {
-    const shown = items.filter((i) => cat === "전체보기" || i.dataset.cat === cat);
+    const shown = items.filter((i) => i.dataset.cat === cat);
     const pages = Math.max(Math.ceil(shown.length / PER), 1);
     page = Math.min(page, pages);
     items.forEach((i) => { i.hidden = true; });
@@ -117,7 +117,7 @@
     render();
     document.querySelector(".prod-filter").scrollIntoView({ behavior: "smooth", block: "start" });
   });
-  const map = { all: "전체보기", ramen: "라면", snack: "스낵", sauce: "소스·간편식", frozen: "냉동 간편식" };
+  const map = { ramen: "라면", snack: "스낵", sauce: "소스·간편식", frozen: "냉동 간편식" };
   const fromHash = () => {
     const c = map[location.hash.slice(1)];
     if (!c) return;
