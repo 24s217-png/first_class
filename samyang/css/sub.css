@@ -630,3 +630,19 @@
     margin-bottom: 10px;
   }
 }
+
+
+/* Media & PR page: follow the product listing layout */
+.media-product-style { padding: var(--sec-py) 0; background:#fff; }
+.media-product-style > .section-inner > .section-title { margin-bottom:var(--title-gap); }
+.media-product-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:48px var(--card-gap); list-style:none; }
+.media-product-item a { display:block; color:var(--text); }
+.media-product-image { aspect-ratio:1/1; overflow:hidden; border-radius:20px; background:#fff; }
+.media-product-image img { display:block; width:100%; height:100%; object-fit:cover; transition:transform .3s ease; }
+.media-product-item a:hover .media-product-image img { transform:scale(1.04); }
+.media-product-name { margin:18px 0 0; font-size:18px; line-height:1.4; font-weight:600; text-align:center; letter-spacing:-.035em; }
+@media(max-width:760px) {
+  .media-product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px 16px; }
+  .media-product-image { border-radius:14px; }
+  .media-product-name { font-size:14px; }
+}
